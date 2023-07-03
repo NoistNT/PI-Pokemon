@@ -42,9 +42,6 @@ const pokemonModel = (sequelize) => {
       weight: {
         type: DataTypes.INTEGER,
         allowNull: false
-      },
-      abilities: {
-        type: DataTypes.ARRAY(DataTypes.STRING)
       }
     },
     { timestamps: false }
