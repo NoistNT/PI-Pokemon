@@ -6,14 +6,26 @@ const getPokemonDetails = async (pokemonURL) => {
   try {
     const { data } = await axios.get(pokemonURL)
 
-    const { id, name, sprites, stats, height, weight } = data
+    const { id, name, sprites, types, stats, height, weight } = data
     const { front_default: image } = sprites.other['home']
     const { base_stat: hp } = stats[0]
     const { base_stat: attack } = stats[1]
     const { base_stat: defense } = stats[2]
     const { base_stat: speed } = stats[5]
+    const type = types.map((t) => t.type.name)
 
-    return { id, name, image, hp, attack, defense, speed, height, weight }
+    return {
+      id,
+      name,
+      image,
+      type,
+      hp,
+      attack,
+      defense,
+      speed,
+      height,
+      weight
+    }
   } catch (error) {
     throw new Error(`Failed to fetch pokemon details. ${error.message}`)
   }
@@ -29,7 +41,7 @@ const getPokemonsFromAPI = async () => {
 
     return pokemons
   } catch (error) {
-    throw new Error(`Failed to fetch pokemons from api. ${error.message}`)
+    throw new Error(`Failed to fetch pokemons from API. ${error.message}`)
   }
 }
 

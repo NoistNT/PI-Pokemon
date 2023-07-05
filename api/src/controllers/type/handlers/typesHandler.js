@@ -16,11 +16,14 @@ const getTypesData = async () => {
 
     const { data } = await axios.get(`${URL}/type`)
 
-    const types = Promise.all(data.results.map((type) => createType(type.url)))
+    const types = await Promise.all(
+      data.results.map((type) => createType(type.url))
+    )
+    console.log('Types loaded into database successfully')
 
     return types
   } catch (error) {
-    throw new Error(`Failed to fetch types from api. ${error.message}`)
+    throw new Error(`Failed to fetch types from API. ${error.message}`)
   }
 }
 
