@@ -4,12 +4,12 @@ const { DataTypes } = require('sequelize')
 const pokemonModel = (sequelize) => {
   // Model definition
   sequelize.define(
-    'pokemon',
+    'Pokemon',
     {
       id: {
-        type: DataTypes.INTEGER,
-        primaryKey: true,
-        autoIncrement: true
+        type: DataTypes.UUID,
+        defaultValue: DataTypes.UUIDV4,
+        primaryKey: true
       },
       name: {
         type: DataTypes.STRING,
