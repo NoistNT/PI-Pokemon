@@ -1,11 +1,24 @@
 :root {
+  /*  Global variables   */
+  --app-bg-color: #1f1f1f;
+  --text-color: rgba(255, 255, 255, 1);
+  --link-color: #646cff;
+  --link-hover-color: #535bf2;
+
+  /*  Card variables   */
+  --card-bg: #22223b;
+  --card-hover-bg: #3c316e;
+  --card-shadow: rgba(0, 0, 0, 0.1);
+  --card-hover-shadow: rgba(0, 0, 0, 1);
+  --types-bg-color: #424874;
+
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  color: var(--text-color);
+  background-color: var(--app-bg-color);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -15,16 +28,17 @@
 }
 
 a {
+  color: var(--link-color);
   font-weight: 500;
-  color: #646cff;
   text-decoration: inherit;
 }
 a:hover {
-  color: #535bf2;
+  color: var(--link-hover-color);
 }
 
 body {
   margin: 0;
+  padding: 0;
   display: flex;
   place-items: center;
   min-width: 320px;
