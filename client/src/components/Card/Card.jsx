@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { Link } from 'react-router-dom'
-import { capitalize } from '../../helpers/capitalize'
+import { capitalize } from '../../helpers/helpers'
 import {
   CardContainer,
   Image,
@@ -11,8 +11,8 @@ import {
 
 export default function Card({ pokemon }) {
   const { id, name, type, image } = pokemon
-  const typeElements = type.map((type, index) => (
-    <Types key={index}>{capitalize(type)}</Types>
+  const types = type.map((t, index) => (
+    <Types key={index}>{capitalize(t)}</Types>
   ))
 
   return (
@@ -20,8 +20,8 @@ export default function Card({ pokemon }) {
       <Link to={`/pokemon/${id}`}>
         <Image src={image} alt={name} />
         <Name>{capitalize(name)}</Name>
+        <TypesContainer>{types}</TypesContainer>
       </Link>
-      <TypesContainer>{typeElements}</TypesContainer>
     </CardContainer>
   )
 }

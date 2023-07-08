@@ -4,6 +4,7 @@ export const CardContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: 1.5rem;
   max-width: 20rem;
   border-radius: 1rem;
   background-color: var(--card-bg);
@@ -31,10 +32,6 @@ export const Name = styled.h2`
   font-size: 1.7rem;
   color: var(--text-color);
   text-shadow: 1px 0px 8px #272727;
-
-  &:hover {
-    color: var(--link-hover-color);
-  }
 `
 
 export const TypesContainer = styled.div`
