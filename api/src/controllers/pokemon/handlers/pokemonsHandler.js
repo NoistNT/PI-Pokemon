@@ -115,4 +115,9 @@ const getPokemonByID = async (id) => {
   }
 }
 
-module.exports = { getPokemonsData, getPokemonByName, getPokemonByID }
+module.exports = {
+  getPokemonsData,
+  getPokemonByName,
+  getPokemonByID,
+  getPokemonDetails
+}

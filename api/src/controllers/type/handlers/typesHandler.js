@@ -1,5 +1,7 @@
 const { Type } = require('../../../db')
+const { URL } = process.env
 const axios = require('axios')
+const { getPokemonDetails } = require('../../pokemon/handlers/pokemonsHandler')
 
 const createType = async (url) => {
   const { data } = await axios.get(url)
@@ -8,8 +10,6 @@ const createType = async (url) => {
 }
 
 const getTypesData = async () => {
-  const URL = process.env.URL
-
   try {
     const typesDB = await Type.findAll()
 
@@ -28,4 +28,20 @@ const getTypesData = async () => {
   }
 }
 
-module.exports = { getTypesData }
+const getTypeData = async (id) => {
+  try {
+    const { data } = await axios.get(`${URL}/type/${id}`)
+
+    const pokemons = await Promise.all(
+      data.pokemon.map((result) => getPokemonDetails(result.pokemon.url))
+    )
+
+    return pokemons
+  } catch (error) {
+    throw new Error(
+      `Failed to fetch pokemons by type from API. ${error.message}`
+    )
+  }
+}
+
+module.exports = { getTypesData, getTypeData }
