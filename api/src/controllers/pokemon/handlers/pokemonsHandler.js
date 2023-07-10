@@ -75,7 +75,7 @@ const getPokemonsData = async () => {
 const getPokemonByName = async (name) => {
   try {
     const dbPokemon = await Pokemon.findOne({
-      where: { name: name },
+      where: { name },
       include: [
         {
           model: Type,
@@ -86,7 +86,7 @@ const getPokemonByName = async (name) => {
     if (dbPokemon) return dbPokemon
 
     const pokemonURL = `${URL}/pokemon/${name.toLowerCase()}`
-    const pokemon = await getPokemonDetails(pokemonURL)
+    const pokemon = [await getPokemonDetails(pokemonURL)]
 
     return pokemon
   } catch (error) {
@@ -98,12 +98,10 @@ const getPokemonByID = async (id) => {
   try {
     if (isNaN(id)) {
       const dbPokemon = await Pokemon.findByPk(id, {
-        include: [
-          {
-            model: Type,
-            attributes: ['name']
-          }
-        ]
+        include: {
+          model: Type,
+          attributes: ['name']
+        }
       })
       if (dbPokemon) return dbPokemon
     }

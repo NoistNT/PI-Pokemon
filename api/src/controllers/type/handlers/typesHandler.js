@@ -3,9 +3,10 @@ const axios = require('axios')
 
 const createType = async (url) => {
   const { data } = await axios.get(url)
-  const newType = Type.create({ id: data.id, name: data.name })
+  const newType = Type.create({ id: data.id, name: data.name, url })
   return newType
 }
+
 const getTypesData = async () => {
   const URL = process.env.URL
 
