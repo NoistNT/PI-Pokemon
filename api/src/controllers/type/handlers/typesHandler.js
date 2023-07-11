@@ -3,10 +3,14 @@ const { URL } = process.env
 const axios = require('axios')
 const { getPokemonDetails } = require('../../pokemon/handlers/pokemonsHandler')
 
-const createType = async (url) => {
+const getTypes = async (url) => {
   const { data } = await axios.get(url)
-  const newType = Type.create({ id: data.id, name: data.name, url })
-  return newType
+
+  return {
+    id: data.id,
+    name: data.name,
+    url
+  }
 }
 
 const getTypesData = async () => {
@@ -18,9 +22,11 @@ const getTypesData = async () => {
     const { data } = await axios.get(`${URL}/type`)
 
     const types = await Promise.all(
-      data.results.map((type) => createType(type.url))
+      data.results.map((type) => getTypes(type.url))
     )
     console.log('Types loaded into database successfully')
+
+    await Type.bulkCreate(types)
 
     return types
   } catch (error) {

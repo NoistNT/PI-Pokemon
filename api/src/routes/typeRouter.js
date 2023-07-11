@@ -3,10 +3,10 @@ const { Router } = require('express')
 // Importing controllers
 const { getTypes, getType } = require('../controllers/type/typesController')
 
-const router = Router()
+const typeRouter = Router()
 
 // Router configuration
-router.get('/', getTypes)
-router.get('/:id', getType)
+typeRouter.get('/', getTypes)
+typeRouter.get('/:id', getType)
 
-module.exports = router
+module.exports = typeRouter

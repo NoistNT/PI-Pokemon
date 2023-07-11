@@ -9,10 +9,10 @@ const typeRouter = require('./typeRouter')
 const loadDB = async () => await getTypesData()
 loadDB()
 
-const router = Router()
+const mainRouter = Router()
 
 // Setting Routers
-router.use('/pokemon', pokemonRouter)
-router.use('/type', typeRouter)
+mainRouter.use('/pokemon', pokemonRouter)
+mainRouter.use('/type', typeRouter)
 
-module.exports = router
+module.exports = mainRouter

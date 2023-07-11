@@ -33,7 +33,7 @@ const getPokemonDetails = async (pokemonURL) => {
 
 const getPokemonsFromAPI = async () => {
   try {
-    const { data } = await axios.get(`${URL}/pokemon`)
+    const { data } = await axios.get(`${URL}/pokemon?limit=80.`)
 
     const pokemons = await Promise.all(
       data.results.map((pokemon) => getPokemonDetails(pokemon.url))
