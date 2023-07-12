@@ -8,10 +8,10 @@
   --select-bg-color: #2e2e52;
 
   /*  Card variables   */
-  --card-bg: #3c316e;
+  --card-bg: #3e307c;
   --card-hover-bg: #3c316e;
   --card-shadow: rgba(0, 0, 0, 0.1);
-  --card-hover-shadow: rgba(0, 0, 0, 1);
+  --card-hover-shadow: rgba(111, 0, 255, 0.5);
   --types-bg-color: #424874;
 
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;

@@ -34,14 +34,9 @@ export const StyledLink = styled(Link)`
   margin: 0 1rem;
   font-size: 0.9rem;
 
-  &:hover,
-  &:focus {
+  &:hover {
     font-weight: 600;
     color: var(--link-color);
-  }
-
-  &:active {
-    color: #4941b3;
   }
 
   @media (min-width: 768px) {

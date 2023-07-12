@@ -6,7 +6,9 @@ export const CardContainer = styled.div`
   align-items: center;
   margin: 1.5rem;
   max-width: 20rem;
-  border-radius: 1rem;
+  border-style: solid;
+  border-color: #ffffff36;
+  border-radius: 0.85rem;
   background-color: var(--card-bg);
   box-shadow: 0 2px 4px var(--card-shadow);
   transition: all 0.3s ease;
@@ -15,9 +17,9 @@ export const CardContainer = styled.div`
   &:hover {
     box-shadow: 0 14px 28px var(--card-hover-shadow),
       0 10px 10px var(--card-hover-shadow);
-    background-color: var(--card-hover-bg);
     transform: translateY(-0.4rem);
     transition: all 0.3s ease;
+    border-color: #ffffff90;
   }
 `
 

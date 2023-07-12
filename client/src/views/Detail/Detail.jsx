@@ -3,7 +3,8 @@ import { capitalize, types } from '../../helpers/helpers'
 import { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { getPokemonById, cleanDetail } from '../../redux/actions/actions'
+import { getPokemonById } from '../../redux/actions/pokemonAsyncActions'
+import { cleanDetail } from '../../redux/actions/pokemonActions'
 import {
   CardContainer,
   Title,
@@ -17,8 +18,7 @@ import {
 export default function Detail() {
   const dispatch = useDispatch()
   const { id } = useParams()
-  const pokemon = useSelector((state) => state.pokemon)
-  const isLoading = useSelector((state) => state.isLoading)
+  const { pokemon, isLoading } = useSelector((state) => state.pokemonReducer)
 
   useEffect(() => {
     dispatch(getPokemonById(id))

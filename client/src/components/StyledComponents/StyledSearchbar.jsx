@@ -4,7 +4,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  margin: 0.5rem 1rem;
+  margin: 0 1rem;
 
   @media (min-width: 426px) {
     flex-direction: row;
@@ -19,7 +19,7 @@ export const Container = styled.div`
 export const Input = styled.input`
   outline: 0;
   border: none;
-  border-radius: 0.3rem;
+  border-radius: 0.25rem;
   background-color: var(--input-bg-color);
   color: var(--text-color);
   font-size: 0.9rem;
@@ -41,20 +41,19 @@ export const Button = styled.button`
   font-size: 0.95rem;
   font-weight: 550;
   color: var(--text-color);
-  background-color: var(--app-bg-color);
-  border: none;
+  background-color: #4941b363;
+  border-color: #ffffff36;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
   border-radius: 0.3rem;
-  padding: 0.6rem 1.4rem;
+  padding: 0.4rem 1.2rem;
   transition: all 0.2s ease;
   font-size: 0.88rem;
 
   &:hover {
     transition: all 0.2s ease;
     box-shadow: 0 2px 4px var(--card-hover-shadow);
+    background-color: #4941b388;
+    border-color: #ffffff36;
     cursor: pointer;
-  }
-
-  @media (min-width: 426px) {
-    padding: 0.5rem 1rem;
   }
 `

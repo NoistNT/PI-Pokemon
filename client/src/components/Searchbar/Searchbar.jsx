@@ -1,6 +1,9 @@
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { getPokemonByName, getPokemons } from '../../redux/actions/actions'
+import {
+  getPokemonByName,
+  getPokemons
+} from '../../redux/actions/pokemonAsyncActions'
 import { Container, Input, Button } from '../StyledComponents/StyledSearchbar'
 import { useNavigate } from 'react-router-dom'
 
@@ -15,6 +18,7 @@ export default function Searchbar() {
       return
     }
     dispatch(getPokemonByName(name))
+    navigate('/pokemon')
     setName('')
   }
 
@@ -34,7 +38,7 @@ export default function Searchbar() {
   return (
     <Container>
       <Button type='button' onClick={handleClick}>
-        Pokémons
+        All Pokémons
       </Button>
       <Input
         type='text'

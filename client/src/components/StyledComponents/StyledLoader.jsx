@@ -5,7 +5,7 @@ export const LoadingContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 93.7vh;
+  height: 94.1vh;
   background-color: rgba(0, 0, 0, 0.3);
 
   span {
@@ -15,6 +15,7 @@ export const LoadingContainer = styled.div`
     border-radius: 0.2rem;
   }
 `
+
 export const Ring = styled.div`
   display: flex;
   justify-content: center;
