@@ -1,42 +1,17 @@
 const axios = require('axios')
 const { URL } = process.env
 const { Pokemon, Type } = require('../../../db')
-
-const getPokemonDetails = async (pokemonURL) => {
-  try {
-    const { data } = await axios.get(pokemonURL)
-
-    const { id, name, sprites, types, stats, height, weight } = data
-    const { front_default: image } = sprites.other['home']
-    const { base_stat: hp } = stats[0]
-    const { base_stat: attack } = stats[1]
-    const { base_stat: defense } = stats[2]
-    const { base_stat: speed } = stats[5]
-    const type = types.map((t) => t.type.name)
-
-    return {
-      id,
-      name,
-      image,
-      type,
-      hp,
-      attack,
-      defense,
-      speed,
-      height,
-      weight
-    }
-  } catch (error) {
-    throw new Error(`Failed to fetch pokemon details. ${error.message}`)
-  }
-}
+const {
+  getPokemonDetailsFromAPI,
+  getPokemonDetailsFromDB
+} = require('../../helpers/helpers')
 
 const getPokemonsFromAPI = async () => {
   try {
     const { data } = await axios.get(`${URL}/pokemon?limit=80.`)
 
     const pokemons = await Promise.all(
-      data.results.map((pokemon) => getPokemonDetails(pokemon.url))
+      data.results.map((pokemon) => getPokemonDetailsFromAPI(pokemon.url))
     )
 
     return pokemons
@@ -47,14 +22,20 @@ const getPokemonsFromAPI = async () => {
 
 const getPokemonsFromDB = async () => {
   try {
-    const pokemons = await Pokemon.findAll({
+    const dbPokemons = await Pokemon.findAll({
       include: {
         model: Type,
         attributes: ['name']
       }
     })
 
-    return pokemons
+    if (dbPokemons) {
+      const pokemons = await Promise.all(
+        dbPokemons.map((pokemon) => getPokemonDetailsFromDB(pokemon))
+      )
+
+      return pokemons
+    }
   } catch (error) {
     throw new Error(`Failed to fetch pokemons from db. ${error.message}`)
   }
@@ -75,7 +56,7 @@ const getPokemonsData = async () => {
 const getPokemonByName = async (name) => {
   try {
     const dbPokemon = await Pokemon.findOne({
-      where: { name },
+      where: { name: name.toLowerCase() },
       include: [
         {
           model: Type,
@@ -83,10 +64,14 @@ const getPokemonByName = async (name) => {
         }
       ]
     })
-    if (dbPokemon) return dbPokemon
+    if (dbPokemon) {
+      const pokemon = [await getPokemonDetailsFromDB(dbPokemon)]
+
+      return pokemon
+    }
 
     const pokemonURL = `${URL}/pokemon/${name.toLowerCase()}`
-    const pokemon = [await getPokemonDetails(pokemonURL)]
+    const pokemon = [await getPokemonDetailsFromAPI(pokemonURL)]
 
     return pokemon
   } catch (error) {
@@ -103,11 +88,15 @@ const getPokemonByID = async (id) => {
           attributes: ['name']
         }
       })
-      if (dbPokemon) return dbPokemon
+      if (dbPokemon) {
+        const pokemon = await getPokemonDetailsFromDB(dbPokemon)
+
+        return pokemon
+      }
     }
 
     const pokemonURL = `${URL}/pokemon/${id}`
-    const pokemon = await getPokemonDetails(pokemonURL)
+    const pokemon = await getPokemonDetailsFromAPI(pokemonURL)
 
     return pokemon
   } catch (error) {
@@ -118,6 +107,5 @@ const getPokemonByID = async (id) => {
 module.exports = {
   getPokemonsData,
   getPokemonByName,
-  getPokemonByID,
-  getPokemonDetails
+  getPokemonByID
 }

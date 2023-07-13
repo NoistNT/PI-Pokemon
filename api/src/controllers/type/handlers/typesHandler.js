@@ -1,7 +1,7 @@
 const { Type } = require('../../../db')
 const { URL } = process.env
 const axios = require('axios')
-const { getPokemonDetails } = require('../../pokemon/handlers/pokemonsHandler')
+const { getPokemonDetailsFromAPI } = require('../../helpers/helpers')
 
 const getTypes = async (url) => {
   const { data } = await axios.get(url)
@@ -16,8 +16,9 @@ const getTypes = async (url) => {
 const getTypesData = async () => {
   try {
     const typesDB = await Type.findAll()
-
-    if (typesDB.length) return typesDB
+    if (typesDB) {
+      return typesDB
+    }
 
     const { data } = await axios.get(`${URL}/type`)
 
@@ -39,7 +40,7 @@ const getTypeData = async (id) => {
     const { data } = await axios.get(`${URL}/type/${id}`)
 
     const pokemons = await Promise.all(
-      data.pokemon.map((result) => getPokemonDetails(result.pokemon.url))
+      data.pokemon.map((result) => getPokemonDetailsFromAPI(result.pokemon.url))
     )
 
     return pokemons
