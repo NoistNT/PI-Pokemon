@@ -16,7 +16,7 @@ const getTypes = async (url) => {
 const getTypesData = async () => {
   try {
     const typesDB = await Type.findAll()
-    if (typesDB) {
+    if (typesDB.length) {
       return typesDB
     }
 
