@@ -1,27 +1,30 @@
 import styled from 'styled-components'
 
-export const Container = styled.ul`
+export const Container = styled.nav`
   display: flex;
   justify-content: center;
   margin: 1.5rem 0;
 `
-export const Page = styled.li`
-  list-style-type: none;
-  padding: 0.3rem 0.9rem;
+
+export const PageLink = styled.button`
+  padding: 0.35rem 1rem;
   margin: 0 0.15rem;
-  color: #ffffffe0;
-  background-color: ${({ active }) => (active ? '#4941b3;' : '#22223b')};
-  font-weight: ${({ active }) => (active ? '600' : '400')};
-  border-radius: 0.3rem;
-  transition: 0.05s;
+  list-style-type: none;
+  text-decoration: none;
+  color: var(--text-color);
+  background-color: #4941b361;
+  border: 1px solid #ffffff36;
+  border-radius: 0.25rem;
+  transition: all 0.3s ease;
   cursor: pointer;
 
   &:hover,
-  &:focus {
-    box-shadow: -1px 3px 28px -4px rgba(0, 0, 0, 0.74);
-    -webkit-box-shadow: -1px 3px 28px -4px rgba(0, 0, 0, 0.74);
-    -moz-box-shadow: -1px 3px 28px -4px rgba(0, 0, 0, 0.74);
-    transition: 0.05s;
-    font-weight: 600;
+  &.active {
+    transition: all 0.3s ease;
+    color: var(--text-color);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
+    background-color: #4941b3;
+    border-color: #ffffff6f;
+    box-shadow: 0 2px 4px var(--card-hover-shadow);
   }
 `

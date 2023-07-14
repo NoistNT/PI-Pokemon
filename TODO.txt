@@ -1,0 +1,15 @@
+- Add filter by source from db or api (originals or created)
+- Refactor filter/sorting functions
+- Migrate sorting and ordering local states to redux
+in order to access globally and remove the 'unsortedPokemons state'
+- Show a message when a pokemon is created (success flag?)
+- Fix pokemon search to display correctly the pokemon by setting page to 1 
+- Fix browser console warning:
+(The `value` prop supplied to <select> must be a scalar value if `multiple` is false.)
+- Landing page
+- Add logo and header img
+- Add CSS to create pokemon form
+- Add button to navigate to create pokemon form
+- Adjust img size in card component
+- Add colour to pokemon type based on type
+- Improve overall CSS

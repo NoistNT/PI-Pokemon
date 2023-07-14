@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { Container, Page } from '../StyledComponents/StyledPaginate'
+import { Container, PageLink } from '../StyledComponents/StyledPaginate'
 
 export default function Paginate({ currentPage, totalPages, onPageChange }) {
   const handlePageChange = (page) => {
@@ -16,25 +16,31 @@ export default function Paginate({ currentPage, totalPages, onPageChange }) {
     const endPage = Math.min(totalPages, startPage + visiblePageCount - 1)
 
     for (let page = startPage; page <= endPage; page++) {
-      const handleClick = () => handlePageChange(page)
+      const isActive = currentPage === page ? 'active' : ''
       pageNumbers.push(
-        <Page key={page} active={page === currentPage} onClick={handleClick}>
+        <PageLink
+          key={page}
+          className={isActive}
+          onClick={() => handlePageChange(page)}
+        >
           {page}
-        </Page>
+        </PageLink>
       )
     }
     return pageNumbers
   }
 
   return (
-    <div>
-      <Container>
-        <Page onClick={() => handlePageChange(1)}>First</Page>
-        <Page onClick={() => handlePageChange(currentPage - 1)}>Prev</Page>
-        {renderPageNumbers()}
-        <Page onClick={() => handlePageChange(currentPage + 1)}>Next</Page>
-        <Page onClick={() => handlePageChange(totalPages)}>Last</Page>
-      </Container>
-    </div>
+    <Container>
+      <PageLink onClick={() => handlePageChange(1)}>First</PageLink>
+      <PageLink onClick={() => handlePageChange(currentPage - 1)}>
+        Prev
+      </PageLink>
+      {renderPageNumbers()}
+      <PageLink onClick={() => handlePageChange(currentPage + 1)}>
+        Next
+      </PageLink>
+      <PageLink onClick={() => handlePageChange(totalPages)}>Last</PageLink>
+    </Container>
   )
 }
