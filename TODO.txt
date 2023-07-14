@@ -1,3 +1,4 @@
+- Update getPokemonByName back-end function to search not only in db, also api
 - Add filter by source from db or api (originals or created)
 - Refactor filter/sorting functions
 - Migrate sorting and ordering local states to redux

@@ -1,5 +1,5 @@
 /* eslint-disable no-case-declarations */
-import { sortPokemons } from '../../helpers/helpers'
+import { sortPokemons, capitalize } from '../../helpers/helpers'
 import {
   GET_POKEMONS_PENDING,
   GET_POKEMONS_FULFILLED,
@@ -17,6 +17,9 @@ import {
   GET_POKEMONS_BY_SOURCE_PENDING,
   GET_POKEMONS_BY_SOURCE_FULFILLED,
   GET_POKEMONS_BY_SOURCE_REJECTED,
+  POST_POKEMON_PENDING,
+  POST_POKEMON_FULFILLED,
+  POST_POKEMON_REJECTED,
   GET_TYPES,
   SORT_POKEMONS,
   CLEAN_DETAIL,
@@ -30,7 +33,8 @@ const initialState = {
   unsortedPokemons: [],
   types: [],
   isLoading: true,
-  error: null
+  error: null,
+  success: false
 }
 
 export const pokemonReducer = (state = initialState, { type, payload }) => {
@@ -38,7 +42,8 @@ export const pokemonReducer = (state = initialState, { type, payload }) => {
     case GET_POKEMONS_PENDING:
       return {
         ...state,
-        isLoading: true
+        isLoading: true,
+        error: null
       }
     case GET_POKEMONS_FULFILLED:
       return {
@@ -58,7 +63,8 @@ export const pokemonReducer = (state = initialState, { type, payload }) => {
     case GET_POKEMON_BY_ID_PENDING:
       return {
         ...state,
-        isLoading: true
+        isLoading: true,
+        error: null
       }
     case GET_POKEMON_BY_ID_FULFILLED:
       return {
@@ -76,7 +82,8 @@ export const pokemonReducer = (state = initialState, { type, payload }) => {
     case GET_POKEMON_BY_NAME_PENDING:
       return {
         ...state,
-        isLoading: true
+        isLoading: true,
+        error: null
       }
     case GET_POKEMON_BY_NAME_FULFILLED:
       return {
@@ -88,6 +95,7 @@ export const pokemonReducer = (state = initialState, { type, payload }) => {
     case GET_POKEMON_BY_NAME_REJECTED:
       return {
         ...state,
+        pokemons: [],
         isLoading: false,
         error: payload
       }
@@ -98,15 +106,26 @@ export const pokemonReducer = (state = initialState, { type, payload }) => {
         pokemon.type.includes(payload)
       )
 
+      if (!pokemonsByType.length) {
+        return {
+          ...state,
+          pokemons: [],
+          isLoading: false,
+          error: `${capitalize(payload)} pokémons not found`
+        }
+      }
+
       return {
         ...state,
         pokemons: pokemonsByType,
-        isLoading: false
+        isLoading: false,
+        error: null
       }
     case GET_POKEMONS_BY_TYPE_PENDING:
       return {
         ...state,
-        isLoading: true
+        isLoading: true,
+        error: null
       }
     // Filter pokemons from server side
     case GET_POKEMONS_BY_TYPE_FULFILLED:
@@ -125,7 +144,8 @@ export const pokemonReducer = (state = initialState, { type, payload }) => {
     case GET_POKEMONS_BY_SOURCE_PENDING:
       return {
         ...state,
-        isLoading: true
+        isLoading: true,
+        error: null
       }
     case GET_POKEMONS_BY_SOURCE_FULFILLED:
       return {
@@ -135,6 +155,25 @@ export const pokemonReducer = (state = initialState, { type, payload }) => {
         error: null
       }
     case GET_POKEMONS_BY_SOURCE_REJECTED:
+      return {
+        ...state,
+        isLoading: false,
+        error: payload
+      }
+    case POST_POKEMON_PENDING:
+      return {
+        ...state,
+        isLoading: true,
+        error: null
+      }
+    case POST_POKEMON_FULFILLED:
+      return {
+        ...state,
+        isLoading: false,
+        error: null,
+        success: true
+      }
+    case POST_POKEMON_REJECTED:
       return {
         ...state,
         isLoading: false,
@@ -153,17 +192,20 @@ export const pokemonReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         allPokemons: allPokemonsSorted,
-        pokemons: pokemonsSorted
+        pokemons: pokemonsSorted,
+        error: null
       }
     case CLEAN_DETAIL:
       return {
         ...state,
-        pokemon: {}
+        pokemon: {},
+        error: null
       }
     case RESET_FILTERS:
       return {
         ...state,
-        pokemons: [...state.unsortedPokemons]
+        pokemons: [...state.unsortedPokemons],
+        error: null
       }
 
     default:

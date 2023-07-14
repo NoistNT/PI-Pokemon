@@ -10,13 +10,15 @@ import {
   GET_POKEMON_BY_NAME_PENDING,
   GET_POKEMON_BY_NAME_FULFILLED,
   GET_POKEMON_BY_NAME_REJECTED,
-  GET_POKEMONS_BY_TYPE,
   GET_POKEMONS_BY_TYPE_PENDING,
   GET_POKEMONS_BY_TYPE_FULFILLED,
   GET_POKEMONS_BY_TYPE_REJECTED,
   GET_POKEMONS_BY_SOURCE_PENDING,
   GET_POKEMONS_BY_SOURCE_FULFILLED,
   GET_POKEMONS_BY_SOURCE_REJECTED,
+  POST_POKEMON_PENDING,
+  POST_POKEMON_FULFILLED,
+  POST_POKEMON_REJECTED,
   GET_TYPES
 } from '../constants/pokemonConstants'
 
@@ -29,7 +31,7 @@ export const getPokemons = () => {
     } catch (error) {
       dispatch({
         type: GET_POKEMONS_REJECTED,
-        payload: 'Failed to fetch pokemons. Please try again later.'
+        payload: 'Failed to fetch pokémons. Please try again later.'
       })
     }
   }
@@ -38,14 +40,13 @@ export const getPokemons = () => {
 export const getPokemonById = (id) => {
   return async (dispatch) => {
     dispatch({ type: GET_POKEMON_BY_ID_PENDING })
-
     try {
       const { data } = await axios.get(`${URL}/pokemon/${id}`)
       dispatch({ type: GET_POKEMON_BY_ID_FULFILLED, payload: data })
     } catch (error) {
       dispatch({
         type: GET_POKEMON_BY_ID_REJECTED,
-        payload: 'Failed to fetch pokemons by id. Please try again later.'
+        payload: 'Failed to fetch pokémons by id. Please try again later.'
       })
     }
   }
@@ -56,11 +57,11 @@ export const getPokemonByName = (name) => {
     dispatch({ type: GET_POKEMON_BY_NAME_PENDING })
     try {
       const { data } = await axios.get(`${URL}/pokemon?name=${name}`)
-      return dispatch({ type: GET_POKEMON_BY_NAME_FULFILLED, payload: data })
+      dispatch({ type: GET_POKEMON_BY_NAME_FULFILLED, payload: data })
     } catch (error) {
       dispatch({
         type: GET_POKEMON_BY_NAME_REJECTED,
-        payload: 'Failed to fetch pokemons by name. Please try again later.'
+        payload: 'Pokémon not found'
       })
     }
   }
@@ -77,16 +78,10 @@ export const getPokemonsByType2 = (type) => {
     } catch (error) {
       dispatch({
         type: GET_POKEMONS_BY_TYPE_REJECTED,
-        payload: 'Failed to fetch pokemons by type. Please try again later.'
+        payload: 'Failed to fetch pokémons by type. Please try again later.'
       })
     }
   }
-}
-
-// Switch value in Menu -> Types dropdown from id to name
-// in order to be able to filter pokemons from the state by type name
-export const getPokemonsByType = (type) => {
-  return { type: GET_POKEMONS_BY_TYPE, payload: type }
 }
 
 export const getPokemonsBySource = () => {
@@ -98,7 +93,23 @@ export const getPokemonsBySource = () => {
     } catch (error) {
       dispatch({
         type: GET_POKEMONS_BY_SOURCE_REJECTED,
-        payload: 'Failed to fetch pokemons by source. Please try again later.'
+        payload: 'Failed to fetch pokémons by source. Please try again later.'
+      })
+    }
+  }
+}
+
+export const postPokemon = (pokemon) => {
+  return async (dispatch) => {
+    dispatch({ type: POST_POKEMON_PENDING })
+    try {
+      const { data } = await axios.post(`${URL}/pokemon`, pokemon)
+      dispatch({ type: POST_POKEMON_FULFILLED, payload: data })
+      // Show a message to the user that the pokemon was created
+    } catch (error) {
+      dispatch({
+        type: POST_POKEMON_REJECTED,
+        payload: 'Failed to create pokemon. Please try again later.'
       })
     }
   }
