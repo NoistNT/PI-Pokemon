@@ -3,11 +3,11 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getTypes, postPokemon } from '../../redux/actions/pokemonAsyncActions'
 import { capitalize, resetPokemon } from '../../helpers/helpers'
 import { validatePokemon } from '../../helpers/validatePokemon'
+import { Message } from '../../components/StyledComponents/StyledMessage'
 
 export default function CreatePokemon() {
   const dispatch = useDispatch()
-  const { types } = useSelector((state) => state.pokemonReducer)
-  const [errors, setErrors] = useState({})
+  const { types, success } = useSelector((state) => state.pokemonReducer)
 
   const [pokemon, setPokemon] = useState({
     name: '',
@@ -21,21 +21,34 @@ export default function CreatePokemon() {
     type: []
   })
 
+  const [isButtonDisabled, setIsButtonDisabled] = useState(true)
+  const [errors, setErrors] = useState({})
+
   useEffect(() => {
     dispatch(getTypes())
   }, [dispatch])
 
   const handleChange = (e) => {
+    e.preventDefault()
+
     const { name, value } = e.target
-    name === 'type'
-      ? setPokemon({ ...pokemon, type: [...pokemon.type, value] })
-      : setPokemon({ ...pokemon, [name]: value })
+    if (name === 'type') {
+      if (pokemon.type.length < 2) {
+        setPokemon({ ...pokemon, type: [...pokemon.type, value] })
+      } else {
+        alert('Max 2 types allowed')
+      }
+    } else {
+      setPokemon({ ...pokemon, [name]: value })
+    }
     setErrors(validatePokemon({ ...pokemon, [name]: value }))
+    setIsButtonDisabled(Object.keys(errors).length)
   }
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    if (!Object.keys(errors).length) {
+
+    if (!isButtonDisabled) {
       dispatch(postPokemon(pokemon))
       resetPokemon(setPokemon)
     }
@@ -47,6 +60,14 @@ export default function CreatePokemon() {
     </option>
   ))
 
+  if (success) {
+    return (
+      <div>
+        <Message>Pokémon created successfully!</Message>
+      </div>
+    )
+  }
+
   return (
     <div>
       <form onSubmit={handleSubmit}>
@@ -56,7 +77,7 @@ export default function CreatePokemon() {
           <input
             type='text'
             name='name'
-            value={pokemon.name}
+            value={pokemon.name.toLowerCase()}
             onChange={handleChange}
           />
           <br />
@@ -152,10 +173,15 @@ export default function CreatePokemon() {
           </select>
           <br />
           {errors.type && <p>{errors.type}</p>}
+          {pokemon.type.map((type) => (
+            <p key={type}>{capitalize(type)}</p>
+          ))}
         </div>
-        <button type='submit'>Create Pokémon</button>
+        <button type='submit' disabled={isButtonDisabled}>
+          Create Pokémon
+        </button>
         <button type='button' onClick={() => resetPokemon(setPokemon)}>
-          Reset
+          Clear form
         </button>
       </form>
     </div>

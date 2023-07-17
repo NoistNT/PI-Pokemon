@@ -8,6 +8,7 @@ import {
   getTypes
 } from '../../redux/actions/pokemonAsyncActions'
 import {
+  getPokemonsBySource,
   getPokemonsSorted,
   resetFilters
 } from '../../redux/actions/pokemonActions'
@@ -32,14 +33,14 @@ export default function Menu({ setSort, setFilters, setCurrentPage }) {
     dispatch(getTypes())
   }, [dispatch])
 
-  // const handleSource = useCallback(
-  //   (e) => {
-  //     const selectedOption = e.target.value
-  //     setCurrentPage(1)
-  //     dispatch(getPokemonsBySource(selectedOption))
-  //   },
-  //   [dispatch, setCurrentPage]
-  // )
+  const handleSource = useCallback(
+    (e) => {
+      const selectedOption = e.target.value
+      setCurrentPage(1)
+      dispatch(getPokemonsBySource(selectedOption))
+    },
+    [dispatch, setCurrentPage]
+  )
 
   const handleSort = useCallback(
     (e) => {
@@ -85,10 +86,10 @@ export default function Menu({ setSort, setFilters, setCurrentPage }) {
             name='filter'
             title='filter'
             ref={selectSourceRef}
-            // onChange={handleSource}
+            onChange={handleSource}
           >
             <option value=''>--Source--</option>
-            <option value='api'>Originals</option>
+            <option value={1}>Originals</option>
             <option value='database'>User created</option>
           </SelectBox>
         </SelectContainer>
