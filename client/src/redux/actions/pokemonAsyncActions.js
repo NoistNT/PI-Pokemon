@@ -13,9 +13,6 @@ import {
   GET_POKEMONS_BY_TYPE_PENDING,
   GET_POKEMONS_BY_TYPE_FULFILLED,
   GET_POKEMONS_BY_TYPE_REJECTED,
-  GET_POKEMONS_BY_SOURCE_PENDING,
-  GET_POKEMONS_BY_SOURCE_FULFILLED,
-  GET_POKEMONS_BY_SOURCE_REJECTED,
   POST_POKEMON_PENDING,
   POST_POKEMON_FULFILLED,
   POST_POKEMON_REJECTED,
@@ -79,21 +76,6 @@ export const getPokemonsByType2 = (type) => {
       dispatch({
         type: GET_POKEMONS_BY_TYPE_REJECTED,
         payload: 'Failed to fetch pokémons by type. Please try again later.'
-      })
-    }
-  }
-}
-
-export const getPokemonsBySource = () => {
-  return async (dispatch) => {
-    dispatch({ type: GET_POKEMONS_BY_SOURCE_PENDING })
-    try {
-      const { data } = await axios.get(`${URL}/source`)
-      dispatch({ type: GET_POKEMONS_BY_SOURCE_FULFILLED, payload: data })
-    } catch (error) {
-      dispatch({
-        type: GET_POKEMONS_BY_SOURCE_REJECTED,
-        payload: 'Failed to fetch pokémons by source. Please try again later.'
       })
     }
   }

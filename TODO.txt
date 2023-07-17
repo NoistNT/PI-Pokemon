@@ -1,12 +1,13 @@
-- Update getPokemonBySource back-end function to search not only in db, also api
-- Fix bug creating pokemon to check first if it exists in db and api
-- Limit max pokemon type to 2 when creating a new one
-- Create a pokemon only if all the conditions are fulfilled
-- Add filter by source from db or api (originals or created)
+** DONE: Update getPokemonBySource back-end function to search not only in db, also api
+** DONE: Fix bug creating pokemon to check first if it exists in db and api
+** DONE: Create a pokemon only if all the conditions are fulfilled
+** DONE: Show a message when a pokemon is created (success flag?)
+** DONE: Limit max pokemon type to 2 when creating a new one
+** DONE: Add filter by source from db or api (originals or created)
+- Fix filter by source not working together with filter by type
 - Refactor filter/sorting functions
 - Migrate sorting and ordering local states to redux
 in order to access globally and remove the 'unsortedPokemons state'
-** DONE: Show a message when a pokemon is created (success flag?)
 - Fix pokemon search to display correctly the pokemon by setting page to 1 
 - Fix browser console warning:
 (The `value` prop supplied to <select> must be a scalar value if `multiple` is false.)

@@ -14,9 +14,7 @@ import {
   GET_POKEMONS_BY_TYPE_FULFILLED,
   GET_POKEMONS_BY_TYPE_REJECTED,
   GET_POKEMONS_BY_TYPE,
-  GET_POKEMONS_BY_SOURCE_PENDING,
-  GET_POKEMONS_BY_SOURCE_FULFILLED,
-  GET_POKEMONS_BY_SOURCE_REJECTED,
+  GET_POKEMONS_BY_SOURCE,
   POST_POKEMON_PENDING,
   POST_POKEMON_FULFILLED,
   POST_POKEMON_REJECTED,
@@ -95,7 +93,6 @@ export const pokemonReducer = (state = initialState, { type, payload }) => {
     case GET_POKEMON_BY_NAME_REJECTED:
       return {
         ...state,
-        pokemons: [],
         isLoading: false,
         error: payload
       }
@@ -141,24 +138,16 @@ export const pokemonReducer = (state = initialState, { type, payload }) => {
         isLoading: false,
         error: payload
       }
-    case GET_POKEMONS_BY_SOURCE_PENDING:
+    case GET_POKEMONS_BY_SOURCE:
+      const isSourceFromDb = isNaN(payload)
+      const filteredPokemons = state.allPokemons.filter((pokemon) =>
+        isSourceFromDb ? isNaN(pokemon.id) : !isNaN(pokemon.id)
+      )
       return {
         ...state,
-        isLoading: true,
-        error: null
-      }
-    case GET_POKEMONS_BY_SOURCE_FULFILLED:
-      return {
-        ...state,
-        pokemons: payload,
+        pokemons: filteredPokemons,
         isLoading: false,
         error: null
-      }
-    case GET_POKEMONS_BY_SOURCE_REJECTED:
-      return {
-        ...state,
-        isLoading: false,
-        error: payload
       }
     case POST_POKEMON_PENDING:
       return {

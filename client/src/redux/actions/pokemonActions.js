@@ -1,5 +1,6 @@
 import {
   GET_POKEMONS_BY_TYPE,
+  GET_POKEMONS_BY_SOURCE,
   SORT_POKEMONS,
   SET_SORT,
   SET_FILTERS,
@@ -10,6 +11,10 @@ import {
 // Filter pokemons from redux state by type name
 export const getPokemonsByType = (type) => {
   return { type: GET_POKEMONS_BY_TYPE, payload: type }
+}
+
+export const getPokemonsBySource = (source) => {
+  return { type: GET_POKEMONS_BY_SOURCE, payload: source }
 }
 
 export const getPokemonsSorted = (sortOption) => {
