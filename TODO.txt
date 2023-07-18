@@ -6,15 +6,15 @@
 ** DONE: Add filter by source from db or api (originals or created)
 ** DONE: Migrate sorting and ordering local states to redux
 ** DONE: Fix pokemon search to display correctly the pokemon by setting page to 1 
+** DONE: Add CSS to create pokemon form
+** DONE: Adjust img size in card component
 
+- Add button to navigate to create pokemon form
 - Fix filter by source not working together with filter by type
 in order to access globally and remove the 'unsortedPokemons state'
 - Refactor filter/sorting functions
-- Add CSS to create pokemon form
-- Add button to navigate to create pokemon form
 - Landing page
 - Add logo and header img
-- Adjust img size in card component
 - Add colour to pokemon type based on type
 - Improve overall CSS
 - Fix browser console warning:

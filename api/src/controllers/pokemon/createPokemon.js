@@ -1,12 +1,21 @@
 const { Pokemon, Type } = require('../../db')
+const axios = require('axios')
 
 const createPokemon = async (pokemon) => {
   try {
-    const pokemonExists = await Pokemon.findOne({
+    const URL = process.env.URL
+
+    const pokemonExistsInDb = await Pokemon.findOne({
       where: { name: pokemon.name }
     })
 
-    if (pokemonExists) {
+    const { data } = await axios.get(`${URL}/pokemon?limit=1281`)
+
+    const pokemonExistsInApi = data.results.find(
+      (poke) => poke.name === pokemon.name
+    )
+
+    if (pokemonExistsInDb || pokemonExistsInApi) {
       throw new Error(`${pokemon.name} already exists`)
     }
 
