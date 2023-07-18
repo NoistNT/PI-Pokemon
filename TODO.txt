@@ -4,17 +4,18 @@
 ** DONE: Show a message when a pokemon is created (success flag?)
 ** DONE: Limit max pokemon type to 2 when creating a new one
 ** DONE: Add filter by source from db or api (originals or created)
+** DONE: Migrate sorting and ordering local states to redux
+** DONE: Fix pokemon search to display correctly the pokemon by setting page to 1 
+
 - Fix filter by source not working together with filter by type
-- Refactor filter/sorting functions
-- Migrate sorting and ordering local states to redux
 in order to access globally and remove the 'unsortedPokemons state'
-- Fix pokemon search to display correctly the pokemon by setting page to 1 
-- Fix browser console warning:
-(The `value` prop supplied to <select> must be a scalar value if `multiple` is false.)
-- Landing page
-- Add logo and header img
+- Refactor filter/sorting functions
 - Add CSS to create pokemon form
 - Add button to navigate to create pokemon form
+- Landing page
+- Add logo and header img
 - Adjust img size in card component
 - Add colour to pokemon type based on type
 - Improve overall CSS
+- Fix browser console warning:
+(The `value` prop supplied to <select> must be a scalar value if `multiple` is false.)
