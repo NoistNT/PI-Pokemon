@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback } from 'react'
+import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getPokemons } from '../../redux/actions/pokemonAsyncActions'
 import { Message } from '../../components/StyledComponents/StyledMessage'
@@ -10,26 +10,19 @@ import Paginate from '../../components/Paginate/Paginate'
 export default function Home() {
   const dispatch = useDispatch()
 
-  const [sort, setSort] = useState('')
-  const [filters, setFilters] = useState('')
-  const { pokemons, isLoading, error } = useSelector(
+  const { pokemons, isLoading, error, filter, currentPage } = useSelector(
     (state) => state.pokemonReducer
   )
 
-  const [currentPage, setCurrentPage] = useState(1)
   const pokemonsPerPage = 8
   const totalPages = Math.ceil(pokemons.length / pokemonsPerPage)
 
   useEffect(() => {
-    const shouldGetPokemons = !pokemons.length && !filters && !sort && !error
+    const shouldGetPokemons = !pokemons.length && !filter && !error
     if (shouldGetPokemons) {
       dispatch(getPokemons())
     }
-  }, [dispatch, pokemons, filters, sort, error])
-
-  const handlePageChange = useCallback((page) => {
-    setCurrentPage(page)
-  }, [])
+  }, [dispatch, pokemons, filter, error])
 
   const indexOfLastPokemon = currentPage * pokemonsPerPage
   const indexOfFirstPokemon = indexOfLastPokemon - pokemonsPerPage
@@ -45,11 +38,7 @@ export default function Home() {
   if (error) {
     return (
       <>
-        <Menu
-          setSort={setSort}
-          setFilters={setFilters}
-          setCurrentPage={setCurrentPage}
-        />
+        <Menu />
         <Message>{error}</Message>
       </>
     )
@@ -57,22 +46,10 @@ export default function Home() {
 
   return (
     <>
-      <Menu
-        setSort={setSort}
-        setFilters={setFilters}
-        setCurrentPage={setCurrentPage}
-      />
-      <Paginate
-        currentPage={currentPage}
-        totalPages={totalPages}
-        onPageChange={handlePageChange}
-      />
+      <Menu />
+      <Paginate totalPages={totalPages} />
       <Cards pokemons={currentPokemons} />
-      <Paginate
-        currentPage={currentPage}
-        totalPages={totalPages}
-        onPageChange={handlePageChange}
-      />
+      <Paginate totalPages={totalPages} />
     </>
   )
 }

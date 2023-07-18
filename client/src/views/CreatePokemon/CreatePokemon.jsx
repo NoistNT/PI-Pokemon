@@ -4,10 +4,13 @@ import { getTypes, postPokemon } from '../../redux/actions/pokemonAsyncActions'
 import { capitalize, resetPokemon } from '../../helpers/helpers'
 import { validatePokemon } from '../../helpers/validatePokemon'
 import { Message } from '../../components/StyledComponents/StyledMessage'
+import Loader from '../../components/Loader/Loader'
 
 export default function CreatePokemon() {
   const dispatch = useDispatch()
-  const { types, success } = useSelector((state) => state.pokemonReducer)
+  const { types, success, isLoading } = useSelector(
+    (state) => state.pokemonReducer
+  )
 
   const [pokemon, setPokemon] = useState({
     name: '',
@@ -59,6 +62,10 @@ export default function CreatePokemon() {
       {capitalize(type.name)}
     </option>
   ))
+
+  if (isLoading) {
+    return <Loader />
+  }
 
   if (success) {
     return (

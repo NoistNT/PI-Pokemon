@@ -2,15 +2,16 @@
 import { useCallback, useEffect, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { capitalize } from '../../helpers/helpers'
-import { getPokemonsByType } from '../../redux/actions/pokemonActions'
-import {
-  // getPokemonsBySource,
-  getTypes
-} from '../../redux/actions/pokemonAsyncActions'
+import { getTypes } from '../../redux/actions/pokemonAsyncActions'
 import {
   getPokemonsBySource,
   getPokemonsSorted,
-  resetFilters
+  getPokemonsByType,
+  setCurrentPage,
+  resetFilters,
+  setFilter,
+  setSource,
+  setSort
 } from '../../redux/actions/pokemonActions'
 import {
   Container,
@@ -22,7 +23,7 @@ import {
   Button
 } from '../StyledComponents/StyledMenu'
 
-export default function Menu({ setSort, setFilters, setCurrentPage }) {
+export default function Menu() {
   const dispatch = useDispatch()
   const selectSourceRef = useRef(null)
   const selectSortRef = useRef(null)
@@ -36,30 +37,31 @@ export default function Menu({ setSort, setFilters, setCurrentPage }) {
   const handleSource = useCallback(
     (e) => {
       const selectedOption = e.target.value
-      setCurrentPage(1)
+      dispatch(setCurrentPage(1))
+      dispatch(setSource(selectedOption))
       dispatch(getPokemonsBySource(selectedOption))
     },
-    [dispatch, setCurrentPage]
+    [dispatch]
   )
 
   const handleSort = useCallback(
     (e) => {
       const selectedSort = e.target.value
-      setSort(selectedSort)
-      setCurrentPage(1)
+      dispatch(setCurrentPage(1))
+      dispatch(setSort(selectedSort))
       dispatch(getPokemonsSorted(selectedSort))
     },
-    [dispatch, setSort, setCurrentPage]
+    [dispatch]
   )
 
   const handleTypes = useCallback(
     (e) => {
       const selectedType = e.target.value
-      setFilters(selectedType)
-      setCurrentPage(1)
+      dispatch(setCurrentPage(1))
+      dispatch(setFilter(selectedType))
       dispatch(getPokemonsByType(selectedType))
     },
-    [dispatch, setFilters, setCurrentPage]
+    [dispatch]
   )
 
   const handleReset = () => {
@@ -67,6 +69,7 @@ export default function Menu({ setSort, setFilters, setCurrentPage }) {
     selectSortRef.current.value = ''
     selectTypesRef.current.value = ''
     dispatch(resetFilters())
+    dispatch(setCurrentPage(1))
   }
 
   const pokemonTypes = types.map((type) => (

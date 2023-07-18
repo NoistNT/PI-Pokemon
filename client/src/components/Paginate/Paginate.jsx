@@ -1,9 +1,16 @@
 /* eslint-disable react/prop-types */
+import { useDispatch, useSelector } from 'react-redux'
 import { Container, PageLink } from '../StyledComponents/StyledPaginate'
+import { setCurrentPage } from '../../redux/actions/pokemonActions'
 
-export default function Paginate({ currentPage, totalPages, onPageChange }) {
-  const handlePageChange = (page) => {
-    if (page >= 1 && page <= totalPages) onPageChange(page)
+export default function Paginate({ totalPages }) {
+  const { currentPage } = useSelector((state) => state.pokemonReducer)
+  const dispatch = useDispatch()
+
+  const handlePageChange = (currentPage) => {
+    if (currentPage >= 1 && currentPage <= totalPages) {
+      dispatch(setCurrentPage(currentPage))
+    }
   }
 
   const renderPageNumbers = () => {

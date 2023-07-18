@@ -1,11 +1,12 @@
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+import { Container, Input, Button } from '../StyledComponents/StyledSearchbar'
+import { setCurrentPage, setSort } from '../../redux/actions/pokemonActions'
 import {
   getPokemonByName,
   getPokemons
 } from '../../redux/actions/pokemonAsyncActions'
-import { Container, Input, Button } from '../StyledComponents/StyledSearchbar'
-import { useNavigate } from 'react-router-dom'
 
 export default function Searchbar() {
   const dispatch = useDispatch()
@@ -18,6 +19,7 @@ export default function Searchbar() {
       return
     }
     dispatch(getPokemonByName(name))
+    dispatch(setCurrentPage(1))
     navigate('/pokemon')
     setName('')
   }
@@ -31,8 +33,10 @@ export default function Searchbar() {
   }
 
   const handleClick = () => {
-    navigate('/pokemon')
+    dispatch(setCurrentPage(1))
     dispatch(getPokemons())
+    dispatch(setSort(''))
+    navigate('/pokemon')
   }
 
   return (
