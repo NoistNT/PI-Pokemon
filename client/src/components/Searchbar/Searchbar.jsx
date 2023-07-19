@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { Container, Input, Button } from '../StyledComponents/StyledSearchbar'
-import { setCurrentPage, setSort } from '../../redux/actions/pokemonActions'
+import { setCurrentPage } from '../../redux/actions/pokemonActions'
 import {
   getPokemonByName,
   getPokemons
@@ -35,7 +35,6 @@ export default function Searchbar() {
   const handleClick = () => {
     dispatch(setCurrentPage(1))
     dispatch(getPokemons())
-    dispatch(setSort(''))
     navigate('/pokemon')
   }
 

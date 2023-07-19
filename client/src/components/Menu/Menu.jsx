@@ -8,10 +8,7 @@ import {
   getPokemonsSorted,
   getPokemonsByType,
   setCurrentPage,
-  resetFilters,
-  setFilter,
-  setSource,
-  setSort
+  resetFilters
 } from '../../redux/actions/pokemonActions'
 import {
   Container,
@@ -38,7 +35,6 @@ export default function Menu() {
     (e) => {
       const selectedOption = e.target.value
       dispatch(setCurrentPage(1))
-      dispatch(setSource(selectedOption))
       dispatch(getPokemonsBySource(selectedOption))
     },
     [dispatch]
@@ -48,7 +44,6 @@ export default function Menu() {
     (e) => {
       const selectedSort = e.target.value
       dispatch(setCurrentPage(1))
-      dispatch(setSort(selectedSort))
       dispatch(getPokemonsSorted(selectedSort))
     },
     [dispatch]
@@ -58,7 +53,6 @@ export default function Menu() {
     (e) => {
       const selectedType = e.target.value
       dispatch(setCurrentPage(1))
-      dispatch(setFilter(selectedType))
       dispatch(getPokemonsByType(selectedType))
     },
     [dispatch]
@@ -92,7 +86,7 @@ export default function Menu() {
             onChange={handleSource}
           >
             <option value=''>--Source--</option>
-            <option value={1}>Originals</option>
+            <option value='api'>Originals</option>
             <option value='database'>User created</option>
           </SelectBox>
         </SelectContainer>
