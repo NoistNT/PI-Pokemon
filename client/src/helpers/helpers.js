@@ -25,7 +25,6 @@ export const sortPokemons = (pokemons, sortOption) => {
   return [...pokemons].sort(sortFunc)
 }
 
-// Reset form for pokemon creation
 export const resetPokemon = (setPokemon) => {
   setPokemon({
     name: '',

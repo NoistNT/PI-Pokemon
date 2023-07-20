@@ -5,6 +5,8 @@ export const validatePokemon = (pokemon) => {
     errors.name = 'Name is required'
   } else if (!/^[a-zA-Z]+(?: [a-zA-Z]+)?$/.test(pokemon.name)) {
     errors.name = 'Name can only contain letters and spaces'
+  } else if (pokemon.name.length > 20) {
+    errors.name = 'Name must be less than 20 characters'
   }
 
   if (!pokemon.hp) {
