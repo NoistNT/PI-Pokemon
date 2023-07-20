@@ -8,13 +8,14 @@
 ** DONE: Fix pokemon search to display correctly the pokemon by setting page to 1 
 ** DONE: Add CSS to create pokemon form
 ** DONE: Adjust img size in card component
+** DONE: Add button to navigate to create pokemon form
+** DONE: Add logo and header img
+** DONE: Landing page
 
-- Add button to navigate to create pokemon form
+- Add footer
 - Fix filter by source not working together with filter by type
 in order to access globally and remove the 'unsortedPokemons state'
 - Refactor filter/sorting functions
-- Landing page
-- Add logo and header img
 - Add colour to pokemon type based on type
 - Improve overall CSS
 - Fix browser console warning:
