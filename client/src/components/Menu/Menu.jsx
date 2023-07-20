@@ -124,7 +124,6 @@ export default function Menu() {
             onChange={handleTypes}
           >
             <option value=''>--Types--</option>
-            <option value='all'>All</option>
             {pokemonTypes}
           </SelectBox>
         </SelectContainer>
