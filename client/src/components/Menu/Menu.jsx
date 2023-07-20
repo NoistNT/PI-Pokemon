@@ -17,7 +17,8 @@ import {
   SelectContainer,
   Label,
   SelectBox,
-  Button
+  Button,
+  ButtonText
 } from '../StyledComponents/StyledMenu'
 
 export default function Menu() {
@@ -86,6 +87,7 @@ export default function Menu() {
             onChange={handleSource}
           >
             <option value=''>--Source--</option>
+            <option value='all'>All</option>
             <option value='api'>Originals</option>
             <option value='database'>User created</option>
           </SelectBox>
@@ -122,12 +124,13 @@ export default function Menu() {
             onChange={handleTypes}
           >
             <option value=''>--Types--</option>
+            <option value='all'>All</option>
             {pokemonTypes}
           </SelectBox>
         </SelectContainer>
       </SelectGroup>
       <Button type='button' onClick={handleReset}>
-        Reset
+        <ButtonText>Reset</ButtonText>
       </Button>
     </Container>
   )

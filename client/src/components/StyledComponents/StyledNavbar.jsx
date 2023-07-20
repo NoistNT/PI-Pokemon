@@ -5,6 +5,8 @@ export const Container = styled.nav`
   display: flex;
   justify-content: space-around;
   align-items: center;
+  font-family: 'Open Sans', Inter, system-ui, Avenir, Helvetica, Arial,
+    sans-serif;
   background-color: var(--card-hover-bg);
 
   @media (min-width: 768px) {

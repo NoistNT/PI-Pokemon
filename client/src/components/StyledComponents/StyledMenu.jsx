@@ -91,6 +91,8 @@ export const SelectBox = styled.select`
   border-radius: 0.22rem;
   background-color: var(--select-bg-color);
   color: var(--text-color);
+  font-family: 'Open Sans', Inter, system-ui, Avenir, Helvetica, Arial,
+    sans-serif;
   transition: all 0.2s ease;
   text-align: center;
   min-width: 8rem;
@@ -113,26 +115,60 @@ export const SelectBox = styled.select`
   }
 `
 
-export const Button = styled.button`
-  font-size: 0.95rem;
-  font-weight: 500;
+export const ButtonText = styled.span`
+  position: relative;
+  z-index: 1;
   color: var(--text-color);
-  background-color: #4941b396;
+`
+
+export const Button = styled.button`
+  position: relative;
+  overflow: hidden;
+  font-size: 0.95rem;
+  font-weight: 550;
+  color: var(--text-color);
+  font-family: 'Open Sans', Inter, system-ui, Avenir, Helvetica, Arial,
+    sans-serif;
+  background: linear-gradient(
+    82.3deg,
+    rgb(71, 49, 104) 10.8%,
+    rgb(70, 64, 160) 94.3%
+  );
   border-color: #ffffff36;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
-  border-radius: 0.3rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 0.35rem;
   padding: 0.4rem 1.2rem;
-  transition: all 0.2s ease;
+  transition: all 0.25s ease;
   font-size: 0.88rem;
   min-width: 8rem;
   margin: 0.5rem auto;
+  cursor: pointer;
+
+  &:hover::before {
+    transform: scaleX(1);
+  }
 
   &:hover {
-    transition: all 0.2s ease;
-    box-shadow: 0 2px 4px var(--card-hover-shadow);
-    background-color: #4941b3b3;
-    border-color: #ffffff36;
-    cursor: pointer;
+    transition: all 0.25s ease;
+    border-color: #bdb7b749;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: scaleX(0);
+    transform-origin: 0 50%;
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    background: linear-gradient(
+      82.3deg,
+      rgb(76, 71, 148) 10.8%,
+      rgb(84, 54, 128) 94.3%
+    );
+    transition: all 0.48s;
   }
 
   @media (min-width: 768px) {

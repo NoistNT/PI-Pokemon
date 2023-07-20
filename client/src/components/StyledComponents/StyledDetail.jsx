@@ -1,6 +1,8 @@
 import styled from 'styled-components'
 
 export const CardContainer = styled.div`
+  position: relative;
+  overflow: hidden;
   max-width: 20rem;
   background-color: var(--card-bg);
   color: var(--text-color);
@@ -10,19 +12,50 @@ export const CardContainer = styled.div`
   border-style: solid;
   border-color: #ffffff36;
   border-radius: 0.85rem;
+  background: linear-gradient(
+    82.3deg,
+    rgb(50, 39, 66) 0%,
+    rgb(76, 71, 139) 100%
+  );
   box-shadow: 0 2px 4px var(--card-shadow);
   transition: all 0.3s ease;
   cursor: pointer;
 
+  &:hover::before {
+    transform: scaleX(1);
+    transition: all 0.3s ease;
+    border-color: #ffffff90;
+  }
+
   &:hover {
     transition: all 0.3s ease;
-    box-shadow: 0 14px 28px var(--card-hover-shadow);
+    border-color: #bdb7b749;
     transform: translateY(-0.4rem);
-    border-color: #ffffff90;
+    box-shadow: -1px 1px 2px #7e5994;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: scaleX(0);
+    transform-origin: 0 50%;
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    background: linear-gradient(
+      82.3deg,
+      rgb(68, 64, 122) 1%,
+      rgb(45, 34, 61) 100%
+    );
+    transition: all 0.48s;
   }
 `
 
 export const Title = styled.h2`
+  position: relative;
+  z-index: 1;
   font-size: 2.5rem;
   margin-bottom: 1.5rem;
   color: var(--text-color);
@@ -30,6 +63,8 @@ export const Title = styled.h2`
 `
 
 export const Image = styled.img`
+  position: relative;
+  z-index: 1;
   width: 18rem;
   height: 18rem;
   margin-bottom: 1.5rem;
@@ -38,6 +73,10 @@ export const Image = styled.img`
 `
 
 export const Name = styled.h3`
+  position: relative;
+  z-index: 1;
+  position: relative;
+  z-index: 1;
   font-size: 2rem;
   margin-bottom: 1rem;
   color: var(--text-color);
@@ -45,11 +84,15 @@ export const Name = styled.h3`
 `
 
 export const Attribute = styled.span`
+  position: relative;
+  z-index: 1;
   font-weight: 600;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
 `
 
 export const Item = styled.p`
+  position: relative;
+  z-index: 1;
   display: flex;
   justify-content: space-between;
   margin: 0.5rem;
@@ -60,6 +103,8 @@ export const Item = styled.p`
 `
 
 export const Highlight = styled.p`
+  position: relative;
+  z-index: 1;
   display: flex;
   justify-content: space-between;
   margin: 0.5rem;

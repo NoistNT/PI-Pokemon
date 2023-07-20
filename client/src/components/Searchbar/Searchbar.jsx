@@ -2,7 +2,12 @@ import toast, { Toaster } from 'react-hot-toast'
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import { Container, Input, Button } from '../StyledComponents/StyledSearchbar'
+import {
+  Container,
+  Input,
+  Button,
+  ButtonText
+} from '../StyledComponents/StyledSearchbar'
 import { setCurrentPage } from '../../redux/actions/pokemonActions'
 import {
   getPokemonByName,
@@ -46,10 +51,10 @@ export default function Searchbar() {
   return (
     <Container>
       <Button type='button' onClick={handleNavigate}>
-        Create Pokémon
+        <ButtonText>Create Pokémon</ButtonText>
       </Button>
       <Button type='button' onClick={handleClick}>
-        All Pokémons
+        <ButtonText>All Pokémons</ButtonText>
       </Button>
       <Input
         type='text'

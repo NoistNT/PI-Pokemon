@@ -13,7 +13,7 @@ export const FormContainer = styled.form`
   width: 30rem;
   box-shadow: -1px 3px 28px -4px rgba(0, 0, 0, 0.74);
   border-radius: 1rem;
-  color: #ffffff;
+  color: var(--text-color);
   transition: all 0.3s ease;
 
   &:hover {
@@ -25,7 +25,7 @@ export const FormContainer = styled.form`
 
 export const Title = styled.h2`
   font-size: 2.5rem;
-  color: #ffffff;
+  color: var(--text-color);
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
 `
 
@@ -33,7 +33,7 @@ export const FormGroup = styled.div`
   display: flex;
   flex-direction: column;
   font-size: 1.07rem;
-  color: #ffffff;
+  color: var(--text-color);
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 1);
   margin-bottom: 1rem;
 `
@@ -42,7 +42,7 @@ export const LabelInputContainer = styled.div`
   display: flex;
   align-items: center;
   border-radius: 0.45rem;
-  color: #ffffff;
+  color: var(--text-color);
   background-color: rgb(255, 255, 255, 0.2);
 `
 
@@ -51,6 +51,8 @@ export const Label = styled.label`
   margin-right: 0.5rem;
   width: 7rem;
   font-weight: 550;
+  font-family: 'Open Sans', Inter, system-ui, Avenir, Helvetica, Arial,
+    sans-serif;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 1);
 `
 
@@ -61,19 +63,23 @@ export const Input = styled.input`
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
   background-color: var(--input-bg-color);
-  color: #fcfcfcfc;
+  color: var(--text-color);
   font-size: 0.95rem;
   padding: 0.5rem;
   width: 15rem;
   text-align: center;
+  font-family: 'Open Sans', Inter, system-ui, Avenir, Helvetica, Arial,
+    sans-serif;
 `
 
 export const SelectBox = styled.select`
   padding: 0.35rem;
-  font-size: 0.8rem;
+  font-size: 0.94rem;
   outline: 0;
   border: none;
   border-radius: 0.22rem;
+  font-family: 'Open Sans', Inter, system-ui, Avenir, Helvetica, Arial,
+    sans-serif;
   background-color: var(--select-bg-color);
   color: var(--text-color);
   transition: all 0.2s ease;
@@ -89,8 +95,11 @@ export const SelectBox = styled.select`
 export const TypeList = styled.span`
   margin: 0;
   padding: 0;
+  padding-top: 0.5rem;
   font-size: 1rem;
-  color: #fcfcfcfc;
+  font-family: 'Open Sans', Inter, system-ui, Avenir, Helvetica, Arial,
+    sans-serif;
+  color: var(--text-color);
 `
 
 export const ErrorSpan = styled.span`
@@ -98,6 +107,8 @@ export const ErrorSpan = styled.span`
   padding: 0;
   margin-top: 0.5rem;
   font-size: 1rem;
+  font-family: 'Open Sans', Inter, system-ui, Avenir, Helvetica, Arial,
+    sans-serif;
   color: #ff0000;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 1);
 `
@@ -110,23 +121,58 @@ export const ButtonsContainer = styled.div`
   margin-top: 1rem;
 `
 
+export const ButtonText = styled.span`
+  position: relative;
+  z-index: 1;
+  color: var(--text-color);
+`
+
 export const SubmitButton = styled.button`
+  position: relative;
+  overflow: hidden;
   font-size: 0.95rem;
   font-weight: 550;
-  background-color: #4941b388;
+  background: linear-gradient(
+    82.3deg,
+    rgb(71, 49, 104) 10.8%,
+    rgb(70, 64, 160) 94.3%
+  );
   color: var(--text-color);
   border-color: #ffffff36;
-  border-radius: 0.3rem;
-  padding: 0.4rem 1.2rem;
-  transition: all 0.2s ease;
+  border-radius: 0.4rem;
+  padding: 0.6rem 1.2rem;
+  transition: all 0.25s ease;
   font-size: 0.88rem;
   width: 10rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  font-family: 'Open Sans', Inter, system-ui, Avenir, Helvetica, Arial,
+    sans-serif;
+
+  &:hover::before {
+    transform: scaleX(1);
+  }
 
   &:hover {
-    transition: all 0.2s ease;
-    box-shadow: 2px 4px 8px var(--card-hover-shadow);
-    background-color: var(--card-hover-bg);
+    transition: all 0.25s ease;
     border-color: #bdb7b749;
-    cursor: pointer;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: scaleX(0);
+    transform-origin: 0 50%;
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    background: linear-gradient(
+      82.3deg,
+      rgb(76, 71, 148) 10.8%,
+      rgb(84, 54, 128) 94.3%
+    );
+    transition: all 0.48s;
   }
 `

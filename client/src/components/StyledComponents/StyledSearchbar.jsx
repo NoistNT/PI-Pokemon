@@ -24,6 +24,8 @@ export const Input = styled.input`
   font-size: 0.9rem;
   text-align: center;
   padding: 0.5rem;
+  font-family: 'Open Sans', Inter, system-ui, Avenir, Helvetica, Arial,
+    sans-serif;
 
   &::placeholder {
     text-align: center;
@@ -36,23 +38,56 @@ export const Input = styled.input`
   }
 `
 
+export const ButtonText = styled.span`
+  position: relative;
+  z-index: 1;
+  color: var(--text-color);
+`
+
 export const Button = styled.button`
+  position: relative;
+  overflow: hidden;
+  font-family: 'Open Sans', sans-serif;
   font-size: 0.95rem;
   font-weight: 550;
   color: var(--text-color);
-  background-color: #4941b363;
+  background: linear-gradient(
+    82.3deg,
+    rgb(71, 49, 104) 10.8%,
+    rgb(70, 64, 160) 94.3%
+  );
   border-color: #ffffff36;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
-  border-radius: 0.3rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 0.35rem;
   padding: 0.4rem 1.2rem;
-  transition: all 0.2s ease;
+  transition: all 0.25s ease;
   font-size: 0.88rem;
+  cursor: pointer;
+
+  &:hover::before {
+    transform: scaleX(1);
+  }
 
   &:hover {
-    transition: all 0.2s ease;
-    box-shadow: 0 2px 4px var(--card-hover-shadow);
-    background-color: #4941b388;
-    border-color: #ffffff36;
-    cursor: pointer;
+    transition: all 0.25s ease;
+    border-color: #bdb7b749;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: scaleX(0);
+    transform-origin: 0 50%;
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    background: linear-gradient(
+      82.3deg,
+      rgb(76, 71, 148) 10.8%,
+      rgb(84, 54, 128) 94.3%
+    );
+    transition: all 0.48s;
   }
 `

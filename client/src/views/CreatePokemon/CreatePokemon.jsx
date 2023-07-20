@@ -15,7 +15,8 @@ import {
   TypeList,
   ErrorSpan,
   ButtonsContainer,
-  SubmitButton
+  SubmitButton,
+  ButtonText
 } from '../../components/StyledComponents/StyledForm'
 import Loader from '../../components/Loader/Loader'
 
@@ -66,6 +67,7 @@ export default function CreatePokemon() {
       return
     }
 
+    toast.success('Pokemon created successfully')
     dispatch(postPokemon(pokemon))
     resetPokemon(setPokemon)
   }
@@ -199,24 +201,31 @@ export default function CreatePokemon() {
           ))}
         </FormGroup>
         <ButtonsContainer>
-          <SubmitButton
-            type='submit'
-            onClick={() => toast.success('Pokemon created successfully')}
-          >
-            Create Pokémon
+          <SubmitButton type='submit'>
+            <ButtonText>Create Pokémon</ButtonText>
           </SubmitButton>
           <SubmitButton type='button' onClick={() => resetPokemon(setPokemon)}>
-            Clear form
+            <ButtonText>Clear form</ButtonText>
           </SubmitButton>
         </ButtonsContainer>
       </FormContainer>
       <Toaster
         toastOptions={{
-          style: {
-            background: '#7a2222',
-            color: '#ffffff',
-            textShadow: '0 1px 0 #000000',
-            boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 1)'
+          success: {
+            style: {
+              background: '#228B22',
+              color: '#e2e2e2',
+              textShadow: '0 1px 0 #000000',
+              boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 1)'
+            }
+          },
+          error: {
+            style: {
+              background: '#7a2222',
+              color: '#e2e2e2',
+              textShadow: '0 1px 0 #000000',
+              boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 1)'
+            }
           }
         }}
       />
