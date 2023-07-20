@@ -1,3 +1,4 @@
+import toast, { Toaster } from 'react-hot-toast'
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
@@ -15,7 +16,7 @@ export default function Searchbar() {
 
   const handleSearch = () => {
     if (!name) {
-      alert('Please enter a pokémon name')
+      toast.error('Please enter a pokémon name')
       return
     }
     dispatch(getPokemonByName(name))
@@ -38,8 +39,15 @@ export default function Searchbar() {
     navigate('/pokemon')
   }
 
+  const handleNavigate = () => {
+    navigate('/create')
+  }
+
   return (
     <Container>
+      <Button type='button' onClick={handleNavigate}>
+        Create Pokémon
+      </Button>
       <Button type='button' onClick={handleClick}>
         All Pokémons
       </Button>
@@ -49,6 +57,16 @@ export default function Searchbar() {
         value={name}
         onChange={handleChange}
         onKeyDown={handleKeyDown}
+      />
+      <Toaster
+        toastOptions={{
+          style: {
+            background: '#961c1c',
+            color: '#ffffff',
+            textShadow: '0 1px 0 #000000',
+            boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 1)'
+          }
+        }}
       />
     </Container>
   )

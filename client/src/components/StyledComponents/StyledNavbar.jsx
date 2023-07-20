@@ -6,40 +6,35 @@ export const Container = styled.nav`
   justify-content: space-around;
   align-items: center;
   background-color: var(--card-hover-bg);
-  padding: 0.5rem;
 
   @media (min-width: 768px) {
     justify-content: space-between;
-    padding: 0 2rem;
   }
-`
-
-export const Ul = styled.ul`
-  display: flex;
-  justify-content: space-around;
-  list-style: none;
-  color: var(--text-color);
-  padding: 0;
-`
-
-export const Li = styled.li`
-  display: flex;
-  align-items: center;
 `
 
 export const StyledLink = styled(Link)`
-  align-items: center;
+  display: flex;
   color: var(--text-color);
   text-decoration: none;
-  margin: 0 1rem;
   font-size: 0.9rem;
+`
+
+export const Img = styled.img`
+  width: 200px;
+  height: auto;
+  padding: 0.5rem 0;
+  transition: all 0.2s ease-in-out;
 
   &:hover {
-    font-weight: 600;
-    color: var(--link-color);
+    transform: scale(1.015);
+    transition: all 0.2s ease-in-out;
   }
 
   @media (min-width: 768px) {
-    font-size: 1rem;
+    margin-left: 2rem;
+  }
+
+  @media (min-width: 1024px) {
+    margin-left: 5rem;
   }
 `

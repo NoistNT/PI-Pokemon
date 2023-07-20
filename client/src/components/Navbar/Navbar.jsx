@@ -1,14 +1,13 @@
 import Searchbar from '../Searchbar/Searchbar'
-import { Container, Ul, Li, StyledLink } from '../StyledComponents/StyledNavbar'
+import logo from '../../assets/logo.png'
+import { Container, Img, StyledLink } from '../StyledComponents/StyledNavbar'
 
 export default function Navbar() {
   return (
     <Container>
-      <Ul>
-        <Li>
-          <StyledLink to={'/pokemon'}>HOME</StyledLink>
-        </Li>
-      </Ul>
+      <StyledLink to={'/pokemon'}>
+        <Img src={logo} alt='img not found' />
+      </StyledLink>
       <Searchbar />
     </Container>
   )

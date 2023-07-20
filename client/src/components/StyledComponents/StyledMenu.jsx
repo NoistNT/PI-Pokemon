@@ -15,17 +15,15 @@ export const Container = styled.div`
 
 export const Title = styled.h2`
   margin: 0;
-  margin-top: 0.5rem;
   width: auto;
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   margin-top: 1.3rem;
   margin-bottom: 0.5rem;
   color: var(--text-color);
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
 
   @media (min-width: 426px) {
-    font-size: 1.6rem;
-    margin-top: 1.6rem;
+    font-size: 1.9rem;
     margin-bottom: 0.8rem;
   }
 
@@ -40,6 +38,10 @@ export const SelectGroup = styled.div`
     justify-content: space-around;
     flex-direction: row;
     margin-bottom: 0.6rem;
+  }
+
+  @media (min-width: 500px) {
+    gap: 1rem;
   }
 
   @media (min-width: 768px) {
@@ -58,7 +60,6 @@ export const SelectContainer = styled.div`
   @media (min-width: 426px) {
     flex-direction: column;
     min-width: auto;
-    margin: 0 0.5rem;
   }
 
   @media (min-width: 768px) {

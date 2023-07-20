@@ -41,7 +41,6 @@ export const FormGroup = styled.div`
 export const LabelInputContainer = styled.div`
   display: flex;
   align-items: center;
-  margin-bottom: 0.5rem;
   border-radius: 0.45rem;
   color: #ffffff;
   background-color: rgb(255, 255, 255, 0.2);
@@ -97,8 +96,10 @@ export const TypeList = styled.span`
 export const ErrorSpan = styled.span`
   margin: 0;
   padding: 0;
+  margin-top: 0.5rem;
   font-size: 1rem;
-  color: #ff3737;
+  color: #ff0000;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 1);
 `
 
 export const ButtonsContainer = styled.div`

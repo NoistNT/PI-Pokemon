@@ -4,11 +4,10 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  margin: 0 1rem;
+  margin: 0.7rem 1rem;
 
-  @media (min-width: 426px) {
+  @media (min-width: 678px) {
     flex-direction: row;
-    margin: 0.7rem 1rem;
   }
 
   @media (min-width: 768px) {

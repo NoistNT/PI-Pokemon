@@ -15,4 +15,8 @@ export const CardsContainer = styled.div`
   @media (min-width: 1440px) {
     grid-template-columns: repeat(4, 1fr);
   }
+
+  @media (min-width: 1920px) {
+    grid-template-columns: repeat(5, 1fr);
+  }
 `
