@@ -87,7 +87,6 @@ export default function Menu() {
             onChange={handleSource}
           >
             <option value=''>--Source--</option>
-            <option value='all'>All</option>
             <option value='api'>Originals</option>
             <option value='database'>User created</option>
           </SelectBox>
