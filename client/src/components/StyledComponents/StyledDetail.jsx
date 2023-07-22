@@ -29,8 +29,7 @@ export const CardContainer = styled.div`
 
   &:hover {
     transition: all 0.3s ease;
-    border-color: #bdb7b749;
-    transform: translateY(-0.4rem);
+    border-color: #ffffff36;
     box-shadow: -1px 1px 2px #7e5994;
   }
 
@@ -44,11 +43,6 @@ export const CardContainer = styled.div`
     width: 100%;
     height: 100%;
     border-radius: inherit;
-    background: linear-gradient(
-      82.3deg,
-      rgb(68, 64, 122) 1%,
-      rgb(45, 34, 61) 100%
-    );
     transition: all 0.48s;
   }
 `
