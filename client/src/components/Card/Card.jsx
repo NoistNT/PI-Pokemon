@@ -8,6 +8,7 @@ import {
   TypesContainer,
   Types
 } from '../StyledComponents/StyledCard'
+import default_image from '../../assets/default_img.png'
 
 export default function Card({ pokemon }) {
   const { id, name, type, image } = pokemon
@@ -18,7 +19,12 @@ export default function Card({ pokemon }) {
   return (
     <CardContainer>
       <Link to={`/pokemon/${id}`}>
-        <Image src={image} alt={name} />
+        <Image
+          src={default_image}
+          data-src={image}
+          alt={name}
+          className='lazy'
+        />
         <Name>{capitalize(name)}</Name>
         <TypesContainer>{types}</TypesContainer>
       </Link>
