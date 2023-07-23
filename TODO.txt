@@ -11,8 +11,14 @@
 ** DONE: Add button to navigate to create pokemon form
 ** DONE: Add logo and header img
 ** DONE: Landing page
+** DONE: Add lazy loading
 
+- Fix lazy loading not working with pagination
+- Add lazy loading transitions
+- Add remove types button to the form
+- Try to generate my own select element
 - Add footer
+- Fix cards grid layout to reorder in screen properly
 - Fix filter by source not working together with filter by type
 in order to access globally and remove the 'unsortedPokemons state'
 - Refactor filter/sorting functions
