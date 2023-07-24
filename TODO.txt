@@ -10,12 +10,15 @@
 ** DONE: Adjust img size in card component
 ** DONE: Add button to navigate to create pokemon form
 ** DONE: Add logo and header img
-** DONE: Landing page
+** DONE: Update url validation in form to test if it's an image url
+** DONE: Add Landing page
 ** DONE: Add lazy loading
+** DONE: Add remove types button to the form
+** DONE: Add styles to remove types button in the form
 
+- Fix toast showing double and colored incorrectly in create pokemon form
 - Fix lazy loading not working with pagination
 - Add lazy loading transitions
-- Add remove types button to the form
 - Try to generate my own select element
 - Add footer
 - Fix cards grid layout to reorder in screen properly
@@ -23,6 +26,5 @@
 in order to access globally and remove the 'unsortedPokemons state'
 - Refactor filter/sorting functions
 - Add colour to pokemon type based on type
-- Improve overall CSS
 - Fix browser console warning:
 (The `value` prop supplied to <select> must be a scalar value if `multiple` is false.)
