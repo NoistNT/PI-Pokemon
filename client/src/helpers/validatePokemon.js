@@ -60,7 +60,7 @@ export const validatePokemon = (pokemon) => {
   if (!pokemon.image) {
     errors.image = 'Image URL is required'
   } else if (
-    !/^https?:\/\/[\w\\-]+(\.[\w\\-]+)+(?:[/#?][\w\-./?=&%]*)?$/.test(
+    !/^https?:\/\/[\w\\-]+(\.[\w\\-]+)+(?:[/#?][\w\-./?=&%]*)?(?:\.(?:jpg|jpeg|png|gif|bmp|svg))$/.test(
       pokemon.image
     )
   ) {
