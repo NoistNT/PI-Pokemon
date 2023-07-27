@@ -92,14 +92,33 @@ export const SelectBox = styled.select`
   }
 `
 
+export const TypeListContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.5rem;
+  background-color: rgb(255, 255, 255, 0.05);
+  padding: 0.3rem 0.4rem;
+  border-radius: 0.45rem;
+  transition: all 0.4s ease;
+
+  &:hover {
+    transition: all 0.4s ease;
+    background-color: var(--select-bg-color);
+    cursor: pointer;
+  }
+`
+
 export const TypeList = styled.span`
   margin: 0;
   padding: 0;
-  padding-top: 0.5rem;
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-family: 'Open Sans', Inter, system-ui, Avenir, Helvetica, Arial,
     sans-serif;
   color: var(--text-color);
+`
+
+export const IconRemoveType = styled.img`
+  width: 1rem;
 `
 
 export const ErrorSpan = styled.span`
@@ -109,7 +128,7 @@ export const ErrorSpan = styled.span`
   font-size: 1rem;
   font-family: 'Open Sans', Inter, system-ui, Avenir, Helvetica, Arial,
     sans-serif;
-  color: #ff0000;
+  color: #ff1616;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 1);
 `
 
@@ -130,6 +149,7 @@ export const ButtonText = styled.span`
 export const SubmitButton = styled.button`
   position: relative;
   overflow: hidden;
+  outline: 0;
   font-size: 0.95rem;
   font-weight: 550;
   background: linear-gradient(
