@@ -12,13 +12,16 @@ import {
   Input,
   SelectBox,
   LabelInputContainer,
+  TypeListContainer,
   TypeList,
+  IconRemoveType,
   ErrorSpan,
   ButtonsContainer,
   SubmitButton,
   ButtonText
 } from '../../components/StyledComponents/StyledForm'
 import Loader from '../../components/Loader/Loader'
+import icon_remove from '../../assets/icon_remove.svg'
 
 export default function CreatePokemon() {
   const dispatch = useDispatch()
@@ -44,6 +47,7 @@ export default function CreatePokemon() {
 
   const handleChange = (e) => {
     const { name, value } = e.target
+
     if (name === 'type') {
       if (pokemon.type.length < 2) {
         setPokemon({ ...pokemon, type: [...pokemon.type, value] })
@@ -53,7 +57,15 @@ export default function CreatePokemon() {
     } else {
       setPokemon({ ...pokemon, [name]: value })
     }
-    setErrors(validatePokemon({ ...pokemon, [name]: value }))
+
+    setErrors(validatePokemon(name, value))
+  }
+
+  const handleRemove = (typeToRemove) => {
+    setPokemon((pokemon) => ({
+      ...pokemon,
+      type: pokemon.type.filter((type) => type !== typeToRemove)
+    }))
   }
 
   const handleSubmit = (e) => {
@@ -67,8 +79,8 @@ export default function CreatePokemon() {
       return
     }
 
-    toast.success('Pokemon created successfully')
     dispatch(postPokemon(pokemon))
+    toast.success('Pokemon created successfully')
     resetPokemon(setPokemon)
   }
 
@@ -77,6 +89,15 @@ export default function CreatePokemon() {
       {capitalize(type.name)}
     </option>
   ))
+
+  const pokemonTypesList = pokemon.type.map((type) => {
+    return (
+      <TypeListContainer key={type} onClick={() => handleRemove(type)}>
+        <TypeList key={type}>{capitalize(type)}</TypeList>
+        <IconRemoveType src={icon_remove} alt='remove' />
+      </TypeListContainer>
+    )
+  })
 
   if (isLoading) {
     return <Loader />
@@ -196,9 +217,7 @@ export default function CreatePokemon() {
             </SelectBox>
           </LabelInputContainer>
           {errors.type && <ErrorSpan>{errors.type}</ErrorSpan>}
-          {pokemon.type.map((type) => (
-            <TypeList key={type}>{capitalize(type)}</TypeList>
-          ))}
+          {pokemonTypesList}
         </FormGroup>
         <ButtonsContainer>
           <SubmitButton type='submit'>
@@ -213,7 +232,7 @@ export default function CreatePokemon() {
         toastOptions={{
           success: {
             style: {
-              background: '#228B22',
+              background: '#228b22',
               color: '#e2e2e2',
               textShadow: '0 1px 0 #000000',
               boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 1)'
