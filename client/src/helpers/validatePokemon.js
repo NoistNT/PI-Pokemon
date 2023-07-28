@@ -10,10 +10,10 @@ const WEIGHT = 'weight'
 const IMAGE = 'image'
 const TYPE = 'type'
 
-export const validatePokemon = (field, value) => {
+export const validatePokemon = (input, value) => {
   const errors = {}
 
-  switch (field) {
+  switch (input) {
     case NAME:
       if (!value) {
         errors.name = 'Name is required'
@@ -31,12 +31,12 @@ export const validatePokemon = (field, value) => {
     case HEIGHT:
     case WEIGHT:
       if (!value) {
-        errors[field.toLowerCase()] = `${capitalize(field)} is required`
+        errors[input.toLowerCase()] = `${capitalize(input)} is required`
       } else if (isNaN(value)) {
-        errors[field.toLowerCase()] = `${capitalize(field)} must be a number`
+        errors[input.toLowerCase()] = `${capitalize(input)} must be a number`
       } else if (value < 0) {
-        errors[field.toLowerCase()] = `${capitalize(
-          field
+        errors[input.toLowerCase()] = `${capitalize(
+          input
         )} must be a positive number`
       }
       break
