@@ -15,7 +15,7 @@
 ** DONE: Add lazy loading
 ** DONE: Add remove types button to the form
 ** DONE: Add styles to remove types button in the form
-** DONE: Fix error message rendering below all inputs, it should validate only one input at a time
+** DONE: Fix error message rendering below all inputs, it should validate only one input at a time.
 
 - Fix error message not displaying when type list in form is empty
 - Fix toast showing double and colored incorrectly in create pokemon form
