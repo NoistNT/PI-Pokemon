@@ -48,7 +48,7 @@ export default function Home() {
     <>
       <Menu />
       <Paginate totalPages={totalPages} />
-      <Cards pokemons={currentPokemons} />
+      <Cards pokemons={pokemons} />
       <Paginate totalPages={totalPages} />
     </>
   )
