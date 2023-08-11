@@ -2,8 +2,7 @@ import {
   GET_POKEMONS_BY_TYPE,
   GET_POKEMONS_BY_SOURCE,
   SORT_POKEMONS,
-  SET_SORT,
-  SET_FILTERS,
+  SET_CURRENT_PAGE,
   CLEAN_DETAIL,
   RESET_FILTERS
 } from '../constants/pokemonConstants'
@@ -21,14 +20,8 @@ export const getPokemonsSorted = (sortOption) => {
   return { type: SORT_POKEMONS, payload: sortOption }
 }
 
-// Update setSort and setFilters in order to fix search bug
-// Currently they're not being used
-export const setSort = () => {
-  return { type: SET_SORT }
-}
-
-export const setFilters = () => {
-  return { type: SET_FILTERS }
+export const setCurrentPage = (page) => {
+  return { type: SET_CURRENT_PAGE, payload: page }
 }
 
 export const cleanDetail = () => {
