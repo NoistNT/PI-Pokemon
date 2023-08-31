@@ -8,7 +8,6 @@ export default function Cards({ pokemons }) {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         const img = entry.target
-        // Replace the placeholder with the actual image source
         img.src = img.dataset.src
 
         observer.unobserve(img)
@@ -31,7 +30,7 @@ export default function Cards({ pokemons }) {
 
   useEffect(() => {
     observeImages()
-  }, [observeImages])
+  }, [observeImages, pokemons])
 
   return (
     <CardsContainer>
