@@ -14,7 +14,7 @@ export default function Home() {
     (state) => state.pokemonReducer
   )
 
-  const pokemonsPerPage = 10
+  const pokemonsPerPage = 8
   const totalPages = Math.ceil(pokemons.length / pokemonsPerPage)
 
   useEffect(() => {
@@ -48,7 +48,7 @@ export default function Home() {
     <>
       <Menu />
       <Paginate totalPages={totalPages} />
-      <Cards pokemons={pokemons} />
+      <Cards pokemons={currentPokemons} />
       <Paginate totalPages={totalPages} />
     </>
   )
