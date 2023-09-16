@@ -1,4 +1,4 @@
-import toast, { Toaster } from 'react-hot-toast'
+import { Toaster, toast } from 'sonner'
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getTypes, postPokemon } from '../../redux/actions/pokemonAsyncActions'
@@ -228,26 +228,7 @@ export default function CreatePokemon() {
           </SubmitButton>
         </ButtonsContainer>
       </FormContainer>
-      <Toaster
-        toastOptions={{
-          success: {
-            style: {
-              background: '#228b22',
-              color: '#e2e2e2',
-              textShadow: '0 1px 0 #000000',
-              boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 1)'
-            }
-          },
-          error: {
-            style: {
-              background: '#7a2222',
-              color: '#e2e2e2',
-              textShadow: '0 1px 0 #000000',
-              boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 1)'
-            }
-          }
-        }}
-      />
+      <Toaster closeButton={true} richColors={true} />
     </div>
   )
 }
