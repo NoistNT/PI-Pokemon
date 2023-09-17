@@ -7,7 +7,6 @@ import {
   RESET_FILTERS
 } from '../constants/pokemonConstants'
 
-// Filter pokemons from redux state by type name
 export const getPokemonsByType = (type) => {
   return { type: GET_POKEMONS_BY_TYPE, payload: type }
 }
