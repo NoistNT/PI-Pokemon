@@ -18,6 +18,7 @@
 ** DONE: Fix error message rendering below all inputs, it should validate only one input at a time.
 ** DONE: Fix lazy loading not working with pagination.
 ** DONE: Add Sonner toast
+** DONE: Fix filter by source not working together with filter by type
 
 - Fix error message not displaying when type list in form is empty
 - Fix toast showing double and colored incorrectly in create pokemon form
@@ -25,7 +26,6 @@
 - Try to generate my own select element
 - Add footer
 - Fix cards grid layout to reorder in screen properly
-- Fix filter by source not working together with filter by type
 in order to access globally and remove the 'unsortedPokemons state'
 - Refactor filter/sorting functions
 - Add colour to pokemon type based on type
