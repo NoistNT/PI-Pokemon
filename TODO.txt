@@ -20,6 +20,7 @@
 ** DONE: Add Sonner toast
 ** DONE: Fix filter by source not working together with filter by type
 
+- Update sonner toast across all application
 - Fix error message not displaying when type list in form is empty
 - Fix toast showing double and colored incorrectly in create pokemon form
 - Add lazy loading transitions
