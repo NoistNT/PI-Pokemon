@@ -30,5 +30,6 @@
 in order to access globally and remove the 'unsortedPokemons state'
 - Refactor filter/sorting functions
 - Add colour to pokemon type based on type
+- Improve footer
 - Fix browser console warning:
 (The `value` prop supplied to <select> must be a scalar value if `multiple` is false.)
