@@ -80,12 +80,16 @@ export default function CreatePokemon() {
       toast.error('Complete all fields', {
         position: 'bottom-center'
       })
-      return
     } else {
       toast.success('Pokemon created successfully', {
         position: 'bottom-center'
       })
-      resetPokemon(setPokemon)
+      setTimeout(() => {
+        dispatch(postPokemon(pokemon))
+      }, 2200)
+      setTimeout(() => {
+        resetPokemon(setPokemon)
+      }, 2300)
     }
   }
 
