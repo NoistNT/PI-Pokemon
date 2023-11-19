@@ -52,7 +52,9 @@ export default function CreatePokemon() {
       if (pokemon.type.length < 2) {
         setPokemon({ ...pokemon, type: [...pokemon.type, value] })
       } else {
-        toast.error('Max 2 types allowed')
+        toast.error('Max 2 types allowed', {
+          position: 'bottom-center'
+        })
       }
     } else {
       setPokemon({ ...pokemon, [name]: value })
@@ -75,13 +77,16 @@ export default function CreatePokemon() {
       Object.values(pokemon).some((value) => value === '') ||
       Object.keys(errors).length
     ) {
-      toast.error('Complete all fields')
+      toast.error('Complete all fields', {
+        position: 'bottom-center'
+      })
       return
+    } else {
+      toast.success('Pokemon created successfully', {
+        position: 'bottom-center'
+      })
+      resetPokemon(setPokemon)
     }
-
-    dispatch(postPokemon(pokemon))
-    toast.success('Pokemon created successfully')
-    resetPokemon(setPokemon)
   }
 
   const pokemonTypes = types.map((type) => (
@@ -228,7 +233,7 @@ export default function CreatePokemon() {
           </SubmitButton>
         </ButtonsContainer>
       </FormContainer>
-      <Toaster closeButton={true} richColors={true} />
+      <Toaster closeButton={true} />
     </div>
   )
 }
