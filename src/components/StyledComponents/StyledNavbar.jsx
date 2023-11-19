@@ -22,7 +22,7 @@ export const StyledLink = styled(Link)`
 `
 
 export const Img = styled.img`
-  width: 200px;
+  width: 150px;
   height: auto;
   padding: 0.5rem 0;
   transition: all 0.2s ease-in-out;
@@ -30,6 +30,10 @@ export const Img = styled.img`
   &:hover {
     transform: scale(1.015);
     transition: all 0.2s ease-in-out;
+  }
+
+  @media (min-width: 426px) {
+    width: 200px;
   }
 
   @media (min-width: 768px) {

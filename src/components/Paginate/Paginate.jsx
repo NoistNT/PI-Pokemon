@@ -15,7 +15,7 @@ export default function Paginate({ totalPages }) {
 
   const renderPageNumbers = () => {
     const pageNumbers = []
-    const visiblePageCount = 5
+    const visiblePageCount = 3
     const startPage = Math.max(
       1,
       currentPage - Math.floor(visiblePageCount / 2)
