@@ -31,5 +31,6 @@
 - Fix cards grid layout to reorder in screen properly
 in order to access globally and remove the 'unsortedPokemons state'
 - Add colour to pokemon type based on type
+- Improve footer
 - Fix browser console warning:
 (The `value` prop supplied to <select> must be a scalar value if `multiple` is false.)
