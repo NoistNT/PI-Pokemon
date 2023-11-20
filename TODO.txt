@@ -22,10 +22,10 @@
 ** DONE: Remove react-hot-toast
 ** DONE: Update sonner toast across all application
 ** DONE: Refactor filter/sorting functions
+** DONE: Fix toast showing double and colored incorrectly in create pokemon form
+** DONE: Add footer
 
-- Add footer
 - Fix error message not displaying when type list in form is empty
-- Fix toast showing double and colored incorrectly in create pokemon form
 - Add lazy loading transitions
 - Try to generate my own select element
 - Fix cards grid layout to reorder in screen properly
