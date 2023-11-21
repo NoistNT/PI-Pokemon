@@ -7,7 +7,7 @@ import {
   TypesContainer,
   Types
 } from '../StyledComponents/StyledCard'
-import default_image from '../../assets/default_img.png'
+import default_image from '../../assets/default_img.webp'
 
 export default function Card({ pokemon }) {
   const { id, name, type, image } = pokemon

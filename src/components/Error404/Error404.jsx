@@ -1,4 +1,4 @@
-import error_img from '../../assets/error_img.png'
+import error_img from '../../assets/error_img.webp'
 import {
   Container,
   Img,
