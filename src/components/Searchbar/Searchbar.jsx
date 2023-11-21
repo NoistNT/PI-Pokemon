@@ -2,17 +2,10 @@ import { toast } from 'sonner'
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import {
-  Container,
-  Input,
-  Button,
-  ButtonText
-} from '../StyledComponents/StyledSearchbar'
+
+import { Container, Input, Button, ButtonText } from '../StyledComponents/StyledSearchbar'
 import { setCurrentPage } from '../../redux/actions/pokemonActions'
-import {
-  getPokemonByName,
-  getPokemons
-} from '../../redux/actions/pokemonAsyncActions'
+import { getPokemonByName, getPokemons } from '../../redux/actions/pokemonAsyncActions'
 
 export default function Searchbar() {
   const dispatch = useDispatch()
@@ -24,6 +17,7 @@ export default function Searchbar() {
       toast.error('Please enter a pokémon name', {
         position: 'top-center'
       })
+
       return
     }
     dispatch(getPokemonByName(name))
@@ -52,15 +46,15 @@ export default function Searchbar() {
 
   return (
     <Container>
-      <Button type='button' onClick={handleNavigate}>
+      <Button type="button" onClick={handleNavigate}>
         <ButtonText>Create Pokémon</ButtonText>
       </Button>
-      <Button type='button' onClick={handleClick}>
+      <Button type="button" onClick={handleClick}>
         <ButtonText>All Pokémons</ButtonText>
       </Button>
       <Input
-        type='text'
-        placeholder='Search pokémon'
+        placeholder="Search pokémon"
+        type="text"
         value={name}
         onChange={handleChange}
         onKeyDown={handleKeyDown}

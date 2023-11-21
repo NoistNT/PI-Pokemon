@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+
 import { getPokemons } from '../../redux/actions/pokemonAsyncActions'
 import { Message } from '../../components/StyledComponents/StyledMessage'
 import Cards from '../../components/Cards/Cards'
@@ -19,6 +20,7 @@ export default function Home() {
 
   useEffect(() => {
     const shouldGetPokemons = !pokemons.length && !filter && !error
+
     if (shouldGetPokemons) {
       dispatch(getPokemons())
     }
@@ -26,10 +28,7 @@ export default function Home() {
 
   const indexOfLastPokemon = currentPage * pokemonsPerPage
   const indexOfFirstPokemon = indexOfLastPokemon - pokemonsPerPage
-  const currentPokemons = pokemons.slice(
-    indexOfFirstPokemon,
-    indexOfLastPokemon
-  )
+  const currentPokemons = pokemons.slice(indexOfFirstPokemon, indexOfLastPokemon)
 
   if (isLoading) {
     return <Loader />

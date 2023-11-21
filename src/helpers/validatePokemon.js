@@ -35,9 +35,7 @@ export const validatePokemon = (input, value) => {
       } else if (isNaN(value)) {
         errors[input.toLowerCase()] = `${capitalize(input)} must be a number`
       } else if (value < 0) {
-        errors[input.toLowerCase()] = `${capitalize(
-          input
-        )} must be a positive number`
+        errors[input.toLowerCase()] = `${capitalize(input)} must be a positive number`
       }
       break
 

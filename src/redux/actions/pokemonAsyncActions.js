@@ -1,3 +1,5 @@
+import axios from 'axios'
+
 import {
   GET_POKEMONS_PENDING,
   GET_POKEMONS_FULFILLED,
@@ -14,7 +16,6 @@ import {
   GET_TYPES
 } from '../constants/pokemonConstants'
 
-import axios from 'axios'
 const URL = import.meta.env.VITE_URL
 
 export const getPokemons = () => {
@@ -22,6 +23,7 @@ export const getPokemons = () => {
     dispatch({ type: GET_POKEMONS_PENDING })
     try {
       const { data } = await axios.get(`${URL}/pokemon`)
+
       dispatch({ type: GET_POKEMONS_FULFILLED, payload: data })
     } catch (error) {
       dispatch({
@@ -37,6 +39,7 @@ export const getPokemonById = (id) => {
     dispatch({ type: GET_POKEMON_BY_ID_PENDING })
     try {
       const { data } = await axios.get(`${URL}/pokemon/${id}`)
+
       dispatch({ type: GET_POKEMON_BY_ID_FULFILLED, payload: data })
     } catch (error) {
       dispatch({
@@ -52,6 +55,7 @@ export const getPokemonByName = (name) => {
     dispatch({ type: GET_POKEMON_BY_NAME_PENDING })
     try {
       const { data } = await axios.get(`${URL}/pokemon?name=${name}`)
+
       dispatch({ type: GET_POKEMON_BY_NAME_FULFILLED, payload: data })
     } catch (error) {
       dispatch({
@@ -67,6 +71,7 @@ export const postPokemon = (pokemon) => {
     dispatch({ type: POST_POKEMON_PENDING })
     try {
       const { data } = await axios.post(`${URL}/pokemon`, pokemon)
+
       dispatch({ type: POST_POKEMON_FULFILLED, payload: data })
     } catch (error) {
       dispatch({
@@ -80,6 +85,7 @@ export const postPokemon = (pokemon) => {
 export const getTypes = () => {
   return async (dispatch) => {
     const { data } = await axios.get(`${URL}/type`)
+
     dispatch({ type: GET_TYPES, payload: data })
   }
 }
