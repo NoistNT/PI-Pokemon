@@ -1,5 +1,6 @@
-import { Landing, Home, Detail } from './views/index'
 import { Route, Routes, useLocation } from 'react-router-dom'
+
+import { Landing, Home, Detail } from './views/index'
 import Error404 from './components/Error404/Error404'
 import Navbar from './components/Navbar/Navbar'
 import Footer from './components/Footer/Footer'
@@ -10,15 +11,15 @@ function App() {
   const { pathname } = useLocation()
 
   return (
-    <div className='App'>
+    <div className="App">
       {pathname !== '/' && <Navbar />}
 
       <Routes>
-        <Route path='/' element={<Landing />} />
-        <Route path='/pokemon' element={<Home />} />
-        <Route path='/pokemon/:id' element={<Detail />} />
-        <Route path='/create' element={<CreatePokemon />} />
-        <Route path='*' element={<Error404 />} />
+        <Route element={<Landing />} path="/" />
+        <Route element={<Home />} path="/pokemon" />
+        <Route element={<Detail />} path="/pokemon/:id" />
+        <Route element={<CreatePokemon />} path="/create" />
+        <Route element={<Error404 />} path="*" />
       </Routes>
 
       {pathname !== '/' && <Footer />}

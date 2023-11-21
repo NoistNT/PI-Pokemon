@@ -5,8 +5,8 @@ import { Container, Img, StyledLink } from '../StyledComponents/StyledNavbar'
 export default function Navbar() {
   return (
     <Container>
-      <StyledLink to={'/pokemon'}>
-        <Img src={logo} alt='img not found' />
+      <StyledLink to="/pokemon">
+        <Img alt="img not found" src={logo} />
       </StyledLink>
       <Searchbar />
     </Container>

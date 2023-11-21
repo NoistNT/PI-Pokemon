@@ -1,6 +1,6 @@
-/* eslint-disable react/prop-types */
 import { useCallback, useEffect, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+
 import { capitalize } from '../../helpers/helpers'
 import { getTypes } from '../../redux/actions/pokemonAsyncActions'
 import {
@@ -35,6 +35,7 @@ export default function Menu() {
   const handleSource = useCallback(
     (e) => {
       const selectedOption = e.target.value
+
       dispatch(setCurrentPage(1))
       dispatch(getPokemonsBySource(selectedOption))
     },
@@ -44,6 +45,7 @@ export default function Menu() {
   const handleSort = useCallback(
     (e) => {
       const selectedSort = e.target.value
+
       dispatch(setCurrentPage(1))
       dispatch(getPokemonsSorted(selectedSort))
     },
@@ -53,6 +55,7 @@ export default function Menu() {
   const handleTypes = useCallback(
     (e) => {
       const selectedType = e.target.value
+
       dispatch(setCurrentPage(1))
       dispatch(getPokemonsByType(selectedType))
     },
@@ -80,54 +83,48 @@ export default function Menu() {
         <SelectContainer>
           <Label>Source</Label>
           <SelectBox
-            id='filter'
-            name='filter'
-            title='filter'
             ref={selectSourceRef}
+            id="filter"
+            name="filter"
+            title="filter"
             onChange={handleSource}
           >
-            <option value=''>--Source--</option>
-            <option value='api'>Originals</option>
-            <option value='database'>User created</option>
+            <option value="">--Source--</option>
+            <option value="api">Originals</option>
+            <option value="database">User created</option>
           </SelectBox>
         </SelectContainer>
         <SelectContainer>
           <Label>Sort</Label>
-          <SelectBox
-            id='sort'
-            name='sort'
-            title='sort'
-            ref={selectSortRef}
-            onChange={handleSort}
-          >
-            <option value=''>--Sorting--</option>
-            <option value='asc'>A to Z</option>
-            <option value='desc'>Z to A</option>
-            <option value='higherAtk'>Higher attack</option>
-            <option value='lowerAtk'>Lower attack</option>
-            <option value='higherDef'>Higher defense</option>
-            <option value='lowerDef'>Lower defense</option>
-            <option value='higherHp'>Higher hp</option>
-            <option value='lowerHp'>Lower hp</option>
-            <option value='higherSpd'>Higher speed</option>
-            <option value='lowerSpd'>Lower speed</option>
+          <SelectBox ref={selectSortRef} id="sort" name="sort" title="sort" onChange={handleSort}>
+            <option value="">--Sorting--</option>
+            <option value="asc">A to Z</option>
+            <option value="desc">Z to A</option>
+            <option value="higherAtk">Higher attack</option>
+            <option value="lowerAtk">Lower attack</option>
+            <option value="higherDef">Higher defense</option>
+            <option value="lowerDef">Lower defense</option>
+            <option value="higherHp">Higher hp</option>
+            <option value="lowerHp">Lower hp</option>
+            <option value="higherSpd">Higher speed</option>
+            <option value="lowerSpd">Lower speed</option>
           </SelectBox>
         </SelectContainer>
         <SelectContainer>
           <Label>Types</Label>
           <SelectBox
-            id='types'
-            name='types'
-            title='types'
             ref={selectTypesRef}
+            id="types"
+            name="types"
+            title="types"
             onChange={handleTypes}
           >
-            <option value=''>--Types--</option>
+            <option value="">--Types--</option>
             {pokemonTypes}
           </SelectBox>
         </SelectContainer>
       </SelectGroup>
-      <Button type='button' onClick={handleReset}>
+      <Button type="button" onClick={handleReset}>
         <ButtonText>Reset</ButtonText>
       </Button>
     </Container>

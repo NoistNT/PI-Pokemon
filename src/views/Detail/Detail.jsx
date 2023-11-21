@@ -1,8 +1,9 @@
-import Loader from '../../components/Loader/Loader'
-import { capitalize, types } from '../../helpers/helpers'
 import { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
+
+import { capitalize, types } from '../../helpers/helpers'
+import Loader from '../../components/Loader/Loader'
 import { getPokemonById } from '../../redux/actions/pokemonAsyncActions'
 import { cleanDetail } from '../../redux/actions/pokemonActions'
 import {
@@ -22,6 +23,7 @@ export default function Detail() {
 
   useEffect(() => {
     dispatch(getPokemonById(id))
+
     return () => dispatch(cleanDetail())
   }, [dispatch, id])
 
@@ -32,7 +34,7 @@ export default function Detail() {
   return (
     <CardContainer>
       <Title>Pokémon details</Title>
-      <Image src={pokemon.image} alt={pokemon.name} />
+      <Image alt={pokemon.name} src={pokemon.image} />
       <Name>{capitalize(pokemon.name)}</Name>
       <Highlight>
         <Attribute>Type: </Attribute>

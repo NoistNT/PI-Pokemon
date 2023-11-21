@@ -1,6 +1,7 @@
 import { Toaster, toast } from 'sonner'
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+
 import { getTypes, postPokemon } from '../../redux/actions/pokemonAsyncActions'
 import { capitalize, resetPokemon } from '../../helpers/helpers'
 import { validatePokemon } from '../../helpers/validatePokemon'
@@ -73,10 +74,7 @@ export default function CreatePokemon() {
   const handleSubmit = (e) => {
     e.preventDefault()
 
-    if (
-      Object.values(pokemon).some((value) => value === '') ||
-      Object.keys(errors).length
-    ) {
+    if (Object.values(pokemon).some((value) => value === '') || Object.keys(errors).length) {
       toast.error('Complete all fields', {
         position: 'bottom-center'
       })
@@ -103,7 +101,7 @@ export default function CreatePokemon() {
     return (
       <TypeListContainer key={type} onClick={() => handleRemove(type)}>
         <TypeList key={type}>{capitalize(type)}</TypeList>
-        <IconRemoveType src={icon_remove} alt='remove' />
+        <IconRemoveType alt="remove" src={icon_remove} />
       </TypeListContainer>
     )
   })
@@ -118,126 +116,91 @@ export default function CreatePokemon() {
         <Title>Create Pokémon</Title>
         <FormGroup>
           <LabelInputContainer>
-            <Label htmlFor='name'>Name: </Label>
+            <Label htmlFor="name">Name: </Label>
             <Input
-              type='text'
-              name='name'
+              name="name"
+              type="text"
               value={pokemon.name.toLowerCase()}
               onChange={handleChange}
             />
           </LabelInputContainer>
-          {errors.name && <ErrorSpan>{errors.name}</ErrorSpan>}
+          {errors.name ? <ErrorSpan>{errors.name}</ErrorSpan> : null}
         </FormGroup>
         <FormGroup>
           <LabelInputContainer>
-            <Label htmlFor='hp'>HP: </Label>
-            <Input
-              type='number'
-              name='hp'
-              value={pokemon.hp}
-              onChange={handleChange}
-            />
+            <Label htmlFor="hp">HP: </Label>
+            <Input name="hp" type="number" value={pokemon.hp} onChange={handleChange} />
           </LabelInputContainer>
-          {errors.hp && <ErrorSpan>{errors.hp}</ErrorSpan>}
+          {errors.hp ? <ErrorSpan>{errors.hp}</ErrorSpan> : null}
         </FormGroup>
         <FormGroup>
           <LabelInputContainer>
-            <Label htmlFor='attack'>Attack: </Label>
-            <Input
-              type='number'
-              name='attack'
-              value={pokemon.attack}
-              onChange={handleChange}
-            />
+            <Label htmlFor="attack">Attack: </Label>
+            <Input name="attack" type="number" value={pokemon.attack} onChange={handleChange} />
           </LabelInputContainer>
-          {errors.attack && <ErrorSpan>{errors.attack}</ErrorSpan>}
+          {errors.attack ? <ErrorSpan>{errors.attack}</ErrorSpan> : null}
         </FormGroup>
         <FormGroup>
           <LabelInputContainer>
-            <Label htmlFor='defense'>Defense: </Label>
-            <Input
-              type='number'
-              name='defense'
-              value={pokemon.defense}
-              onChange={handleChange}
-            />
+            <Label htmlFor="defense">Defense: </Label>
+            <Input name="defense" type="number" value={pokemon.defense} onChange={handleChange} />
           </LabelInputContainer>
-          {errors.defense && <ErrorSpan>{errors.defense}</ErrorSpan>}
+          {errors.defense ? <ErrorSpan>{errors.defense}</ErrorSpan> : null}
         </FormGroup>
         <FormGroup>
           <LabelInputContainer>
-            <Label htmlFor='speed'>Speed: </Label>
-            <Input
-              type='number'
-              name='speed'
-              value={pokemon.speed}
-              onChange={handleChange}
-            />
+            <Label htmlFor="speed">Speed: </Label>
+            <Input name="speed" type="number" value={pokemon.speed} onChange={handleChange} />
           </LabelInputContainer>
-          {errors.speed && <ErrorSpan>{errors.speed}</ErrorSpan>}
+          {errors.speed ? <ErrorSpan>{errors.speed}</ErrorSpan> : null}
         </FormGroup>
         <FormGroup>
           <LabelInputContainer>
-            <Label htmlFor='height'>Height: </Label>
-            <Input
-              type='number'
-              name='height'
-              value={pokemon.height}
-              onChange={handleChange}
-            />
+            <Label htmlFor="height">Height: </Label>
+            <Input name="height" type="number" value={pokemon.height} onChange={handleChange} />
           </LabelInputContainer>
-          {errors.height && <ErrorSpan>{errors.height}</ErrorSpan>}
+          {errors.height ? <ErrorSpan>{errors.height}</ErrorSpan> : null}
         </FormGroup>
         <FormGroup>
           <LabelInputContainer>
-            <Label htmlFor='weight'>Weight: </Label>
-            <Input
-              type='number'
-              name='weight'
-              value={pokemon.weight}
-              onChange={handleChange}
-            />
+            <Label htmlFor="weight">Weight: </Label>
+            <Input name="weight" type="number" value={pokemon.weight} onChange={handleChange} />
           </LabelInputContainer>
-          {errors.weight && <ErrorSpan>{errors.weight}</ErrorSpan>}
+          {errors.weight ? <ErrorSpan>{errors.weight}</ErrorSpan> : null}
         </FormGroup>
         <FormGroup>
           <LabelInputContainer>
             <Label>Image: </Label>
             <Input
-              type='text'
-              name='image'
-              placeholder='URL Image'
+              name="image"
+              placeholder="URL Image"
+              type="text"
               value={pokemon.image}
               onChange={handleChange}
             />
           </LabelInputContainer>
-          {errors.image && <ErrorSpan>{errors.image}</ErrorSpan>}
+          {errors.image ? <ErrorSpan>{errors.image}</ErrorSpan> : null}
         </FormGroup>
         <FormGroup>
           <LabelInputContainer>
-            <Label htmlFor='types'>Type: </Label>
-            <SelectBox
-              name='type'
-              id='type'
-              value={pokemon.type}
-              onChange={handleChange}
-            >
+            <Label htmlFor="types">Type: </Label>
+            <SelectBox id="type" name="type" value={pokemon.type} onChange={handleChange}>
               {pokemonTypes}
             </SelectBox>
           </LabelInputContainer>
-          {errors.type && <ErrorSpan>{errors.type}</ErrorSpan>}
+          {errors.type ? <ErrorSpan>{errors.type}</ErrorSpan> : null}
           {pokemonTypesList}
         </FormGroup>
         <ButtonsContainer>
-          <SubmitButton type='submit'>
+          <SubmitButton type="submit">
             <ButtonText>Create Pokémon</ButtonText>
           </SubmitButton>
-          <SubmitButton type='button' onClick={() => resetPokemon(setPokemon)}>
+          <SubmitButton type="button" onClick={() => resetPokemon(setPokemon)}>
             <ButtonText>Clear form</ButtonText>
           </SubmitButton>
         </ButtonsContainer>
       </FormContainer>
-      <Toaster closeButton={true} />
+      <Toaster closeButton />
     </div>
   )
 }

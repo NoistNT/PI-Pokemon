@@ -11,8 +11,7 @@ export const PageLink = styled.button`
   margin: 0 0.15rem;
   list-style-type: none;
   text-decoration: none;
-  font-family: 'Open Sans', Inter, system-ui, Avenir, Helvetica, Arial,
-    sans-serif;
+  font-family: 'Open Sans', Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   color: var(--text-color);
   background-color: #4941b361;
   border: 1px solid #ffffff36;

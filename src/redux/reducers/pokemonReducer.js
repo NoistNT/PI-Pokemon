@@ -1,4 +1,3 @@
-/* eslint-disable no-case-declarations */
 import { sortPokemons, capitalize } from '../../helpers/helpers'
 import {
   GET_POKEMONS_PENDING,
@@ -134,6 +133,7 @@ export const pokemonReducer = (state = initialState, { type, payload }) => {
 
     case GET_POKEMONS_BY_SOURCE:
       let filterCondition
+
       if (payload === 'database') {
         filterCondition = (pokemon) => isNaN(pokemon.id)
       } else if (payload === 'api') {
