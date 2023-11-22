@@ -4,7 +4,7 @@
 <br />
 <div align="center">
   <a href="https://pokewikiclient.vercel.app">
-    <img src="src/assets/logo.png" alt="PokeWiki Logo" width="500" height="200">
+    <img src="src/assets/logo.webp" alt="PokeWiki Logo" width="500" height="200">
   </a>
 
   <h1 align="center">Pokewiki</h1>
