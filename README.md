@@ -56,6 +56,8 @@ Follow these straightforward steps to get your local copy up and running
 ### Installation
 
 1. Clone the repo
+   <br/>
+   <br/>
    ```sh
    git clone https://github.com/NoistNT/Pokemon-Client.git
    ```
