@@ -24,7 +24,11 @@
 ** DONE: Refactor filter/sorting functions
 ** DONE: Fix toast showing double and colored incorrectly in create pokemon form
 ** DONE: Add footer
+** DONE: Fix deploy bug when hitting key F5 didn't refresh and get a 404
+** DONE: Improve responsiveness on landing and home as well
 
+
+- Update responsiveness on create pokemon form
 - Fix error message not displaying when type list in form is empty
 - Add lazy loading transitions
 - Try to generate my own select element
