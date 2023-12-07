@@ -82,9 +82,11 @@
   }
   .title {
     font-size: 1.4rem;
+    padding: 0 1rem;
   }
   .description {
     font-size: 1rem;
+    padding: 0 1rem;
   }
   .button {
     height: 2.5rem;
