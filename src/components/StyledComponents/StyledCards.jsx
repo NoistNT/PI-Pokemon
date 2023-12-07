@@ -2,7 +2,8 @@ import styled from 'styled-components'
 
 export const CardsContainer = styled.div`
   display: grid;
-  place-items: center;
+  max-width: fit-content;
+  margin: auto;
 
   @media (min-width: 768px) {
     grid-template-columns: repeat(2, 1fr);
