@@ -12,7 +12,11 @@ export const CardContainer = styled.div`
   border-style: solid;
   border-color: #ffffff36;
   border-radius: 0.85rem;
-  background: linear-gradient(82.3deg, rgb(50, 39, 66) 0%, rgb(76, 71, 139) 100%);
+  background: linear-gradient(
+    82.3deg,
+    rgb(50, 39, 66) 0%,
+    rgb(76, 71, 139) 100%
+  );
   box-shadow: 0 2px 4px var(--card-shadow);
   transition: all 0.3s ease;
   cursor: pointer;
@@ -58,7 +62,8 @@ export const Image = styled.img`
   width: 18rem;
   height: 18rem;
   margin-bottom: 1.5rem;
-  -webkit-box-reflect: below 1px linear-gradient(transparent, rgba(0, 0, 0, 0.1));
+  -webkit-box-reflect: below 1px
+    linear-gradient(transparent, rgba(0, 0, 0, 0.1));
 `
 
 export const Name = styled.h3`
