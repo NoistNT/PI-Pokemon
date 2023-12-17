@@ -5,7 +5,10 @@ const project = resolve(__dirname, 'vite.config.json')
 module.exports = {
   root: true,
   plugins: ['prettier', 'import'],
-  extends: [require.resolve('@vercel/style-guide/eslint/react'), 'plugin:prettier/recommended'],
+  extends: [
+    require.resolve('@vercel/style-guide/eslint/react'),
+    'plugin:prettier/recommended'
+  ],
   parserOptions: {
     ecmaVersion: 'latest',
     project,
@@ -15,7 +18,7 @@ module.exports = {
     'prettier/prettier': [
       'warn',
       {
-        printWidth: 100,
+        printWidth: 80,
         trailingComma: 'none',
         tabWidth: 2,
         semi: false,
@@ -29,7 +32,16 @@ module.exports = {
     'import/order': [
       'warn',
       {
-        groups: ['type', 'builtin', 'object', 'external', 'internal', 'parent', 'sibling', 'index'],
+        groups: [
+          'type',
+          'builtin',
+          'object',
+          'external',
+          'internal',
+          'parent',
+          'sibling',
+          'index'
+        ],
         pathGroups: [
           {
             pattern: '~/**',
@@ -51,6 +63,7 @@ module.exports = {
       }
     ],
     'no-console': 'warn',
+    'no-undef': 'off',
     'react/prop-types': 'off',
     'react/jsx-uses-react': 'off',
     'react/react-in-jsx-scope': 'off',
