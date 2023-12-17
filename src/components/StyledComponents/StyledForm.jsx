@@ -51,7 +51,8 @@ export const Label = styled.label`
   margin-right: 0.5rem;
   width: 7rem;
   font-weight: 550;
-  font-family: 'Open Sans', Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Open Sans', Inter, system-ui, Avenir, Helvetica, Arial,
+    sans-serif;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 1);
 `
 
@@ -67,7 +68,8 @@ export const Input = styled.input`
   padding: 0.5rem;
   width: 15rem;
   text-align: center;
-  font-family: 'Open Sans', Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Open Sans', Inter, system-ui, Avenir, Helvetica, Arial,
+    sans-serif;
 `
 
 export const SelectBox = styled.select`
@@ -76,7 +78,8 @@ export const SelectBox = styled.select`
   outline: 0;
   border: none;
   border-radius: 0.22rem;
-  font-family: 'Open Sans', Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Open Sans', Inter, system-ui, Avenir, Helvetica, Arial,
+    sans-serif;
   background-color: var(--select-bg-color);
   color: var(--text-color);
   transition: all 0.2s ease;
@@ -109,7 +112,8 @@ export const TypeList = styled.span`
   margin: 0;
   padding: 0;
   font-size: 0.95rem;
-  font-family: 'Open Sans', Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Open Sans', Inter, system-ui, Avenir, Helvetica, Arial,
+    sans-serif;
   color: var(--text-color);
 `
 
@@ -122,7 +126,8 @@ export const ErrorSpan = styled.span`
   padding: 0;
   margin-top: 0.5rem;
   font-size: 1rem;
-  font-family: 'Open Sans', Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Open Sans', Inter, system-ui, Avenir, Helvetica, Arial,
+    sans-serif;
   color: #ff1616;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 1);
 `
@@ -147,7 +152,11 @@ export const SubmitButton = styled.button`
   outline: 0;
   font-size: 0.95rem;
   font-weight: 550;
-  background: linear-gradient(82.3deg, rgb(71, 49, 104) 10.8%, rgb(70, 64, 160) 94.3%);
+  background: linear-gradient(
+    82.3deg,
+    rgb(71, 49, 104) 10.8%,
+    rgb(70, 64, 160) 94.3%
+  );
   color: var(--text-color);
   border-color: #ffffff36;
   border-radius: 0.4rem;
@@ -157,7 +166,8 @@ export const SubmitButton = styled.button`
   width: 10rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
   cursor: pointer;
-  font-family: 'Open Sans', Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Open Sans', Inter, system-ui, Avenir, Helvetica, Arial,
+    sans-serif;
 
   &:hover::before {
     transform: scaleX(1);
@@ -178,7 +188,11 @@ export const SubmitButton = styled.button`
     width: 100%;
     height: 100%;
     border-radius: inherit;
-    background: linear-gradient(82.3deg, rgb(76, 71, 148) 10.8%, rgb(84, 54, 128) 94.3%);
+    background: linear-gradient(
+      82.3deg,
+      rgb(76, 71, 148) 10.8%,
+      rgb(84, 54, 128) 94.3%
+    );
     transition: all 0.48s;
   }
 `

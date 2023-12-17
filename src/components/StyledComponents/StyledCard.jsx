@@ -11,7 +11,11 @@ export const CardContainer = styled.div`
   border-style: solid;
   border-color: #ffffff36;
   border-radius: 0.85rem;
-  background: linear-gradient(82.3deg, rgb(50, 39, 66) 0%, rgb(76, 71, 148) 100%);
+  background: linear-gradient(
+    82.3deg,
+    rgb(50, 39, 66) 0%,
+    rgb(76, 71, 148) 100%
+  );
   box-shadow: 0 2px 4px var(--card-shadow);
   transition: all 0.3s ease;
   cursor: pointer;
@@ -39,7 +43,11 @@ export const CardContainer = styled.div`
     width: 100%;
     height: 100%;
     border-radius: inherit;
-    background: linear-gradient(82.3deg, rgb(68, 64, 122) 1%, rgb(45, 34, 61) 100%);
+    background: linear-gradient(
+      82.3deg,
+      rgb(68, 64, 122) 1%,
+      rgb(45, 34, 61) 100%
+    );
     transition: all 0.48s;
   }
 `

@@ -91,7 +91,8 @@ export const SelectBox = styled.select`
   border-radius: 0.22rem;
   background-color: var(--select-bg-color);
   color: var(--text-color);
-  font-family: 'Open Sans', Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Open Sans', Inter, system-ui, Avenir, Helvetica, Arial,
+    sans-serif;
   transition: all 0.2s ease;
   text-align: center;
   min-width: 8rem;
@@ -126,8 +127,13 @@ export const Button = styled.button`
   font-size: 0.95rem;
   font-weight: 550;
   color: var(--text-color);
-  font-family: 'Open Sans', Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  background: linear-gradient(82.3deg, rgb(71, 49, 104) 10.8%, rgb(70, 64, 160) 94.3%);
+  font-family: 'Open Sans', Inter, system-ui, Avenir, Helvetica, Arial,
+    sans-serif;
+  background: linear-gradient(
+    82.3deg,
+    rgb(71, 49, 104) 10.8%,
+    rgb(70, 64, 160) 94.3%
+  );
   border-color: #ffffff36;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
   border-radius: 0.35rem;
@@ -157,7 +163,11 @@ export const Button = styled.button`
     width: 100%;
     height: 100%;
     border-radius: inherit;
-    background: linear-gradient(82.3deg, rgb(76, 71, 148) 10.8%, rgb(84, 54, 128) 94.3%);
+    background: linear-gradient(
+      82.3deg,
+      rgb(76, 71, 148) 10.8%,
+      rgb(84, 54, 128) 94.3%
+    );
     transition: all 0.48s;
   }
 

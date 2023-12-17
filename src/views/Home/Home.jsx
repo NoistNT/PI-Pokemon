@@ -28,7 +28,10 @@ export default function Home() {
 
   const indexOfLastPokemon = currentPage * pokemonsPerPage
   const indexOfFirstPokemon = indexOfLastPokemon - pokemonsPerPage
-  const currentPokemons = pokemons.slice(indexOfFirstPokemon, indexOfLastPokemon)
+  const currentPokemons = pokemons.slice(
+    indexOfFirstPokemon,
+    indexOfLastPokemon
+  )
 
   if (isLoading) {
     return <Loader />

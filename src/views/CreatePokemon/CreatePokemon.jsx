@@ -74,7 +74,10 @@ export default function CreatePokemon() {
   const handleSubmit = (e) => {
     e.preventDefault()
 
-    if (Object.values(pokemon).some((value) => value === '') || Object.keys(errors).length) {
+    if (
+      Object.values(pokemon).some((value) => value === '') ||
+      Object.keys(errors).length
+    ) {
       toast.error('Complete all fields', {
         position: 'bottom-center'
       })
@@ -129,42 +132,72 @@ export default function CreatePokemon() {
         <FormGroup>
           <LabelInputContainer>
             <Label htmlFor="hp">HP: </Label>
-            <Input name="hp" type="number" value={pokemon.hp} onChange={handleChange} />
+            <Input
+              name="hp"
+              type="number"
+              value={pokemon.hp}
+              onChange={handleChange}
+            />
           </LabelInputContainer>
           {errors.hp ? <ErrorSpan>{errors.hp}</ErrorSpan> : null}
         </FormGroup>
         <FormGroup>
           <LabelInputContainer>
             <Label htmlFor="attack">Attack: </Label>
-            <Input name="attack" type="number" value={pokemon.attack} onChange={handleChange} />
+            <Input
+              name="attack"
+              type="number"
+              value={pokemon.attack}
+              onChange={handleChange}
+            />
           </LabelInputContainer>
           {errors.attack ? <ErrorSpan>{errors.attack}</ErrorSpan> : null}
         </FormGroup>
         <FormGroup>
           <LabelInputContainer>
             <Label htmlFor="defense">Defense: </Label>
-            <Input name="defense" type="number" value={pokemon.defense} onChange={handleChange} />
+            <Input
+              name="defense"
+              type="number"
+              value={pokemon.defense}
+              onChange={handleChange}
+            />
           </LabelInputContainer>
           {errors.defense ? <ErrorSpan>{errors.defense}</ErrorSpan> : null}
         </FormGroup>
         <FormGroup>
           <LabelInputContainer>
             <Label htmlFor="speed">Speed: </Label>
-            <Input name="speed" type="number" value={pokemon.speed} onChange={handleChange} />
+            <Input
+              name="speed"
+              type="number"
+              value={pokemon.speed}
+              onChange={handleChange}
+            />
           </LabelInputContainer>
           {errors.speed ? <ErrorSpan>{errors.speed}</ErrorSpan> : null}
         </FormGroup>
         <FormGroup>
           <LabelInputContainer>
             <Label htmlFor="height">Height: </Label>
-            <Input name="height" type="number" value={pokemon.height} onChange={handleChange} />
+            <Input
+              name="height"
+              type="number"
+              value={pokemon.height}
+              onChange={handleChange}
+            />
           </LabelInputContainer>
           {errors.height ? <ErrorSpan>{errors.height}</ErrorSpan> : null}
         </FormGroup>
         <FormGroup>
           <LabelInputContainer>
             <Label htmlFor="weight">Weight: </Label>
-            <Input name="weight" type="number" value={pokemon.weight} onChange={handleChange} />
+            <Input
+              name="weight"
+              type="number"
+              value={pokemon.weight}
+              onChange={handleChange}
+            />
           </LabelInputContainer>
           {errors.weight ? <ErrorSpan>{errors.weight}</ErrorSpan> : null}
         </FormGroup>
@@ -184,7 +217,12 @@ export default function CreatePokemon() {
         <FormGroup>
           <LabelInputContainer>
             <Label htmlFor="types">Type: </Label>
-            <SelectBox id="type" name="type" value={pokemon.type} onChange={handleChange}>
+            <SelectBox
+              id="type"
+              name="type"
+              value={pokemon.type}
+              onChange={handleChange}
+            >
               {pokemonTypes}
             </SelectBox>
           </LabelInputContainer>

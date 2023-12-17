@@ -96,7 +96,13 @@ export default function Menu() {
         </SelectContainer>
         <SelectContainer>
           <Label>Sort</Label>
-          <SelectBox ref={selectSortRef} id="sort" name="sort" title="sort" onChange={handleSort}>
+          <SelectBox
+            ref={selectSortRef}
+            id="sort"
+            name="sort"
+            title="sort"
+            onChange={handleSort}
+          >
             <option value="">--Sorting--</option>
             <option value="asc">A to Z</option>
             <option value="desc">Z to A</option>

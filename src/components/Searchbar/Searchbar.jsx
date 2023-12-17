@@ -3,9 +3,17 @@ import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
-import { Container, Input, Button, ButtonText } from '../StyledComponents/StyledSearchbar'
+import {
+  Container,
+  Input,
+  Button,
+  ButtonText
+} from '../StyledComponents/StyledSearchbar'
 import { setCurrentPage } from '../../redux/actions/pokemonActions'
-import { getPokemonByName, getPokemons } from '../../redux/actions/pokemonAsyncActions'
+import {
+  getPokemonByName,
+  getPokemons
+} from '../../redux/actions/pokemonAsyncActions'
 
 export default function Searchbar() {
   const dispatch = useDispatch()
