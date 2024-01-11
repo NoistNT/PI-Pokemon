@@ -1,5 +1,12 @@
 import styled from 'styled-components'
 
+export const Container = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+`
+
 export const FormContainer = styled.form`
   display: flex;
   flex-direction: column;
@@ -8,19 +15,12 @@ export const FormContainer = styled.form`
   border-style: solid;
   border-color: #ffffff36;
   border-width: 1px;
-  padding: 2rem;
-  margin: 2rem auto;
-  width: 30rem;
+  max-width: 28rem;
+  width: 100%;
   box-shadow: -1px 3px 28px -4px rgba(0, 0, 0, 0.74);
   border-radius: 1rem;
   color: var(--text-color);
   transition: all 0.3s ease;
-
-  &:hover {
-    transition: all 0.3s ease;
-    border-width: 1px;
-    border-color: #ffffff90;
-  }
 `
 
 export const Title = styled.h2`
@@ -29,13 +29,23 @@ export const Title = styled.h2`
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
 `
 
-export const FormGroup = styled.div`
+export const Form = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  width: 100%;
+`
+
+export const FormItem = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 1rem;
   font-size: 1.07rem;
   color: var(--text-color);
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 1);
-  margin-bottom: 1rem;
 `
 
 export const LabelInputContainer = styled.div`
@@ -44,12 +54,12 @@ export const LabelInputContainer = styled.div`
   border-radius: 0.45rem;
   color: var(--text-color);
   background-color: rgb(255, 255, 255, 0.2);
+  margin: 0 2rem;
 `
 
 export const Label = styled.label`
   font-size: 1rem;
-  margin-right: 0.5rem;
-  width: 7rem;
+  width: 7.5rem;
   font-weight: 550;
   font-family: 'Open Sans', Inter, system-ui, Avenir, Helvetica, Arial,
     sans-serif;
@@ -58,6 +68,7 @@ export const Label = styled.label`
 
 export const Input = styled.input`
   outline: 0;
+  width: 70%;
   border: none;
   border-radius: 0.4rem;
   border-top-left-radius: 0;
@@ -66,7 +77,6 @@ export const Input = styled.input`
   color: var(--text-color);
   font-size: 0.95rem;
   padding: 0.5rem;
-  width: 15rem;
   text-align: center;
   font-family: 'Open Sans', Inter, system-ui, Avenir, Helvetica, Arial,
     sans-serif;
@@ -77,14 +87,16 @@ export const SelectBox = styled.select`
   font-size: 0.94rem;
   outline: 0;
   border: none;
-  border-radius: 0.22rem;
+  border-radius: 0.4rem;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
   font-family: 'Open Sans', Inter, system-ui, Avenir, Helvetica, Arial,
     sans-serif;
   background-color: var(--select-bg-color);
   color: var(--text-color);
   transition: all 0.2s ease;
   text-align: center;
-  min-width: 8rem;
+  width: 75%;
 
   &:hover {
     transition: all 0.2s ease;
@@ -92,14 +104,24 @@ export const SelectBox = styled.select`
   }
 `
 
+export const PokemonTypesList = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+  gap: 1rem;
+  width: 71.5%;
+  margin-top: 1rem;
+`
+
 export const TypeListContainer = styled.div`
   display: flex;
   justify-content: space-between;
-  margin-top: 0.5rem;
   background-color: rgb(255, 255, 255, 0.05);
-  padding: 0.3rem 0.4rem;
+  padding: 0.3rem 2rem;
   border-radius: 0.45rem;
   transition: all 0.4s ease;
+  width: 100%;
 
   &:hover {
     transition: all 0.4s ease;
@@ -109,8 +131,6 @@ export const TypeListContainer = styled.div`
 `
 
 export const TypeList = styled.span`
-  margin: 0;
-  padding: 0;
   font-size: 0.95rem;
   font-family: 'Open Sans', Inter, system-ui, Avenir, Helvetica, Arial,
     sans-serif;
@@ -122,10 +142,7 @@ export const IconRemoveType = styled.img`
 `
 
 export const ErrorSpan = styled.span`
-  margin: 0;
-  padding: 0;
-  margin-top: 0.5rem;
-  font-size: 1rem;
+  font-size: 0.97rem;
   font-family: 'Open Sans', Inter, system-ui, Avenir, Helvetica, Arial,
     sans-serif;
   color: #ff1616;
@@ -134,10 +151,14 @@ export const ErrorSpan = styled.span`
 
 export const ButtonsContainer = styled.div`
   display: flex;
-  flex-direction: row;
   justify-content: center;
-  gap: 5rem;
-  margin-top: 1rem;
+  width: 100%;
+  gap: 2rem;
+  padding-top: 2.5rem;
+  padding-bottom: 1.2rem;
+
+  @media (min-width: 426px) {
+  }
 `
 
 export const ButtonText = styled.span`
