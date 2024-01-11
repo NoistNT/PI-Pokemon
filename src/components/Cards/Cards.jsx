@@ -1,6 +1,6 @@
 import { useCallback, useEffect } from 'react'
 
-import { CardsContainer } from '../StyledComponents/StyledCards'
+import { CardsContainer, Container } from '../StyledComponents/StyledCards'
 import Card from '../Card/Card'
 
 export default function Cards({ pokemons }) {
@@ -35,10 +35,12 @@ export default function Cards({ pokemons }) {
   }, [observeImages, pokemons])
 
   return (
-    <CardsContainer>
-      {pokemons.map((pokemon) => (
-        <Card key={pokemon.id} pokemon={pokemon} />
-      ))}
-    </CardsContainer>
+    <Container>
+      <CardsContainer>
+        {pokemons.map((pokemon) => (
+          <Card key={pokemon.id} pokemon={pokemon} />
+        ))}
+      </CardsContainer>
+    </Container>
   )
 }

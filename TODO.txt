@@ -5,7 +5,7 @@
 ** DONE: Limit max pokemon type to 2 when creating a new one
 ** DONE: Add filter by source from db or api (originals or created)
 ** DONE: Migrate sorting and ordering local states to redux
-** DONE: Fix pokemon search to display correctly the pokemon by setting page to 1 
+** DONE: Fix pokemon search to display correctly the pokemon by setting page to 1
 ** DONE: Add CSS to create pokemon form
 ** DONE: Adjust img size in card component
 ** DONE: Add button to navigate to create pokemon form
@@ -26,10 +26,10 @@
 ** DONE: Add footer
 ** DONE: Fix deploy bug when hitting key F5 didn't refresh and get a 404
 ** DONE: Improve responsiveness on landing and home as well
+** DONE: Update responsiveness and styles on create pokemon form
+** DONE: Fix error message not displaying when type list in form is empty
 
 
-- Update responsiveness on create pokemon form
-- Fix error message not displaying when type list in form is empty
 - Add lazy loading transitions
 - Try to generate my own select element
 - Fix cards grid layout to reorder in screen properly
