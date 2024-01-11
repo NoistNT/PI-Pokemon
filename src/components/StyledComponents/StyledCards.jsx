@@ -1,8 +1,12 @@
 import styled from 'styled-components'
 
+export const Container = styled.div`
+  display: flex;
+`
+
 export const CardsContainer = styled.div`
   display: grid;
-  max-width: fit-content;
+  max-width: 1600px;
   margin: auto;
 
   @media (min-width: 768px) {
@@ -15,9 +19,5 @@ export const CardsContainer = styled.div`
 
   @media (min-width: 1440px) {
     grid-template-columns: repeat(4, 1fr);
-  }
-
-  @media (min-width: 1920px) {
-    grid-template-columns: repeat(5, 1fr);
   }
 `
