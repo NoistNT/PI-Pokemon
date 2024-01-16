@@ -28,13 +28,13 @@
 ** DONE: Improve responsiveness on landing and home as well
 ** DONE: Update responsiveness and styles on create pokemon form
 ** DONE: Fix error message not displaying when type list in form is empty
+** DONE: Add colour to pokemon type
 
 
 - Add lazy loading transitions
 - Try to generate my own select element
 - Fix cards grid layout to reorder in screen properly
 in order to access globally and remove the 'unsortedPokemons state'
-- Add colour to pokemon type based on type
 - Improve footer
 - Fix browser console warning:
 (The `value` prop supplied to <select> must be a scalar value if `multiple` is false.)

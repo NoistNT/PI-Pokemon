@@ -1,5 +1,28 @@
 import styled from 'styled-components'
 
+const typeColor = {
+  normal: '#7e7e7e',
+  fighting: '#f08030',
+  water: '#2855be',
+  electric: '#c5ab19',
+  grass: '#347a10',
+  ice: '#98d8d8',
+  fire: '#8d1812',
+  poison: '#8d15ac',
+  ground: '#705817',
+  flying: '#215872',
+  psychic: '#f85888',
+  bug: '#839710',
+  rock: '#524f49',
+  ghost: '#4a3866',
+  dragon: '#b45312',
+  dark: '#161616',
+  steel: '#5f5f75',
+  fairy: '#a85668',
+  unknown: '#ac2b5c',
+  shadow: '#181616'
+}
+
 export const CardContainer = styled.div`
   position: relative;
   overflow: hidden;
@@ -81,6 +104,6 @@ export const Types = styled.span`
   padding: 0.5rem 1rem;
   border-radius: 0.5rem;
   font-size: 0.95rem;
-  background-color: var(--types-bg-color);
+  background-color: ${(props) => typeColor[props.type] || '#999999'};
   color: var(--text-color);
 `
