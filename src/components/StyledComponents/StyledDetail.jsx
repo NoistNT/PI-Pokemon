@@ -19,7 +19,6 @@ export const CardContainer = styled.div`
   );
   box-shadow: 0 2px 4px var(--card-shadow);
   transition: all 0.3s ease;
-  cursor: pointer;
 
   &:hover::before {
     transform: scaleX(1);
