@@ -54,7 +54,7 @@ export const getPokemonByName = (name) => {
   return async (dispatch) => {
     dispatch({ type: GET_POKEMON_BY_NAME_PENDING })
     try {
-      const { data } = await axios.get(`${URL}/pokemon?name=${name}`)
+      const { data } = await axios.get(`${URL}/pokemon/name/${name}`)
 
       dispatch({ type: GET_POKEMON_BY_NAME_FULFILLED, payload: data })
     } catch (error) {
