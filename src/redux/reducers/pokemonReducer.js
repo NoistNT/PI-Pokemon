@@ -82,11 +82,19 @@ export const pokemonReducer = (state = initialState, { type, payload }) => {
       }
 
     case GET_POKEMONS_BY_TYPE:
-      const pokemonsFoundByType = [...state.allPokemons].filter((pokemon) =>
-        pokemon.type.includes(payload)
+      if (payload === '') {
+        return {
+          ...state,
+          pokemons: state.allPokemons,
+          isLoading: false,
+          error: null
+        }
+      }
+      const pokemonsByType = state.allPokemons.filter((pokemon) =>
+        pokemon.type?.some((type) => type.name === payload)
       )
 
-      if (!pokemonsFoundByType.length) {
+      if (!pokemonsByType.length) {
         return {
           ...state,
           isLoading: false,
@@ -97,7 +105,7 @@ export const pokemonReducer = (state = initialState, { type, payload }) => {
 
       return {
         ...state,
-        pokemons: pokemonsFoundByType,
+        pokemons: pokemonsByType,
         isLoading: false,
         error: null,
         filter: payload
@@ -134,7 +142,7 @@ export const pokemonReducer = (state = initialState, { type, payload }) => {
     case GET_POKEMONS_BY_SOURCE:
       let filterCondition
 
-      if (payload === 'database') {
+      if (payload === 'db') {
         filterCondition = (pokemon) => isNaN(pokemon.id)
       } else if (payload === 'api') {
         filterCondition = (pokemon) => !isNaN(pokemon.id)

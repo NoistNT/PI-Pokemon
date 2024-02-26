@@ -71,7 +71,7 @@ export default function Menu() {
   }
 
   const pokemonTypes = types.map((type) => (
-    <option key={type.id} value={type.name}>
+    <option key={type._id} value={type.name}>
       {capitalize(type.name)}
     </option>
   ))
@@ -91,7 +91,7 @@ export default function Menu() {
           >
             <option value="">--Source--</option>
             <option value="api">Originals</option>
-            <option value="database">User created</option>
+            <option value="db">User created</option>
           </SelectBox>
         </SelectContainer>
         <SelectContainer>

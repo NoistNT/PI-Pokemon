@@ -3,7 +3,7 @@ export const capitalize = (name) => {
 }
 
 export const types = (types) => {
-  return types?.map((type) => `${capitalize(type)} `)
+  return types?.map((type) => `${capitalize(type.name)} `)
 }
 
 export const sortPokemons = (pokemons, sortOption) => {

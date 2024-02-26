@@ -12,9 +12,10 @@ import default_image from '../../assets/default_img.webp'
 
 export default function Card({ pokemon }) {
   const { id, name, type, image } = pokemon
+
   const types = type.map((t) => (
-    <Types key={t} type={t}>
-      {capitalize(t)}
+    <Types key={t.name} type={t.name}>
+      {capitalize(t.name)}
     </Types>
   ))
 
