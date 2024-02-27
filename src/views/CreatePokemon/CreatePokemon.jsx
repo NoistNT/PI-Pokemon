@@ -39,7 +39,8 @@ export default function CreatePokemon() {
     speed: '',
     height: '',
     weight: '',
-    image: '',
+    image:
+      'https://res.cloudinary.com/dsg5ofk4e/image/upload/v1709047835/pokewiki/60f684ec58ea6ded58112eac2324bfa8.webp',
     type: []
   })
 
@@ -54,14 +55,19 @@ export default function CreatePokemon() {
 
     if (name === 'type') {
       if (pokemon.type.length < 2) {
-        setPokemon({ ...pokemon, type: [...pokemon.type, value] })
+        setPokemon({
+          ...pokemon,
+          type: [...pokemon.type, value]
+        })
       } else {
         toast.error('Max 2 types allowed', {
           position: 'bottom-center'
         })
       }
-    } else {
+    } else if (name === 'name' || name === 'image') {
       setPokemon({ ...pokemon, [name]: value })
+    } else {
+      setPokemon({ ...pokemon, [name]: +value })
     }
 
     setErrors(validatePokemon(name, value))
@@ -77,6 +83,8 @@ export default function CreatePokemon() {
   const handleSubmit = (e) => {
     e.preventDefault()
 
+    pokemon.image =
+      'https://res.cloudinary.com/dsg5ofk4e/image/upload/v1709047835/pokewiki/60f684ec58ea6ded58112eac2324bfa8.webp'
     if (
       Object.values(pokemon).some((value) => value === '') ||
       Object.keys(errors).length
@@ -98,7 +106,7 @@ export default function CreatePokemon() {
   }
 
   const pokemonTypes = types.map((type) => (
-    <option key={type.id} value={type.name}>
+    <option key={type._id} value={type.name}>
       {capitalize(type.name)}
     </option>
   ))

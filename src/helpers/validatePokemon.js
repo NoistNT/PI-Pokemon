@@ -43,7 +43,7 @@ export const validatePokemon = (input, value) => {
 
     case IMAGE:
       if (!value) {
-        errors.image = 'Image URL is required'
+        errors.image = 'If no image is provided, the default image will be used'
       } else if (
         !/^https?:\/\/[\w\\-]+(\.[\w\\-]+)+(?:[/#?][\w\-./?=&%]*)?(?:\.(?:jpg|jpeg|png|gif|bmp|svg))$/.test(
           value
