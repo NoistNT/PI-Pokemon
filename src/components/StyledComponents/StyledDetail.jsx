@@ -61,6 +61,7 @@ export const Image = styled.img`
   width: 18rem;
   height: 18rem;
   margin-bottom: 1.5rem;
+  filter: drop-shadow(0 2px 7px #101010);
   -webkit-box-reflect: below 1px
     linear-gradient(transparent, rgba(0, 0, 0, 0.1));
 `

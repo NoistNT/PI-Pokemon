@@ -41,7 +41,6 @@ export const CardContainer = styled.div`
   );
   box-shadow: 0 2px 4px var(--card-shadow);
   transition: all 0.3s ease;
-  cursor: pointer;
 
   &:hover::before {
     transform: scaleX(1);
@@ -52,7 +51,6 @@ export const CardContainer = styled.div`
   &:hover {
     transition: all 0.3s ease;
     border-color: #bdb7b749;
-    transform: translateY(-0.4rem);
     box-shadow: -1px 1px 1px #cacaca;
   }
 
@@ -79,17 +77,26 @@ export const Image = styled.img`
   position: relative;
   z-index: 1;
   border-radius: 0.5rem;
-  max-width: 300px;
+  max-width: 285px;
   height: auto;
+  margin-bottom: 1rem;
+  filter: drop-shadow(0 2px 6px #101020);
 `
 
 export const Name = styled.h2`
   position: relative;
   z-index: 1;
   text-align: center;
-  font-size: 1.7rem;
+  font-size: 1.6rem;
+  margin: 2.8rem 0 0.5rem 0;
   color: var(--text-color);
   text-shadow: 1px 0px 8px #272727;
+  transition: all 0.15s ease-in-out;
+
+  &:hover {
+    text-shadow: 0.5px 0px 7px #ffffff;
+    transition: all 0.15s ease-in-out;
+  }
 `
 
 export const TypesContainer = styled.div`
@@ -97,13 +104,44 @@ export const TypesContainer = styled.div`
   z-index: 1;
   display: flex;
   justify-content: center;
+  align-items: center;
+  padding: 0.3rem 0;
 `
 
 export const Types = styled.span`
   margin: 0.5rem;
-  padding: 0.5rem 1rem;
-  border-radius: 0.5rem;
-  font-size: 0.95rem;
+  padding: 0.4rem 1.5rem;
+  border-radius: 0.3rem;
+  font-size: 0.9rem;
+  text-shadow: 2px 2px 4px #272727;
   background-color: ${(props) => typeColor[props.type] || '#999999'};
   color: var(--text-color);
+`
+
+export const RemoveButton = styled.button`
+  position: absolute;
+  z-index: 2;
+  top: 0.4rem;
+  right: 0.2rem;
+  width: fit-content;
+  height: fit-content;
+  transition: all 0.15s ease-in-out;
+  background-color: transparent;
+  shadow: 1px 0px 8px #272727;
+  border: none;
+  opacity: 0.6;
+
+  &:hover {
+    opacity: 0.8;
+    cursor: pointer;
+    transition: all 0.15s ease-in-out;
+    filter: drop-shadow(0 2px 4px #ffffff);
+  }
+`
+
+export const RemoveButtonImg = styled.img`
+  z-index: 2;
+  width: 1.4rem;
+  height: 1.4rem;
+  transition: all 0.15s ease-in-out;
 `
