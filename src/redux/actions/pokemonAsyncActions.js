@@ -13,7 +13,10 @@ import {
   POST_POKEMON_PENDING,
   POST_POKEMON_FULFILLED,
   POST_POKEMON_REJECTED,
-  GET_TYPES
+  GET_TYPES,
+  REMOVE_POKEMON_BY_ID_PENDING,
+  REMOVE_POKEMON_BY_ID_FULFILLED,
+  REMOVE_POKEMON_BY_ID_REJECTED
 } from '../constants/pokemonConstants'
 
 const URL = import.meta.env.VITE_URL
@@ -77,6 +80,22 @@ export const postPokemon = (pokemon) => {
       dispatch({
         type: POST_POKEMON_REJECTED,
         payload: 'Failed to create pokemon. Please try again later.'
+      })
+    }
+  }
+}
+
+export const removePokemonById = (id) => {
+  return async (dispatch) => {
+    dispatch({ type: REMOVE_POKEMON_BY_ID_PENDING })
+    try {
+      const data = await axios.delete(`${URL}/pokemon/${id}`)
+
+      dispatch({ type: REMOVE_POKEMON_BY_ID_FULFILLED, payload: data })
+    } catch (error) {
+      dispatch({
+        type: REMOVE_POKEMON_BY_ID_REJECTED,
+        payload: 'Failed to remove pokemon. Please try again later.'
       })
     }
   }

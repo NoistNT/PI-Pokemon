@@ -14,11 +14,15 @@ import {
   POST_POKEMON_PENDING,
   POST_POKEMON_FULFILLED,
   POST_POKEMON_REJECTED,
+  REMOVE_POKEMON_BY_ID_PENDING,
+  REMOVE_POKEMON_BY_ID_FULFILLED,
+  REMOVE_POKEMON_BY_ID_REJECTED,
   GET_TYPES,
   SET_CURRENT_PAGE,
   SORT_POKEMONS,
   CLEAN_DETAIL,
-  RESET_FILTERS
+  RESET_FILTERS,
+  REMOVE_POKEMON_BY_ID_LOCAL
 } from '../constants/pokemonConstants'
 
 const initialState = {
@@ -40,6 +44,7 @@ export const pokemonReducer = (state = initialState, { type, payload }) => {
     case GET_POKEMON_BY_ID_PENDING:
     case GET_POKEMON_BY_NAME_PENDING:
     case POST_POKEMON_PENDING:
+    case REMOVE_POKEMON_BY_ID_PENDING:
       return {
         ...state,
         isLoading: true,
@@ -50,6 +55,7 @@ export const pokemonReducer = (state = initialState, { type, payload }) => {
     case GET_POKEMON_BY_ID_REJECTED:
     case GET_POKEMON_BY_NAME_REJECTED:
     case POST_POKEMON_REJECTED:
+    case REMOVE_POKEMON_BY_ID_REJECTED:
       return {
         ...state,
         isLoading: false,
@@ -143,14 +149,23 @@ export const pokemonReducer = (state = initialState, { type, payload }) => {
       let filterCondition
 
       if (payload === 'db') {
-        filterCondition = (pokemon) => isNaN(pokemon.id)
+        filterCondition = (pokemon) => pokemon.userCreated
       } else if (payload === 'api') {
-        filterCondition = (pokemon) => !isNaN(pokemon.id)
+        filterCondition = (pokemon) => !pokemon.userCreated
       } else {
         filterCondition = () => true
       }
 
       const filteredPokemons = state.allPokemons.filter(filterCondition)
+
+      if (!filteredPokemons.length) {
+        return {
+          ...state,
+          isLoading: false,
+          error: `No pokémons created by users yet. Why don't you try creating one yourself?`,
+          source: payload
+        }
+      }
 
       return {
         ...state,
@@ -158,6 +173,21 @@ export const pokemonReducer = (state = initialState, { type, payload }) => {
         isLoading: false,
         error: null,
         source: payload
+      }
+
+    case REMOVE_POKEMON_BY_ID_FULFILLED:
+      return {
+        ...state,
+        isLoading: false,
+        error: null
+      }
+
+    case REMOVE_POKEMON_BY_ID_LOCAL:
+      return {
+        ...state,
+        pokemons: state.pokemons.filter((pokemon) => pokemon.id !== payload),
+        isLoading: false,
+        error: null
       }
 
     case SET_CURRENT_PAGE:
