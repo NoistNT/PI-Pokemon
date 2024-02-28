@@ -10,21 +10,14 @@ import {
   Types
 } from '../StyledComponents/StyledCard'
 import default_image from '../../assets/default_img.webp'
-import icon_remove from '../../assets/icon_remove.svg'
 import { removePokemonById } from '../../redux/actions/pokemonAsyncActions'
 import { removePokemonByIdLocal } from '../../redux/actions/pokemonActions'
 
-import Remove from './remove-button'
+import Remove from './Remove'
 
 export default function Card({ pokemon }) {
   const { id, name, type, image, userCreated } = pokemon
   const dispatch = useDispatch()
-
-  const types = type.map((t) => (
-    <Types key={t.name} type={t.name}>
-      {capitalize(t.name)}
-    </Types>
-  ))
 
   const handleRemove = () => {
     dispatch(removePokemonById(id))
@@ -33,18 +26,18 @@ export default function Card({ pokemon }) {
 
   return (
     <CardContainer>
-      {userCreated ? (
-        <Remove
-          alt="remove-pokemon"
-          handleRemove={handleRemove}
-          src={icon_remove}
-        />
-      ) : null}
+      {userCreated ? <Remove handleRemove={handleRemove} /> : null}
       <Image alt={name} className="lazy" data-src={image} src={default_image} />
       <Link to={`/pokemon/${id}`}>
         <Name>{capitalize(name)}</Name>
       </Link>
-      <TypesContainer>{types}</TypesContainer>
+      <TypesContainer>
+        {type.map((t) => (
+          <Types key={t.name} type={t.name}>
+            {capitalize(t.name)}
+          </Types>
+        ))}
+      </TypesContainer>
     </CardContainer>
   )
 }

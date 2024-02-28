@@ -145,3 +145,85 @@ export const RemoveButtonImg = styled.img`
   height: 1.4rem;
   transition: all 0.15s ease-in-out;
 `
+
+export const ModalContainer = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #10101090;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 5;
+  transition: all 0.3s ease;
+`
+
+export const Modal = styled.div`
+  background-color: #2a2749;
+  border-style: solid;
+  border-color: #ffffff36;
+  border-width: 1px;
+  max-width: 28rem;
+  width: 100%;
+  padding: 1rem 0;
+  box-shadow: -1px 3px 28px -4px rgba(180, 200, 255, 0.2);
+  border-radius: 0.35rem;
+  color: var(--text-color);
+  transition: all 0.3s ease;
+`
+
+export const ModalTitle = styled.p`
+  font-size: 1.25rem;
+  color: var(--text-color);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
+  text-align: center;
+  margin: 0;
+  margin-bottom: 1.3rem;
+`
+
+export const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.2rem;
+  width: 100%;
+  z-index: 10;
+`
+
+export const ButtonNo = styled.button`
+  padding: 0.5rem 1rem;
+  min-width: 5rem;
+  font-size: 0.9rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
+  color: var(--text-color);
+  background-color: rgb(51, 153, 255, 0.6);
+  border: none;
+  border-radius: 0.3rem;
+  padding: 0.6rem 1.6rem;
+  transition: all 0.15s ease-in-out;
+
+  &:hover {
+    cursor: pointer;
+    background-color: rgb(51, 153, 255, 0.9);
+    transition: all 0.15s ease-in-out;
+  }
+`
+
+export const ButtonYes = styled.button`
+  padding: 0.5rem 1rem;
+  min-width: 5rem;
+  font-size: 0.9rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
+  color: var(--text-color);
+  background-color: rgb(255, 51, 51, 0.6);
+  border: none;
+  border-radius: 0.3rem;
+  padding: 0.6rem 1.6rem;
+  transition: all 0.15s ease-in-out;
+
+  &:hover {
+    cursor: pointer;
+    background-color: rgb(255, 51, 51, 0.9);
+    transition: all 0.15s ease-in-out;
+  }
+`
