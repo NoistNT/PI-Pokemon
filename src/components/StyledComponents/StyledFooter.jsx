@@ -2,7 +2,8 @@ import styled from 'styled-components'
 
 export const StyledFooter = styled.footer`
   text-align: center;
-  line-height: 0.75rem;
+  line-height: 3rem;
+  background-color: #101010;
   color: var(--text-color);
   padding: 1rem 0;
   opacity: 70%;

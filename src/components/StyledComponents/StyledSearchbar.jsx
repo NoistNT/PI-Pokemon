@@ -15,7 +15,7 @@ export const Container = styled.div`
   }
 `
 
-export const Input = styled.input`
+export const Search = styled.input`
   outline: 0;
   border: none;
   border-radius: 0.25rem;
@@ -24,6 +24,7 @@ export const Input = styled.input`
   font-size: 0.9rem;
   text-align: center;
   padding: 0.5rem;
+  transition: all 0.4s ease-in-out;
   font-family: 'Open Sans', Inter, system-ui, Avenir, Helvetica, Arial,
     sans-serif;
 
@@ -35,6 +36,14 @@ export const Input = styled.input`
   @media (min-width: 426px) {
     margin: auto;
     height: 1rem;
+    transition: all 0.4s ease-in-out;
+  }
+
+  @media (min-width: 1025px) {
+    height: 1.3rem;
+    width: 20rem;
+    font-size: 0.95rem;
+    transition: all 0.4s ease-in-out;
   }
 `
 

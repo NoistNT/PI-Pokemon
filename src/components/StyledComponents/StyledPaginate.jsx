@@ -4,6 +4,10 @@ export const Container = styled.nav`
   display: flex;
   justify-content: center;
   margin: 1.5rem 0;
+
+  @media (min-width: 1026px) {
+    margin: 3rem 0;
+  }
 `
 
 export const PageLink = styled.button`

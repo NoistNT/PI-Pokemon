@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom'
 
 import {
   Container,
-  Input,
+  Search,
   Button,
   ButtonText
 } from '../StyledComponents/StyledSearchbar'
@@ -60,7 +60,7 @@ export default function Searchbar() {
       <Button type="button" onClick={handleClick}>
         <ButtonText>All Pokémons</ButtonText>
       </Button>
-      <Input
+      <Search
         placeholder="Search pokémon"
         type="text"
         value={name}
