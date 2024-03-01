@@ -1,16 +1,15 @@
 <a name="readme-top"></a>
 
-<!-- PROJECT LOGO -->
 <br />
 <div align="center">
   <a href="https://pokewikiclient.vercel.app">
     <img src="src/assets/logo.webp" alt="PokeWiki Logo" width="500" height="200">
   </a>
 
-  <h1 align="center">Pokewiki</h1>
+  <h1 align="center">Pokewiki - Client App</h1>
 
   <p align="center">
-    An awesome wiki about pokémon!
+    A comprehensive Pokémon SPA (Single Page Application) with Pokédex-style features.
     <br />
     <a href="https://pokewikiclient.vercel.app">View Demo</a>
     ·
@@ -22,17 +21,32 @@
 
 
 
-<!-- ABOUT THE PROJECT -->
 ## About The Project
 
 <div align="center">
-   <a href="https://pokewikiclient.vercel.app">
-      <img src="src/assets/pokeball.svg" alt="PokeWiki" width="80" height="80">
-   </a>
+  <a href="https://pokewikiclient.vercel.app">
+    <img src="src/assets/pokeball.svg" alt="PokeWiki" width="80" height="80">
+  </a>
 </div>
-<br/>
 
-Design and development of a Single Page Application (SPA) providing information about Pokémon in a Pokédex-style format. This includes Pokémon search by name, a controlled and validated form with error handling for Pokémon creation, combined filtering by types and origin (from database, user-created or original ones from the API), sorting by attack, defense, speed, and health points, as well as a detailed view of a specifically pokémon information. Implementation of lazy-loading is also incorporated. Additionally, it includes the necessary endpoints for data fetching.
+This Single Page Application (SPA) serves as a client-side interface for the Pokewiki project. It offers a user-friendly and interactive experience for exploring the world of Pokémon.
+
+**Key Features:**
+
+* **Pokémon Search:** Find Pokémon by name using a search bar.
+* **Pokémon Creation:** Add new Pokémon with a controlled and validated form, including error handling.
+* **Filtering:** Combine filters by:
+    * **Types:** Filter Pokémon by their types (e.g., Fire, Water, Grass).
+    * **Origin:** Choose Pokémon from the database (user-created), or original (fetched from the API).
+* **Sorting:** Sort the Pokémon list by:
+    * **Attack**
+    * **Defense**
+    * **Speed**
+    * **Height**
+    * **Weight**
+    * **Health Points (HP)**
+* **Detailed View:** Gain extensive information about a specific Pokémon, including its stats, abilities, and image.
+* **Lazy Loading:** Improves performance by loading data only when needed.
 
 ## Built With
 
@@ -41,28 +55,26 @@ Design and development of a Single Page Application (SPA) providing information 
 [![JavaScript](https://img.shields.io/badge/JavaScript-yellow.svg?style=for-the-badge&logo=javascript&logoColor=white)](https://reactjs.org/)
 [![React](https://img.shields.io/badge/React-blue.svg?style=for-the-badge&logo=react&logoColor=white)](https://reactjs.org/)
 [![Redux](https://img.shields.io/badge/Redux-purple.svg?style=for-the-badge&logo=redux&logoColor=white)](https://redux.js.org/)
-[![Node.js](https://img.shields.io/badge/Node.js-green.svg?style=for-the-badge&logo=node.js&logoColor=white)](https://nodejs.org/)
-[![Express](https://img.shields.io/badge/Express-gray.svg?style=for-the-badge&logo=express&logoColor=white)](https://expressjs.com/)
-[![Sequelize](https://img.shields.io/badge/Sequelize-red.svg?style=for-the-badge&logo=sequelize&logoColor=white)](https://sequelize.org/)
-[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-blue.svg?style=for-the-badge&logo=postgresql&logoColor=white)](https://www.postgresql.org/)
+[![Styled-Components](https://img.shields.io/badge/Styledcomponents-blue.svg?style=for-the-badge&logo=styledcomponents&logoColor=white)](https://styled-components.com/)
 
 
-
-<!-- GETTING STARTED -->
 ## Getting Started
 
-Follow these straightforward steps to get your local copy up and running
+To set up your local development environment, follow these steps:
+
+### Prerequisites
+
+- Node.js and npm (or pnpm, yarn) installed on your system.
 
 ### Installation
 
-1. Clone the repo
-   <br/>
-   <br/>
-   ```sh
+1. Clone the repository:
+
+   ```bash
    git clone https://github.com/NoistNT/Pokemon-Client.git
    ```
-3. Install NPM packages
    <br/>
+2. Install dependencies
    <br/>
    npm
    ```sh
@@ -76,8 +88,8 @@ Follow these straightforward steps to get your local copy up and running
    ```sh
    yarn install
    ```
-4. Run client
    <br/>
+3. Run the client using either Vite or Create React App:
    <br/>
    Vite
    ```sh
