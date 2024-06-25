@@ -1,31 +1,31 @@
-import { Toaster, toast } from 'sonner'
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { Toaster, toast } from 'sonner'
 
-import { getTypes, postPokemon } from '../../redux/actions/pokemonAsyncActions'
-import { capitalize, resetPokemon } from '../../helpers/helpers'
-import { validatePokemon } from '../../helpers/validatePokemon'
+import icon_remove from '@/assets/icon_remove.svg'
+import Loader from '@/components/Loader/Loader'
 import {
-  Container,
-  FormContainer,
-  Title,
-  Form,
-  FormItem,
-  Label,
-  Input,
-  SelectBox,
-  LabelInputContainer,
-  TypeListContainer,
-  TypeList,
-  IconRemoveType,
-  ErrorSpan,
-  ButtonsContainer,
-  SubmitButton,
   ButtonText,
-  PokemonTypesList
-} from '../../components/StyledComponents/StyledForm'
-import Loader from '../../components/Loader/Loader'
-import icon_remove from '../../assets/icon_remove.svg'
+  ButtonsContainer,
+  Container,
+  ErrorSpan,
+  Form,
+  FormContainer,
+  FormItem,
+  IconRemoveType,
+  Input,
+  Label,
+  LabelInputContainer,
+  PokemonTypesList,
+  SelectBox,
+  SubmitButton,
+  Title,
+  TypeList,
+  TypeListContainer
+} from '@/components/StyledComponents/StyledForm'
+import { capitalize, resetPokemon } from '@/helpers/helpers'
+import { validatePokemon } from '@/helpers/validatePokemon'
+import { getTypes, postPokemon } from '@/redux/actions/pokemonAsyncActions'
 
 export default function CreatePokemon() {
   const dispatch = useDispatch()

@@ -1,10 +1,10 @@
-import error_img from '../../assets/error_img.webp'
+import error_img from '@/assets/error_img.webp'
 import {
   Container,
   Img,
-  Title,
-  Message
-} from '../StyledComponents/StyledError404'
+  Message,
+  Title
+} from '@/components/StyledComponents/StyledError404'
 
 export default function Error404() {
   return (

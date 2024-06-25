@@ -1,7 +1,10 @@
 import { useDispatch, useSelector } from 'react-redux'
 
-import { Container, PageLink } from '../StyledComponents/StyledPaginate'
-import { setCurrentPage } from '../../redux/actions/pokemonActions'
+import {
+  Container,
+  PageLink
+} from '@/components/StyledComponents/StyledPaginate'
+import { setCurrentPage } from '@/redux/actions/pokemonActions'
 
 export default function Paginate({ totalPages }) {
   const { currentPage } = useSelector((state) => state.pokemonReducer)

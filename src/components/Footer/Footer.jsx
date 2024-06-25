@@ -1,4 +1,4 @@
-import { StyledFooter } from '../StyledComponents/StyledFooter'
+import { StyledFooter } from '@/components/StyledComponents/StyledFooter'
 
 export default function Footer() {
   return (

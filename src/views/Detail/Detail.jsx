@@ -1,20 +1,20 @@
 import { useEffect } from 'react'
-import { useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
+import { useParams } from 'react-router-dom'
 
-import { capitalize, types } from '../../helpers/helpers'
-import Loader from '../../components/Loader/Loader'
-import { getPokemonById } from '../../redux/actions/pokemonAsyncActions'
-import { cleanDetail } from '../../redux/actions/pokemonActions'
+import Loader from '@/components/Loader/Loader'
 import {
-  CardContainer,
-  Title,
-  Image,
-  Name,
   Attribute,
+  CardContainer,
   Highlight,
-  Item
-} from '../../components/StyledComponents/StyledDetail'
+  Image,
+  Item,
+  Name,
+  Title
+} from '@/components/StyledComponents/StyledDetail'
+import { capitalize, types } from '@/helpers/helpers'
+import { cleanDetail } from '@/redux/actions/pokemonActions'
+import { getPokemonById } from '@/redux/actions/pokemonAsyncActions'
 
 export default function Detail() {
   const dispatch = useDispatch()

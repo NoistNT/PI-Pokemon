@@ -1,25 +1,25 @@
 import { useCallback, useEffect, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
-import { capitalize } from '../../helpers/helpers'
-import { getTypes } from '../../redux/actions/pokemonAsyncActions'
 import {
-  getPokemonsBySource,
-  getPokemonsSorted,
-  getPokemonsByType,
-  setCurrentPage,
-  resetFilters
-} from '../../redux/actions/pokemonActions'
-import {
+  Button,
+  ButtonText,
   Container,
-  Title,
-  SelectGroup,
-  SelectContainer,
   Label,
   SelectBox,
-  Button,
-  ButtonText
-} from '../StyledComponents/StyledMenu'
+  SelectContainer,
+  SelectGroup,
+  Title
+} from '@/components/StyledComponents/StyledMenu'
+import { capitalize } from '@/helpers/helpers'
+import {
+  getPokemonsBySource,
+  getPokemonsByType,
+  getPokemonsSorted,
+  resetFilters,
+  setCurrentPage
+} from '@/redux/actions/pokemonActions'
+import { getTypes } from '@/redux/actions/pokemonAsyncActions'
 
 export default function Menu() {
   const dispatch = useDispatch()

@@ -1,12 +1,12 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
-import { getPokemons } from '../../redux/actions/pokemonAsyncActions'
-import { Message } from '../../components/StyledComponents/StyledMessage'
-import Cards from '../../components/Cards/Cards'
-import Loader from '../../components/Loader/Loader'
-import Menu from '../../components/Menu/Menu'
-import Paginate from '../../components/Paginate/Paginate'
+import Cards from '@/components/Cards/Cards'
+import Loader from '@/components/Loader/Loader'
+import Menu from '@/components/Menu/Menu'
+import Paginate from '@/components/Paginate/Paginate'
+import { Message } from '@/components/StyledComponents/StyledMessage'
+import { getPokemons } from '@/redux/actions/pokemonAsyncActions'
 
 export default function Home() {
   const dispatch = useDispatch()

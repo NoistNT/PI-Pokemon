@@ -1,4 +1,7 @@
-import { LoadingContainer, Ring } from '../StyledComponents/StyledLoader'
+import {
+  LoadingContainer,
+  Ring
+} from '@/components/StyledComponents/StyledLoader'
 
 export default function Loader() {
   return (

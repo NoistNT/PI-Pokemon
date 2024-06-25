@@ -1,19 +1,19 @@
-import { toast } from 'sonner'
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import { toast } from 'sonner'
 
 import {
-  Container,
-  Search,
   Button,
-  ButtonText
-} from '../StyledComponents/StyledSearchbar'
-import { setCurrentPage } from '../../redux/actions/pokemonActions'
+  ButtonText,
+  Container,
+  Search
+} from '@/components/StyledComponents/StyledSearchbar'
+import { setCurrentPage } from '@/redux/actions/pokemonActions'
 import {
   getPokemonByName,
   getPokemons
-} from '../../redux/actions/pokemonAsyncActions'
+} from '@/redux/actions/pokemonAsyncActions'
 
 export default function Searchbar() {
   const dispatch = useDispatch()

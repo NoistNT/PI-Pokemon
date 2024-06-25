@@ -1,8 +1,8 @@
 import { useNavigate } from 'react-router-dom'
 
-import logo from '../../assets/logo.webp'
-
 import styles from './Landing.module.css'
+
+import logo from '@/assets/logo.webp'
 
 export default function Landing() {
   const navigate = useNavigate()

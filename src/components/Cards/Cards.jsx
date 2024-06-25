@@ -1,7 +1,10 @@
 import { useCallback, useEffect } from 'react'
 
-import { CardsContainer, Container } from '../StyledComponents/StyledCards'
-import Card from '../Card/Card'
+import Card from '@/components/Card/Card'
+import {
+  CardsContainer,
+  Container
+} from '@/components/StyledComponents/StyledCards'
 
 export default function Cards({ pokemons }) {
   const handleIntersection = (entries, observer) => {

@@ -1,9 +1,12 @@
 import { useState } from 'react'
 
-import { RemoveButton, RemoveButtonImg } from '../StyledComponents/StyledCard'
-import icon_remove from '../../assets/icon_remove.svg'
-
 import RemovePokemonModal from './RemovePokemonModal'
+
+import icon_remove from '@/assets/icon_remove.svg'
+import {
+  RemoveButton,
+  RemoveButtonImg
+} from '@/components/StyledComponents/StyledCard'
 
 export default function Remove({ handleRemove }) {
   const [isOpen, setIsOpen] = useState(false)

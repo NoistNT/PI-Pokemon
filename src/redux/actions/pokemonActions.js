@@ -1,12 +1,12 @@
 import {
-  GET_POKEMONS_BY_TYPE,
-  GET_POKEMONS_BY_SOURCE,
-  REMOVE_POKEMON_BY_ID_LOCAL,
-  SORT_POKEMONS,
-  SET_CURRENT_PAGE,
   CLEAN_DETAIL,
-  RESET_FILTERS
-} from '../constants/pokemonConstants'
+  GET_POKEMONS_BY_SOURCE,
+  GET_POKEMONS_BY_TYPE,
+  REMOVE_POKEMON_BY_ID_LOCAL,
+  RESET_FILTERS,
+  SET_CURRENT_PAGE,
+  SORT_POKEMONS
+} from '@/redux/constants/pokemonConstants'
 
 export const getPokemonsByType = (type) => {
   return { type: GET_POKEMONS_BY_TYPE, payload: type }

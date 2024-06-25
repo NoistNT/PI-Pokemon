@@ -1,19 +1,19 @@
-import { Link } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
+import { Link } from 'react-router-dom'
 
-import { capitalize } from '../../helpers/helpers'
+import Remove from './Remove'
+
+import default_image from '@/assets/default_img.webp'
 import {
   CardContainer,
   Image,
   Name,
-  TypesContainer,
-  Types
-} from '../StyledComponents/StyledCard'
-import default_image from '../../assets/default_img.webp'
-import { removePokemonById } from '../../redux/actions/pokemonAsyncActions'
-import { removePokemonByIdLocal } from '../../redux/actions/pokemonActions'
-
-import Remove from './Remove'
+  Types,
+  TypesContainer
+} from '@/components/StyledComponents/StyledCard'
+import { capitalize } from '@/helpers/helpers'
+import { removePokemonByIdLocal } from '@/redux/actions/pokemonActions'
+import { removePokemonById } from '@/redux/actions/pokemonAsyncActions'
 
 export default function Card({ pokemon }) {
   const { id, name, type, image, userCreated } = pokemon

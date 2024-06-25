@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import { typeColor } from '../../components/StyledComponents/Colours'
+import { typeColor } from '@/components/StyledComponents/Colours'
 
 export const CardContainer = styled.div`
   position: relative;

@@ -1,11 +1,11 @@
 import {
-  ButtonNo,
   ButtonContainer,
+  ButtonNo,
+  ButtonYes,
   Modal,
   ModalContainer,
-  ModalTitle,
-  ButtonYes
-} from '../StyledComponents/StyledCard'
+  ModalTitle
+} from '@/components/StyledComponents/StyledCard'
 
 export default function RemovePokemonModal({ handleRemove, isOpen, onClose }) {
   const modalContent = (
