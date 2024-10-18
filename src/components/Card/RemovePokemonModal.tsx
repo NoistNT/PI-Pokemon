@@ -7,7 +7,13 @@ import {
   ModalTitle
 } from '@/components/StyledComponents/StyledCard'
 
-export default function RemovePokemonModal({ handleRemove, isOpen, onClose }) {
+interface Props {
+  handleRemove: () => void
+  isOpen: boolean
+  onClose: () => void
+}
+
+export function RemovePokemonModal({ handleRemove, isOpen, onClose }: Props) {
   const modalContent = (
     <Modal>
       <ModalTitle>Remove Pokemon?</ModalTitle>
