@@ -21,11 +21,14 @@
     "jsx": "preserve",
     "incremental": true,
     "plugins": [{ "name": "next" }],
+    "types": ["vite/client"],
     "paths": {
       "@/types/*": ["./src/types/*"],
       "@/components/*": ["./src/components/*"],
       "@/utils/*": ["./src/utils/*"],
-      "@/redux/*": ["./src/redux/*"]
+      "@/redux/*": ["./src/redux/*"],
+      "@/helpers/*": ["./src/helpers/*"],
+      "@/views/*": ["./src/views/*"]
     },
     "target": "ES2017"
   },
