@@ -1,4 +1,8 @@
+import type { PokemonTypesProps } from '@/types/types'
+
 import styled from 'styled-components'
+
+import { typeColor } from '@/types/types'
 
 export const CardContainer = styled.div`
   position: relative;
@@ -20,18 +24,6 @@ export const CardContainer = styled.div`
   box-shadow: 0 2px 4px var(--card-shadow);
   transition: all 0.3s ease;
 
-  &:hover::before {
-    transform: scaleX(1);
-    transition: all 0.3s ease;
-    border-color: #ffffff90;
-  }
-
-  &:hover {
-    transition: all 0.3s ease;
-    border-color: #ffffff36;
-    box-shadow: -1px 1px 2px #7e5994;
-  }
-
   &::before {
     content: '';
     position: absolute;
@@ -49,8 +41,8 @@ export const CardContainer = styled.div`
 export const Title = styled.h2`
   position: relative;
   z-index: 1;
+  margin: 1rem 0 0 0;
   font-size: 2.5rem;
-  margin-bottom: 1.5rem;
   color: var(--text-color);
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
 `
@@ -60,21 +52,34 @@ export const Image = styled.img`
   z-index: 1;
   width: 18rem;
   height: 18rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
   filter: drop-shadow(0 2px 7px #101010);
   -webkit-box-reflect: below 1px
     linear-gradient(transparent, rgba(0, 0, 0, 0.1));
 `
 
-export const Name = styled.h3`
+export const Stats = styled.h3`
   position: relative;
+  display: inline-flex;
+  align-items: flex-start;
+  width: 90%;
+  padding: 0.5rem 0.5rem 0.5rem 0;
+  margin-bottom: 0.5rem;
   z-index: 1;
+  font-weight: 600;
+  font-size: 1.3rem;
+  border-bottom: 1px solid #ffffff36;
+`
+
+export const Types = styled.span<PokemonTypesProps>`
   position: relative;
-  z-index: 1;
-  font-size: 2rem;
-  margin-bottom: 1rem;
+  padding: 0.3rem 0.6rem;
+  border-radius: 0.3rem;
+  font-size: 0.9rem;
+  text-shadow: 2px 2px 4px #272727;
+  background-color: ${(props) =>
+    typeColor[props.type as keyof typeof typeColor] || '#999999'};
   color: var(--text-color);
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
 `
 
 export const Attribute = styled.span`
@@ -101,6 +106,7 @@ export const Highlight = styled.p`
   z-index: 1;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin: 0.5rem;
   font-size: 1.07rem;
   background-color: rgb(255, 255, 255, 0.2);

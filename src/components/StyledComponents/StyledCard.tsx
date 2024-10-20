@@ -1,32 +1,8 @@
+import type { PokemonTypesProps } from '@/types/types'
+
 import styled from 'styled-components'
 
-import { typeColor } from '@/components/StyledComponents/Colours'
-
-export type PokemonType =
-  | 'normal'
-  | 'fighting'
-  | 'water'
-  | 'electric'
-  | 'grass'
-  | 'ice'
-  | 'fire'
-  | 'poison'
-  | 'ground'
-  | 'flying'
-  | 'psychic'
-  | 'bug'
-  | 'rock'
-  | 'ghost'
-  | 'dragon'
-  | 'dark'
-  | 'steel'
-  | 'fairy'
-  | 'unknown'
-  | 'shadow'
-
-interface Props {
-  type: PokemonType
-}
+import { typeColor } from '@/types/types'
 
 export const CardContainer = styled.div`
   position: relative;
@@ -113,13 +89,14 @@ export const TypesContainer = styled.div`
   padding: 0.3rem 0;
 `
 
-export const Types = styled.span<Props>`
+export const Types = styled.span<PokemonTypesProps>`
   margin: 0.5rem;
   padding: 0.4rem 1.5rem;
   border-radius: 0.3rem;
   font-size: 0.9rem;
   text-shadow: 2px 2px 4px #272727;
-  background-color: ${(props) => typeColor[props.type] || '#999999'};
+  background-color: ${(props) =>
+    typeColor[props.type as keyof typeof typeColor] || '#999999'};
   color: var(--text-color);
 `
 
@@ -132,7 +109,7 @@ export const RemoveButton = styled.button`
   height: fit-content;
   transition: all 0.15s ease-in-out;
   background-color: transparent;
-  shadow: 1px 0px 8px #272727;
+  box-shadow: 1px 0px 8px #272727;
   border: none;
   opacity: 0.6;
 
