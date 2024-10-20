@@ -8,7 +8,6 @@ module.exports = {
   extends: [
     require.resolve('@vercel/style-guide/eslint/typescript'),
     require.resolve('@vercel/style-guide/eslint/react'),
-    require.resolve('@vercel/style-guide/eslint/next'),
     'plugin:prettier/recommended'
   ],
   parserOptions: {
@@ -102,7 +101,6 @@ module.exports = {
     '@typescript-eslint/restrict-template-expressions': 'off',
     '@typescript-eslint/require-await': 'off',
     '@typescript-eslint/unbound-method': 'off',
-    '@next/next/no-img-element': 'off',
     'jsx-a11y/click-events-have-key-events': 'off',
     'jsx-a11y/heading-has-content': 'off',
     'jsx-a11y/no-static-element-interactions': 'off'
