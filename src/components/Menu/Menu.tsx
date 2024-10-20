@@ -1,5 +1,4 @@
 import { useCallback, useEffect, useRef } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
 
 import {
   Button,
@@ -13,66 +12,69 @@ import {
 } from '@/components/StyledComponents/StyledMenu'
 import { capitalize } from '@/helpers/helpers'
 import {
-  getPokemonsBySource,
-  getPokemonsByType,
-  getPokemonsSorted,
   resetFilters,
-  setCurrentPage
+  setCurrentPage,
+  setSort,
+  setSource,
+  setType
 } from '@/redux/actions/pokemonActions'
 import { getTypes } from '@/redux/actions/pokemonAsyncActions'
+import { useAppDispatch, useAppSelector } from '@/redux/hooks'
 
 export default function Menu() {
-  const dispatch = useDispatch()
-  const selectSourceRef = useRef(null)
-  const selectSortRef = useRef(null)
-  const selectTypesRef = useRef(null)
-  const { types } = useSelector((state) => state.pokemonReducer)
+  const dispatch = useAppDispatch()
+  const selectSourceRef = useRef<HTMLSelectElement>(null)
+  const selectSortRef = useRef<HTMLSelectElement>(null)
+  const selectTypesRef = useRef<HTMLSelectElement>(null)
+  const { types } = useAppSelector(({ pokemons }) => pokemons)
 
   useEffect(() => {
-    dispatch(getTypes())
-  }, [dispatch])
+    if (!types.length) {
+      dispatch(getTypes())
+    }
+  }, [dispatch, types])
 
   const handleSource = useCallback(
-    (e) => {
-      const selectedOption = e.target.value
-
+    (value: string) => {
       dispatch(setCurrentPage(1))
-      dispatch(getPokemonsBySource(selectedOption))
+      dispatch(setSource(value))
     },
     [dispatch]
   )
 
   const handleSort = useCallback(
-    (e) => {
-      const selectedSort = e.target.value
-
+    (value: string) => {
       dispatch(setCurrentPage(1))
-      dispatch(getPokemonsSorted(selectedSort))
+      dispatch(setSort(value))
     },
     [dispatch]
   )
 
   const handleTypes = useCallback(
-    (e) => {
-      const selectedType = e.target.value
-
+    (value: string) => {
       dispatch(setCurrentPage(1))
-      dispatch(getPokemonsByType(selectedType))
+      dispatch(setType(value))
     },
     [dispatch]
   )
 
   const handleReset = () => {
-    selectSourceRef.current.value = ''
-    selectSortRef.current.value = ''
-    selectTypesRef.current.value = ''
+    if (selectSourceRef.current) {
+      selectSourceRef.current.value = ''
+    }
+    if (selectSortRef.current) {
+      selectSortRef.current.value = ''
+    }
+    if (selectTypesRef.current) {
+      selectTypesRef.current.value = ''
+    }
     dispatch(resetFilters())
     dispatch(setCurrentPage(1))
   }
 
-  const pokemonTypes = types.map((type) => (
-    <option key={type._id} value={type.name}>
-      {capitalize(type.name)}
+  const pokemonTypes = types.map(({ id, name }) => (
+    <option key={id} value={name}>
+      {capitalize(name)}
     </option>
   ))
 
@@ -87,9 +89,12 @@ export default function Menu() {
             id="filter"
             name="filter"
             title="filter"
-            onChange={handleSource}
+            onChange={(e) => handleSource(e.target.value)}
           >
-            <option value="">--Source--</option>
+            <option disabled selected value="">
+              Select source
+            </option>
+            <option value="all">All Pokemons</option>
             <option value="api">Originals</option>
             <option value="db">User created</option>
           </SelectBox>
@@ -101,9 +106,11 @@ export default function Menu() {
             id="sort"
             name="sort"
             title="sort"
-            onChange={handleSort}
+            onChange={(e) => handleSort(e.target.value)}
           >
-            <option value="">--Sorting--</option>
+            <option disabled selected value="">
+              Select sort
+            </option>
             <option value="asc">A to Z</option>
             <option value="desc">Z to A</option>
             <option value="higherAtk">Higher attack</option>
@@ -123,15 +130,18 @@ export default function Menu() {
             id="types"
             name="types"
             title="types"
-            onChange={handleTypes}
+            onChange={(e) => handleTypes(e.target.value)}
           >
-            <option value="">--Types--</option>
+            <option disabled selected value="">
+              Select a type
+            </option>
+            <option value="all">All</option>
             {pokemonTypes}
           </SelectBox>
         </SelectContainer>
       </SelectGroup>
       <Button type="button" onClick={handleReset}>
-        <ButtonText>Reset</ButtonText>
+        <ButtonText>Reset filters</ButtonText>
       </Button>
     </Container>
   )
