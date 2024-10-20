@@ -43,9 +43,7 @@ export default function Home() {
       <Menu />
       <Paginate totalPages={totalPages} />
       {!currentPokemons.length ? (
-        <Message>
-          No pokemons created by users yet. Why don&apos;t you try creating one?
-        </Message>
+        <Message>No pokemons found.</Message>
       ) : (
         <Cards pokemons={currentPokemons} />
       )}
