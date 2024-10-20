@@ -18,3 +18,9 @@ export const setSource = createAction(
 export const setSort = createAction('pokemons/setSort', (sort: string) => ({
   payload: sort
 }))
+
+export const setType = createAction('pokemons/setType', (type: string) => ({
+  payload: type
+}))
+
+export const resetFilters = createAction('pokemons/resetFilters')
