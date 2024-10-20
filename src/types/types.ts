@@ -1,7 +1,13 @@
 import type { SerializedError } from '@reduxjs/toolkit'
 
-export interface Pokemon {
+export interface Types {
   id: number
+  name: string
+  url: string
+}
+
+export interface Pokemon {
+  id: number | string
   name: string
   image: string
   hp: number
@@ -10,18 +16,51 @@ export interface Pokemon {
   speed: number
   height: number
   weight: number
-  type: { name: string }[]
+  type: Types[]
+  userCreated: boolean
 }
 
 export interface PokemonInitialState {
   allPokemons: Pokemon[]
   pokemons: Pokemon[]
   pokemon: Pokemon
-  types: string[]
+  types: Types[]
   isLoading: boolean
   error: SerializedError | null
-  sort: string
-  filter: string
-  source: string
   currentPage: number
 }
+
+export type SortOptions =
+  | 'asc'
+  | 'desc'
+  | 'higherAtk'
+  | 'lowerAtk'
+  | 'higherDef'
+  | 'lowerDef'
+  | 'higherHp'
+  | 'lowerHp'
+  | 'higherSpd'
+  | 'lowerSpd'
+
+export type PokemonTypes =
+  | 'all'
+  | 'bug'
+  | 'dark'
+  | 'dragon'
+  | 'electric'
+  | 'fairy'
+  | 'fighting'
+  | 'fire'
+  | 'flying'
+  | 'ghost'
+  | 'grass'
+  | 'ground'
+  | 'ice'
+  | 'normal'
+  | 'poison'
+  | 'psychic'
+  | 'rock'
+  | 'steel'
+  | 'water'
+  | 'shadow'
+  | 'unknown'
