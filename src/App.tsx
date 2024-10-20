@@ -1,23 +1,23 @@
 import { Route, Routes, useLocation } from 'react-router-dom'
 
+import Error404 from '@/components/Error404/Error404'
+import Footer from '@/components/Footer/Footer'
+import NavBar from '@/components/Navbar/Navbar'
+import { CreatePokemon, Home, Landing } from '@/views/index'
 import './App.css'
-import Error404 from './components/Error404/Error404'
-import Footer from './components/Footer/Footer'
-import CreatePokemon from './views/CreatePokemon/CreatePokemon'
-import { Home, Landing } from './views/index'
 
 function App() {
   const { pathname } = useLocation()
 
   return (
     <div className="App">
+      {pathname !== '/' && <NavBar />}
       <Routes>
         <Route element={<Landing />} path="/" />
         <Route element={<Home />} path="/pokemon" />
         <Route element={<CreatePokemon />} path="/create" />
         <Route element={<Error404 />} path="*" />
       </Routes>
-
       {pathname !== '/' && <Footer />}
     </div>
   )
