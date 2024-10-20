@@ -1,3 +1,5 @@
+import type { Pokemon } from '@/types/types'
+
 import { Link } from 'react-router-dom'
 
 import { Remove } from '@/components/Card/Remove'
@@ -10,9 +12,9 @@ import {
   type PokemonType
 } from '@/components/StyledComponents/StyledCard'
 import { capitalize } from '@/helpers/helpers'
+import { removePokemonLocal } from '@/redux/actions/pokemonActions'
 import { removePokemon } from '@/redux/actions/pokemonAsyncActions'
 import { useAppDispatch } from '@/redux/hooks'
-import type { Pokemon } from '@/types/types'
 
 interface Props {
   pokemon: Pokemon
@@ -25,7 +27,9 @@ export default function Card({
 
   const handleRemove = () => {
     dispatch(removePokemon(id.toString()))
+    dispatch(removePokemonLocal(id.toString()))
   }
+
   return (
     <CardContainer>
       {userCreated ? <Remove handleRemove={handleRemove} /> : null}

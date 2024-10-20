@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'sonner'
 
@@ -14,9 +13,10 @@ import {
   getPokemonByName,
   getPokemons
 } from '@/redux/actions/pokemonAsyncActions'
+import { useAppDispatch } from '@/redux/hooks'
 
 export default function Searchbar() {
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
   const navigate = useNavigate()
   const [name, setName] = useState('')
 
@@ -34,12 +34,12 @@ export default function Searchbar() {
     setName('')
   }
 
-  const handleChange = (e) => {
-    setName(e.target.value)
+  const handleChange = (nameToSearch: string) => {
+    setName(nameToSearch)
   }
 
-  const handleKeyDown = (e) => {
-    if (e.key === 'Enter') handleSearch(e)
+  const handleKeyDown = (key: string) => {
+    if (key === 'Enter') handleSearch()
   }
 
   const handleClick = () => {
@@ -64,8 +64,8 @@ export default function Searchbar() {
         placeholder="Search pokémon"
         type="text"
         value={name}
-        onChange={handleChange}
-        onKeyDown={handleKeyDown}
+        onChange={(e) => handleChange(e.target.value)}
+        onKeyDown={(e) => handleKeyDown(e.key)}
       />
     </Container>
   )

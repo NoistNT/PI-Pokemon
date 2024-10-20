@@ -1,23 +1,26 @@
-import { useDispatch, useSelector } from 'react-redux'
-
 import {
   Container,
   PageLink
 } from '@/components/StyledComponents/StyledPaginate'
 import { setCurrentPage } from '@/redux/actions/pokemonActions'
+import { useAppDispatch, useAppSelector } from '@/redux/hooks'
 
-export default function Paginate({ totalPages }) {
-  const { currentPage } = useSelector((state) => state.pokemonReducer)
-  const dispatch = useDispatch()
+interface Props {
+  totalPages: number
+}
 
-  const handlePageChange = (currentPage) => {
+export default function Paginate({ totalPages }: Props) {
+  const dispatch = useAppDispatch()
+  const { currentPage } = useAppSelector(({ pokemons }) => pokemons)
+
+  const handlePageChange = (currentPage: number) => {
     if (currentPage >= 1 && currentPage <= totalPages) {
       dispatch(setCurrentPage(currentPage))
     }
   }
 
   const renderPageNumbers = () => {
-    const pageNumbers = []
+    const pageNumbers: JSX.Element[] = []
     const visiblePageCount = 3
     const startPage = Math.max(
       1,

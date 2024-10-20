@@ -1,11 +1,12 @@
 import { useState } from 'react'
 
-import icon_remove from '@/assets/icon_remove.svg'
 import { RemovePokemonModal } from '@/components/Card/RemovePokemonModal'
 import {
   RemoveButton,
   RemoveButtonImg
 } from '@/components/StyledComponents/StyledCard'
+
+import icon_remove from '@/assets/icon_remove.svg'
 
 interface Props {
   handleRemove: () => void
