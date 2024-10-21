@@ -1,7 +1,24 @@
 import type { Pokemon, SortOptions, Types } from '@/types/types'
 
+import { toast } from 'sonner'
+
+export const showToast = (type: 'success' | 'error', message: string) => {
+  toast[type](message, { position: 'bottom-center' })
+}
+
+export const customError = (error: unknown, message: string) => {
+  const errMessage =
+    (error as Error).message || message || 'Something went wrong'
+
+  showToast('error', errMessage)
+}
+
 export const capitalize = (name: string) => {
   return name ? name.charAt(0).toUpperCase() + name.slice(1) : ''
+}
+
+export const sanitize = (name: string) => {
+  return name.replace(/\s/g, '').toLowerCase()
 }
 
 export const types = (types: Types[]) => {
@@ -25,4 +42,22 @@ export const sortPokemons = (pokemons: Pokemon[], sortOption: SortOptions) => {
   const sortFunc = sortFuncMap[sortOption] || (() => 0)
 
   return [...pokemons].sort(sortFunc)
+}
+
+export const resetPokemon = (
+  setPokemon: React.Dispatch<React.SetStateAction<Pokemon>>
+) => {
+  setPokemon({
+    id: '',
+    name: '',
+    image: '',
+    hp: 0,
+    attack: 0,
+    defense: 0,
+    speed: 0,
+    height: 0,
+    weight: 0,
+    type: [],
+    userCreated: false
+  })
 }
