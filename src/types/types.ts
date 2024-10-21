@@ -1,7 +1,7 @@
 import type { SerializedError } from '@reduxjs/toolkit'
 
 export interface Types {
-  id: number
+  _id: string
   name: string
   url: string
 }
@@ -28,6 +28,33 @@ export interface PokemonInitialState {
   isLoading: boolean
   error: SerializedError | null
   currentPage: number
+}
+
+export interface PokemonTypesProps {
+  type: PokemonTypes
+}
+
+export const typeColor = {
+  normal: '#7e7e7e',
+  fighting: '#f08030',
+  water: '#2855be',
+  electric: '#c5ab19',
+  grass: '#347a10',
+  ice: '#98d8d8',
+  fire: '#8d1812',
+  poison: '#8d15ac',
+  ground: '#705817',
+  flying: '#215872',
+  psychic: '#f85888',
+  bug: '#839710',
+  rock: '#524f49',
+  ghost: '#4a3866',
+  dragon: '#b45312',
+  dark: '#161616',
+  steel: '#5f5f75',
+  fairy: '#a85668',
+  unknown: '#ac2b5c',
+  shadow: '#181616'
 }
 
 export type SortOptions =
@@ -64,3 +91,14 @@ export type PokemonTypes =
   | 'water'
   | 'shadow'
   | 'unknown'
+
+export type ErrorTypes =
+  | 'name'
+  | 'hp'
+  | 'attack'
+  | 'defense'
+  | 'speed'
+  | 'height'
+  | 'weight'
+  | 'image'
+  | 'type'
