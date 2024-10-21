@@ -60,20 +60,20 @@ export default function Menu() {
 
   const handleReset = () => {
     if (selectSourceRef.current) {
-      selectSourceRef.current.value = ''
+      selectSourceRef.current.selectedIndex = 0
     }
     if (selectSortRef.current) {
-      selectSortRef.current.value = ''
+      selectSortRef.current.selectedIndex = 0
     }
     if (selectTypesRef.current) {
-      selectTypesRef.current.value = ''
+      selectTypesRef.current.selectedIndex = 0
     }
     dispatch(resetFilters())
     dispatch(setCurrentPage(1))
   }
 
-  const pokemonTypes = types.map(({ id, name }) => (
-    <option key={id} value={name}>
+  const pokemonTypes = types.map(({ _id, name }) => (
+    <option key={_id} value={name}>
       {capitalize(name)}
     </option>
   ))
@@ -86,14 +86,12 @@ export default function Menu() {
           <Label>Source</Label>
           <SelectBox
             ref={selectSourceRef}
+            defaultValue="all"
             id="filter"
             name="filter"
             title="filter"
             onChange={(e) => handleSource(e.target.value)}
           >
-            <option disabled selected value="">
-              Select source
-            </option>
             <option value="all">All Pokemons</option>
             <option value="api">Originals</option>
             <option value="db">User created</option>
@@ -103,14 +101,12 @@ export default function Menu() {
           <Label>Sort</Label>
           <SelectBox
             ref={selectSortRef}
+            defaultValue="asc"
             id="sort"
             name="sort"
             title="sort"
             onChange={(e) => handleSort(e.target.value)}
           >
-            <option disabled selected value="">
-              Select sort
-            </option>
             <option value="asc">A to Z</option>
             <option value="desc">Z to A</option>
             <option value="higherAtk">Higher attack</option>
@@ -127,14 +123,12 @@ export default function Menu() {
           <Label>Types</Label>
           <SelectBox
             ref={selectTypesRef}
+            defaultValue="all"
             id="types"
             name="types"
             title="types"
             onChange={(e) => handleTypes(e.target.value)}
           >
-            <option disabled selected value="">
-              Select a type
-            </option>
             <option value="all">All</option>
             {pokemonTypes}
           </SelectBox>
