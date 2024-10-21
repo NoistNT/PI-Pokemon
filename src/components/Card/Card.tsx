@@ -1,4 +1,4 @@
-import type { Pokemon } from '@/types/types'
+import type { Pokemon, PokemonTypes } from '@/types/types'
 
 import { Link } from 'react-router-dom'
 
@@ -8,8 +8,7 @@ import {
   Image,
   Name,
   Types,
-  TypesContainer,
-  type PokemonType
+  TypesContainer
 } from '@/components/StyledComponents/StyledCard'
 import { capitalize } from '@/helpers/helpers'
 import { removePokemonLocal } from '@/redux/actions/pokemonActions'
@@ -39,7 +38,7 @@ export default function Card({
       </Link>
       <TypesContainer>
         {type.map(({ name }) => (
-          <Types key={name} type={name as PokemonType}>
+          <Types key={name} type={name as PokemonTypes}>
             {capitalize(name)}
           </Types>
         ))}
