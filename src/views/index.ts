@@ -1,5 +1,6 @@
-import CreatePokemon from './CreatePokemon/CreatePokemon'
-import Home from './Home/Home'
-import Landing from './Landing/Landing'
+import CreatePokemon from '@/views/CreatePokemon/CreatePokemon'
+import Detail from '@/views/Detail/Detail'
+import Home from '@/views/Home/Home'
+import Landing from '@/views/Landing/Landing'
 
-export { CreatePokemon, Home, Landing }
+export { CreatePokemon, Detail, Home, Landing }
