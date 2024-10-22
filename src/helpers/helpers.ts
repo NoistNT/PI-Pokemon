@@ -1,9 +1,9 @@
-import type { Pokemon, SortOptions, Types } from '@/types/types'
+import type { FilterPokemons, Pokemon, SortOptions, Types } from '@/types/types'
 
 import { toast } from 'sonner'
 
 export const showToast = (type: 'success' | 'error', message: string) => {
-  toast[type](message, { position: 'bottom-center' })
+  toast[type](message, { position: 'bottom-right' })
 }
 
 export const customError = (error: unknown, message: string) => {
@@ -42,6 +42,34 @@ export const sortPokemons = (pokemons: Pokemon[], sortOption: SortOptions) => {
   const sortFunc = sortFuncMap[sortOption] || (() => 0)
 
   return [...pokemons].sort(sortFunc)
+}
+
+export const filterPokemons = (
+  pokemons: Pokemon[],
+  { type, source, sortOption }: FilterPokemons
+) => {
+  let filtered =
+    source === 'db'
+      ? pokemons.filter(({ userCreated }) => userCreated)
+      : source === 'api'
+        ? pokemons.filter(({ userCreated }) => !userCreated)
+        : pokemons
+
+  filtered =
+    type === 'all'
+      ? filtered
+      : filtered.filter(({ type: PokemonTypes }) =>
+          PokemonTypes.some(({ name }) => name === type)
+        )
+
+  if (!filtered.length) {
+    const err = new Error(`No ${capitalize(type)} pokemons found`)
+
+    customError(err, err.message)
+    throw err
+  }
+
+  return sortPokemons(filtered, sortOption)
 }
 
 export const resetPokemon = (
