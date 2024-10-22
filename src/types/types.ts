@@ -28,10 +28,18 @@ export interface PokemonInitialState {
   isLoading: boolean
   error: SerializedError | null
   currentPage: number
+  typeFilter: PokemonTypes
+  sourceFilter: Source
+  sortOption: SortOptions
 }
 
 export interface PokemonTypesProps {
   type: PokemonTypes
+}
+
+export interface FilterPokemons extends PokemonTypesProps {
+  source: string
+  sortOption: SortOptions
 }
 
 export const typeColor = {
@@ -56,6 +64,8 @@ export const typeColor = {
   unknown: '#ac2b5c',
   shadow: '#181616'
 }
+
+export type Source = 'all' | 'db' | 'api'
 
 export type SortOptions =
   | 'asc'
