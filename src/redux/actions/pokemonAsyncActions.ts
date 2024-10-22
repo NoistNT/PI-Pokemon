@@ -1,38 +1,106 @@
 import type { Pokemon, Types } from '@/types/types'
 
 import { createAsyncThunk } from '@reduxjs/toolkit'
+import { toast } from 'sonner'
 
-const URL = import.meta.env.VITE_API_URL as string
+import { customError } from '@/helpers/helpers'
+import { fetchWithErrorHandling } from '@/redux/hooks'
+import { API_URL } from '@/utils/constants'
+
+export const postPokemon = createAsyncThunk(
+  'pokemons/postPokemon',
+  async (pokemon: Pokemon) => {
+    try {
+      return toast.promise(
+        fetchWithErrorHandling(`${API_URL}/pokemon`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(pokemon)
+        }) as Promise<Pokemon>,
+        {
+          loading: 'Creating pokémon...',
+          success: 'Pokémon created successfully',
+          error: 'An error occurred while creating the pokemon'
+        }
+      )
+    } catch (error) {
+      customError(error, 'An error occurred while creating the pokemon')
+      throw error
+    }
+  }
+)
 
 export const getPokemons = createAsyncThunk(
   'pokemons/getPokemons',
   async () => {
-    return await fetch(`${URL}/pokemon`).then(
-      (res) => res.json() as Promise<Pokemon[]>
-    )
+    try {
+      return (await fetchWithErrorHandling(`${API_URL}/pokemon`)) as Promise<
+        Pokemon[]
+      >
+    } catch (error) {
+      customError(error, 'An error occurred while fetching the pokemons')
+      throw error
+    }
+  }
+)
+
+export const getPokemonById = createAsyncThunk(
+  'pokemons/getPokemonById',
+  async (id: string) => {
+    try {
+      return (await fetchWithErrorHandling(
+        `${API_URL}/pokemon/${id}`
+      )) as Promise<Pokemon>
+    } catch (error) {
+      customError(error, 'An error occurred while fetching the pokemon')
+      throw error
+    }
   }
 )
 
 export const getPokemonByName = createAsyncThunk(
   'pokemons/getPokemonByName',
   async (name: string) => {
-    return await fetch(`${URL}/pokemon/name/${name}`).then(
-      (res) => res.json() as Promise<Pokemon[]>
-    )
+    try {
+      return (await fetchWithErrorHandling(
+        `${API_URL}/pokemon/name/${name}`
+      )) as Promise<Pokemon[]>
+    } catch (error) {
+      customError(error, 'An error occurred while fetching the pokemon')
+      throw error
+    }
   }
 )
 
 export const getTypes = createAsyncThunk('pokemons/getTypes', async () => {
-  return await fetch(`${URL}/type`).then(
-    (res) => res.json() as Promise<Types[]>
-  )
+  try {
+    return (await fetchWithErrorHandling(`${API_URL}/type`)) as Promise<Types[]>
+  } catch (error) {
+    customError(error, 'An error occurred while fetching the types')
+    throw error
+  }
 })
 
 export const removePokemon = createAsyncThunk(
   'pokemons/removePokemon',
-  async (id: string) => {
-    return await fetch(`${URL}/pokemon/${id}`, {
-      method: 'DELETE'
-    }).then((res) => res.json() as Promise<boolean>)
+  async (id: string, { rejectWithValue }) => {
+    try {
+      toast.promise(
+        fetchWithErrorHandling(`${API_URL}/pokemon/${id}`, {
+          method: 'DELETE'
+        }),
+        {
+          loading: 'Deleting pokémon...',
+          success: 'Pokémon deleted successfully',
+          error: 'An error occurred while deleting the pokemon'
+        }
+      )
+
+      return id
+    } catch (error) {
+      return rejectWithValue(error)
+    }
   }
 )
