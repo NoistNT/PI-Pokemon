@@ -1,20 +1,18 @@
 import { useEffect } from 'react'
 
 import Cards from '@/components/Cards/Cards'
-import Loader from '@/components/Loader/Loader'
 import Menu from '@/components/Menu/Menu'
 import Paginate from '@/components/Paginate/Paginate'
-import { Message } from '@/components/StyledComponents/StyledMessage'
+import { customError } from '@/helpers/helpers'
 import { getPokemons } from '@/redux/actions/pokemonAsyncActions'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks'
+import { POKEMONS_PER_PAGE } from '@/utils/constants'
 
 export default function Home() {
   const dispatch = useAppDispatch()
-  const { pokemons, isLoading, error, currentPage } = useAppSelector(
+  const { pokemons, error, currentPage } = useAppSelector(
     ({ pokemons }) => pokemons
   )
-
-  const POKEMONS_PER_PAGE = import.meta.env.VITE_POKEMONS_PER_PAGE as number
 
   const totalPages = Math.ceil(pokemons.length / POKEMONS_PER_PAGE)
 
@@ -29,24 +27,15 @@ export default function Home() {
     indexOfLastPokemon
   )
 
-  if (isLoading) return <Loader />
-  if (error)
-    return (
-      <>
-        <Menu />
-        <Message>{error.message}</Message>
-      </>
-    )
+  if (error) {
+    customError(error, 'An error occurred while fetching the pokemons')
+  }
 
   return (
     <>
       <Menu />
       <Paginate totalPages={totalPages} />
-      {!currentPokemons.length ? (
-        <Message>No pokemons found.</Message>
-      ) : (
-        <Cards pokemons={currentPokemons} />
-      )}
+      <Cards pokemons={currentPokemons} />
       <Paginate totalPages={totalPages} />
     </>
   )
