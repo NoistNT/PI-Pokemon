@@ -1,7 +1,6 @@
 import type { Pokemon } from '@/types/types'
 
 import { useEffect, useState } from 'react'
-import { toast, Toaster } from 'sonner'
 
 import {
   ButtonsContainer,
@@ -22,7 +21,7 @@ import {
   TypeList,
   TypeListContainer
 } from '@/components/StyledComponents/StyledForm'
-import { capitalize, resetPokemon } from '@/helpers/helpers'
+import { capitalize, resetPokemon, showToast } from '@/helpers/helpers'
 import { validatePokemon } from '@/helpers/validatePokemon'
 import { getTypes, postPokemon } from '@/redux/actions/pokemonAsyncActions'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks'
@@ -83,9 +82,7 @@ export default function CreatePokemon() {
           })
         }
       } else {
-        toast.error('Max 2 types allowed', {
-          position: 'bottom-center'
-        })
+        showToast('error', 'You can only select two types at most')
       }
     } else if (name === 'name' || name === 'image') {
       setPokemon({ ...pokemon, [name]: value })
@@ -116,11 +113,10 @@ export default function CreatePokemon() {
     if (
       Object.values(pokemon).some(
         (value: string | number) => value === '' || value === 0
-      )
+      ) ||
+      pokemon.type.length === 0
     ) {
-      toast.error('Complete all fields', {
-        position: 'bottom-center'
-      })
+      showToast('error', 'All fields are required')
     } else {
       dispatch(postPokemon(pokemon))
       resetPokemon(setPokemon)
@@ -248,9 +244,9 @@ export default function CreatePokemon() {
             <LabelInputContainer>
               <Label htmlFor="types">Type: </Label>
               <SelectBox
+                defaultValue="normal"
                 id="type"
                 name="type"
-                value={pokemon.type.map(({ name }) => name)}
                 onChange={handleChange}
               >
                 {pokemonTypes}
@@ -271,7 +267,6 @@ export default function CreatePokemon() {
           </SubmitButton>
         </ButtonsContainer>
       </FormContainer>
-      <Toaster closeButton />
     </Container>
   )
 }
