@@ -1,16 +1,19 @@
 import type {
   PokemonInitialState,
   PokemonTypes,
-  SortOptions
+  SortOptions,
+  Source
 } from '@/types/types'
 
 import { createSlice } from '@reduxjs/toolkit'
 
-import { sortPokemons } from '@/helpers/helpers'
+import { filterPokemons, sortPokemons } from '@/helpers/helpers'
 import {
+  getPokemonById,
   getPokemonByName,
   getPokemons,
   getTypes,
+  postPokemon,
   removePokemon
 } from '@/redux/actions/pokemonAsyncActions'
 
@@ -33,7 +36,10 @@ const initialState: PokemonInitialState = {
   types: [],
   isLoading: true,
   error: null,
-  currentPage: 1
+  currentPage: 1,
+  typeFilter: 'all',
+  sourceFilter: 'all',
+  sortOption: 'asc'
 }
 
 export const pokemonsReducer = createSlice({
@@ -47,40 +53,54 @@ export const pokemonsReducer = createSlice({
     setCurrentPage(state, { payload }: { payload: number }) {
       state.currentPage = payload
     },
-    setSource(state, { payload }: { payload: string }) {
-      switch (payload) {
-        case 'db':
-          state.pokemons = state.allPokemons.filter(
-            ({ userCreated }) => userCreated
-          )
-          break
-        case 'api':
-          state.pokemons = state.allPokemons.filter(
-            ({ userCreated }) => !userCreated
-          )
-          break
-        default:
-          state.pokemons = state.allPokemons
-          break
-      }
+    setSource(state, { payload }: { payload: Source }) {
+      state.pokemons = filterPokemons(state.allPokemons, {
+        type: state.typeFilter,
+        source: payload,
+        sortOption: state.sortOption
+      })
+      state.sourceFilter = payload
     },
     setSort(state, { payload }: { payload: SortOptions }) {
-      state.pokemons = sortPokemons(state.pokemons, payload)
+      state.pokemons = filterPokemons(state.allPokemons, {
+        type: state.typeFilter,
+        source: state.sourceFilter,
+        sortOption: payload
+      })
+      state.sortOption = payload
     },
     setType(state, { payload }: { payload: PokemonTypes }) {
-      state.pokemons =
-        payload === 'all'
-          ? state.allPokemons
-          : state.allPokemons.filter(({ type }) =>
-              type.map(({ name }) => name).includes(payload)
-            )
+      state.pokemons = filterPokemons(state.allPokemons, {
+        type: payload,
+        source: state.sourceFilter,
+        sortOption: state.sortOption
+      })
+      state.typeFilter = payload
     },
     resetFilters(state) {
       state.pokemons = sortPokemons(state.allPokemons, 'asc')
+      state.typeFilter = 'all'
+      state.sourceFilter = 'all'
+      state.sortOption = 'asc'
     }
   },
   extraReducers(builder) {
     builder
+      // POST POKEMONS
+      .addCase(postPokemon.pending, (state) => {
+        state.isLoading = true
+        state.error = null
+      })
+      .addCase(postPokemon.fulfilled, (state) => {
+        state.isLoading = false
+        state.allPokemons = [...state.pokemons]
+        state.error = null
+      })
+      .addCase(postPokemon.rejected, (state, { error }) => {
+        state.isLoading = false
+        state.error = error
+      })
+
       // GET POKEMONS
       .addCase(getPokemons.pending, (state) => {
         state.isLoading = true
@@ -99,6 +119,21 @@ export const pokemonsReducer = createSlice({
         state.error = error
       })
 
+      // GET POKEMON BY ID
+      .addCase(getPokemonById.pending, (state) => {
+        state.isLoading = true
+        state.error = null
+      })
+      .addCase(getPokemonById.fulfilled, (state, { payload }) => {
+        state.isLoading = false
+        state.pokemon = payload
+        state.error = null
+      })
+      .addCase(getPokemonById.rejected, (state, { error }) => {
+        state.isLoading = false
+        state.error = error
+      })
+
       // GET POKEMON BY NAME
       .addCase(getPokemonByName.pending, (state) => {
         state.isLoading = true
@@ -106,7 +141,7 @@ export const pokemonsReducer = createSlice({
       })
       .addCase(getPokemonByName.fulfilled, (state, { payload }) => {
         state.isLoading = false
-        state.pokemons = payload
+        if (!payload.length) return
         state.pokemon = payload[0]
         state.error = null
       })
