@@ -1,4 +1,5 @@
 import { Route, Routes, useLocation } from 'react-router-dom'
+import { Toaster } from 'sonner'
 
 import Error404 from '@/components/Error404/Error404'
 import Footer from '@/components/Footer/Footer'
@@ -21,6 +22,7 @@ function App() {
         <Route element={<Error404 />} path="*" />
       </Routes>
       {pathname !== '/' && <Footer />}
+      <Toaster closeButton />
     </div>
   )
 }
