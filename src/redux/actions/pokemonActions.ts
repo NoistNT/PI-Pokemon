@@ -1,10 +1,5 @@
 import { createAction } from '@reduxjs/toolkit'
 
-export const removePokemonLocal = createAction(
-  'pokemons/removePokemonLocal',
-  (id: string) => ({ payload: id })
-)
-
 export const setCurrentPage = createAction(
   'pokemons/setCurrentPage',
   (page: number) => ({ payload: page })
@@ -22,5 +17,7 @@ export const setSort = createAction('pokemons/setSort', (sort: string) => ({
 export const setType = createAction('pokemons/setType', (type: string) => ({
   payload: type
 }))
+
+export const cleanDetail = createAction('pokemons/cleanDetail')
 
 export const resetFilters = createAction('pokemons/resetFilters')

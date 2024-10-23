@@ -15,6 +15,7 @@ import {
   Types
 } from '@/components/StyledComponents/StyledDetail'
 import { capitalize } from '@/helpers/helpers'
+import { cleanDetail } from '@/redux/actions/pokemonActions'
 import { getPokemonById } from '@/redux/actions/pokemonAsyncActions'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks'
 
@@ -29,6 +30,10 @@ export default function Detail() {
   useEffect(() => {
     if (id) {
       dispatch(getPokemonById(id))
+    }
+
+    return () => {
+      dispatch(cleanDetail())
     }
   }, [dispatch, id])
 
