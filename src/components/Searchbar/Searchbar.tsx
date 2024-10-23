@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { toast } from 'sonner'
 
 import {
   Button,
@@ -8,6 +7,7 @@ import {
   Container,
   Search
 } from '@/components/StyledComponents/StyledSearchbar'
+import { showToast } from '@/helpers/helpers'
 import { setCurrentPage } from '@/redux/actions/pokemonActions'
 import {
   getPokemonByName,
@@ -20,11 +20,10 @@ export default function Searchbar() {
   const navigate = useNavigate()
   const [name, setName] = useState('')
 
-  const handleSearch = () => {
+  const handleSearch = (key: string) => {
+    if (key !== 'Enter') return
     if (!name) {
-      toast.error('Please enter a pokémon name', {
-        position: 'top-center'
-      })
+      showToast('error', 'Please enter a name')
 
       return
     }
@@ -34,27 +33,15 @@ export default function Searchbar() {
     setName('')
   }
 
-  const handleChange = (nameToSearch: string) => {
-    setName(nameToSearch)
-  }
-
-  const handleKeyDown = (key: string) => {
-    if (key === 'Enter') handleSearch()
-  }
-
   const handleClick = () => {
     dispatch(setCurrentPage(1))
     dispatch(getPokemons())
     navigate('/pokemon')
   }
 
-  const handleNavigate = () => {
-    navigate('/create')
-  }
-
   return (
     <Container>
-      <Button type="button" onClick={handleNavigate}>
+      <Button type="button" onClick={() => navigate('/create')}>
         <ButtonText>Create Pokémon</ButtonText>
       </Button>
       <Button type="button" onClick={handleClick}>
@@ -64,8 +51,8 @@ export default function Searchbar() {
         placeholder="Search pokémon"
         type="text"
         value={name}
-        onChange={(e) => handleChange(e.target.value)}
-        onKeyDown={(e) => handleKeyDown(e.key)}
+        onChange={(e) => setName(e.target.value)}
+        onKeyDown={(e) => handleSearch(e.key)}
       />
     </Container>
   )
