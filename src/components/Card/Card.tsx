@@ -11,8 +11,7 @@ import {
   TypesContainer
 } from '@/components/StyledComponents/StyledCard'
 import { capitalize } from '@/helpers/helpers'
-import { removePokemonLocal } from '@/redux/actions/pokemonActions'
-import { removePokemon } from '@/redux/actions/pokemonAsyncActions'
+import { getPokemons, removePokemon } from '@/redux/actions/pokemonAsyncActions'
 import { useAppDispatch } from '@/redux/hooks'
 
 interface Props {
@@ -26,7 +25,7 @@ export default function Card({
 
   const handleRemove = () => {
     dispatch(removePokemon(id.toString()))
-    dispatch(removePokemonLocal(id.toString()))
+    dispatch(getPokemons())
   }
 
   return (
