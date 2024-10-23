@@ -29,8 +29,7 @@ module.exports = {
         singleQuote: true,
         bracketSpacing: true,
         arrowParens: 'always',
-        endOfLine: 'auto',
-        plugins: ['prettier-plugin-tailwindcss']
+        endOfLine: 'auto'
       }
     ],
     'import/no-default-export': 'off',
