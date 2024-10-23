@@ -68,7 +68,7 @@ export const getPokemonByName = createAsyncThunk(
         `${API_URL}/pokemon/name/${name}`
       )) as Promise<Pokemon[]>
     } catch (error) {
-      customError(error, 'An error occurred while fetching the pokemon')
+      customError(error, 'Pokemon not found')
       throw error
     }
   }
