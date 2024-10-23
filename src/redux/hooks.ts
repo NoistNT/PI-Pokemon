@@ -7,10 +7,11 @@ export const fetchWithErrorHandling = async (
   options?: RequestInit
 ) => {
   const res = await fetch(url, options)
-  const statusCode = res.status
 
   if (!res.ok) {
-    throw new Error(`Request failed with status code ${statusCode}`)
+    const { message } = (await res.json()) as Error
+
+    throw new Error(message)
   }
 
   return res.json() as Promise<unknown>

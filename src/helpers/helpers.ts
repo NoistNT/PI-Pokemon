@@ -72,20 +72,36 @@ export const filterPokemons = (
   return sortPokemons(filtered, sortOption)
 }
 
-export const resetPokemon = (
+export const emptyErrors = {
+  name: '',
+  hp: '',
+  attack: '',
+  defense: '',
+  speed: '',
+  height: '',
+  weight: '',
+  type: '',
+  image: ''
+}
+
+export const emptyPokemon = {
+  id: '',
+  name: '',
+  image: '',
+  hp: 0,
+  attack: 0,
+  defense: 0,
+  speed: 0,
+  height: 0,
+  weight: 0,
+  type: [],
+  userCreated: false
+}
+
+export const resetPokemonForm = (
   setPokemon: React.Dispatch<React.SetStateAction<Pokemon>>
 ) => {
-  setPokemon({
-    id: '',
-    name: '',
-    image: '',
-    hp: 0,
-    attack: 0,
-    defense: 0,
-    speed: 0,
-    height: 0,
-    weight: 0,
-    type: [],
-    userCreated: false
-  })
+  setPokemon(emptyPokemon)
 }
+
+export const cleanDetail = () => emptyPokemon
