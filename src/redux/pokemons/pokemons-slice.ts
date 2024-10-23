@@ -7,7 +7,7 @@ import type {
 
 import { createSlice } from '@reduxjs/toolkit'
 
-import { filterPokemons, sortPokemons } from '@/helpers/helpers'
+import { cleanDetail, filterPokemons, sortPokemons } from '@/helpers/helpers'
 import {
   getPokemonById,
   getPokemonByName,
@@ -30,7 +30,13 @@ const initialState: PokemonInitialState = {
     speed: 0,
     height: 0,
     weight: 0,
-    type: [],
+    type: [
+      {
+        _id: '',
+        name: '',
+        url: ''
+      }
+    ],
     userCreated: false
   },
   types: [],
@@ -46,10 +52,6 @@ export const pokemonsReducer = createSlice({
   name: 'pokemons',
   initialState,
   reducers: {
-    removePokemonLocal(state, { payload }: { payload: string }) {
-      state.pokemons = state.pokemons.filter(({ id }) => id !== payload)
-      state.allPokemons = state.pokemons
-    },
     setCurrentPage(state, { payload }: { payload: number }) {
       state.currentPage = payload
     },
@@ -76,6 +78,9 @@ export const pokemonsReducer = createSlice({
         sortOption: state.sortOption
       })
       state.typeFilter = payload
+    },
+    cleanDetail(state) {
+      state.pokemon = cleanDetail()
     },
     resetFilters(state) {
       state.pokemons = sortPokemons(state.allPokemons, 'asc')
@@ -140,8 +145,9 @@ export const pokemonsReducer = createSlice({
         state.error = null
       })
       .addCase(getPokemonByName.fulfilled, (state, { payload }) => {
-        state.isLoading = false
         if (!payload.length) return
+        state.isLoading = false
+        state.pokemons = payload
         state.pokemon = payload[0]
         state.error = null
       })
