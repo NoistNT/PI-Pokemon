@@ -21,8 +21,15 @@ import {
   TypeList,
   TypeListContainer
 } from '@/components/StyledComponents/StyledForm'
-import { capitalize, resetPokemon, showToast } from '@/helpers/helpers'
+import {
+  capitalize,
+  emptyErrors,
+  emptyPokemon,
+  resetPokemonForm,
+  showToast
+} from '@/helpers/helpers'
 import { validatePokemon } from '@/helpers/validatePokemon'
+import { resetFilters } from '@/redux/actions/pokemonActions'
 import { getTypes, postPokemon } from '@/redux/actions/pokemonAsyncActions'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks'
 
@@ -31,32 +38,8 @@ import icon_remove from '@/assets/icon_remove.svg'
 export default function CreatePokemon() {
   const dispatch = useAppDispatch()
   const { types, isLoading } = useAppSelector(({ pokemons }) => pokemons)
-
-  const [pokemon, setPokemon] = useState<Pokemon>({
-    id: '',
-    name: '',
-    hp: 0,
-    attack: 0,
-    defense: 0,
-    speed: 0,
-    height: 0,
-    weight: 0,
-    image: '',
-    type: [],
-    userCreated: true
-  })
-
-  const [errors, setErrors] = useState({
-    name: '',
-    hp: '',
-    attack: '',
-    defense: '',
-    speed: '',
-    height: '',
-    weight: '',
-    type: '',
-    image: ''
-  })
+  const [pokemon, setPokemon] = useState<Pokemon>(emptyPokemon)
+  const [errors, setErrors] = useState(emptyErrors)
 
   useEffect(() => {
     if (!types.length) {
@@ -119,7 +102,8 @@ export default function CreatePokemon() {
       showToast('error', 'All fields are required')
     } else {
       dispatch(postPokemon(pokemon))
-      resetPokemon(setPokemon)
+      dispatch(resetFilters())
+      resetPokemonForm(setPokemon)
     }
   }
 
@@ -262,7 +246,10 @@ export default function CreatePokemon() {
               {isLoading ? 'Creating...' : 'Create Pokémon'}
             </ButtonText>
           </SubmitButton>
-          <SubmitButton type="button" onClick={() => resetPokemon(setPokemon)}>
+          <SubmitButton
+            type="button"
+            onClick={() => resetPokemonForm(setPokemon)}
+          >
             <ButtonText>Clear form</ButtonText>
           </SubmitButton>
         </ButtonsContainer>
