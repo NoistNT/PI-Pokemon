@@ -6,11 +6,14 @@ import { useParams } from 'react-router-dom'
 import Loader from '@/components/Loader/Loader'
 import {
   Attribute,
+  AttributeValue,
   CardContainer,
+  DetailTypesContainer,
   Highlight,
   Image,
   Item,
   Stats,
+  StatsContainer,
   Title,
   Types
 } from '@/components/StyledComponents/StyledDetail'
@@ -43,40 +46,43 @@ export default function Detail() {
     <CardContainer>
       <Title>{capitalize(name)}</Title>
       <Image alt={name} src={image} />
-      <Stats>Stats</Stats>
-      <Highlight>
-        <Attribute>Types: </Attribute>
-        {type.map(({ name }) => (
-          <Types key={name} type={name as PokemonTypes}>
-            {capitalize(name)}
-          </Types>
-        ))}
-      </Highlight>
-
-      <Item>
-        <Attribute>HP: </Attribute>
-        {hp}
-      </Item>
-      <Highlight>
-        <Attribute>Attack: </Attribute>
-        {attack}
-      </Highlight>
-      <Item>
-        <Attribute>Defense: </Attribute>
-        {defense}
-      </Item>
-      <Highlight>
-        <Attribute>Speed: </Attribute>
-        {speed}
-      </Highlight>
-      <Item>
-        <Attribute>Height: </Attribute>
-        {height}
-      </Item>
-      <Highlight>
-        <Attribute>Weight: </Attribute>
-        {weight}
-      </Highlight>
+      <StatsContainer>
+        <Stats>Stats</Stats>
+        <Highlight>
+          <Attribute>Types: </Attribute>
+          <DetailTypesContainer>
+            {type.map(({ name }) => (
+              <Types key={name} type={name as PokemonTypes}>
+                {capitalize(name)}
+              </Types>
+            ))}
+          </DetailTypesContainer>
+        </Highlight>
+        <Item>
+          <Attribute>HP: </Attribute>
+          <AttributeValue>{hp}</AttributeValue>
+        </Item>
+        <Highlight>
+          <Attribute>Attack: </Attribute>
+          <AttributeValue>{attack}</AttributeValue>
+        </Highlight>
+        <Item>
+          <Attribute>Defense: </Attribute>
+          <AttributeValue>{defense}</AttributeValue>
+        </Item>
+        <Highlight>
+          <Attribute>Speed: </Attribute>
+          <AttributeValue>{speed}</AttributeValue>
+        </Highlight>
+        <Item>
+          <Attribute>Height: </Attribute>
+          <AttributeValue>{height}</AttributeValue>
+        </Item>
+        <Highlight>
+          <Attribute>Weight: </Attribute>
+          <AttributeValue>{weight}</AttributeValue>
+        </Highlight>
+      </StatsContainer>
     </CardContainer>
   )
 }
