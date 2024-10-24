@@ -58,8 +58,8 @@ export const Image = styled.img`
   position: relative;
   z-index: 1;
   border-radius: 0.5rem;
-  max-width: 285px;
-  height: auto;
+  width: 17.8rem;
+  height: 17.8rem;
   margin-bottom: 1rem;
   filter: drop-shadow(0 2px 6px #101020);
 `
@@ -69,7 +69,7 @@ export const Name = styled.h2`
   z-index: 1;
   text-align: center;
   font-size: 1.6rem;
-  margin: 2.8rem 0 0.5rem 0;
+  margin: 2.5rem 0 0.5rem 0;
   color: var(--text-color);
   text-shadow: 1px 0px 8px #272727;
   transition: all 0.15s ease-in-out;
@@ -91,7 +91,7 @@ export const TypesContainer = styled.div`
 
 export const Types = styled.span<PokemonTypesProps>`
   margin: 0.5rem;
-  padding: 0.4rem 1.5rem;
+  padding: 0.38rem 1.5rem;
   border-radius: 0.3rem;
   font-size: 0.9rem;
   text-shadow: 2px 2px 4px #272727;
