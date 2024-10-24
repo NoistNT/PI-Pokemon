@@ -7,19 +7,21 @@ export const LandingWrapper = styled.div`
   justify-content: center;
   text-align: center;
   height: 100vh;
-  font-size: 1.2rem;
+  width: 100vw;
   background: linear-gradient(180deg, #212121 0%, #331b5a 50%, #212121 100%);
   font-family: 'Open Sans', sans-serif;
 `
 
 export const LandingImage = styled.img`
   max-width: 30rem;
-  height: auto;
-  margin-bottom: 4rem;
+  margin-bottom: 2rem;
+  aspect-ratio: 18 / 7;
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+  transition: all 0.3s ease;
 
   @media (max-width: 768px) {
-    max-width: 20rem;
+    height: 8rem;
+    transition: all 0.3s ease;
   }
 `
 
@@ -29,16 +31,18 @@ export const LandingTitle = styled.h1`
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 
   @media (max-width: 768px) {
+    margin: 0 auto;
     font-size: 1.5rem;
   }
 `
 
 export const LandingDescription = styled.p`
   font-size: 1.2rem;
-  max-width: 30rem;
+  max-width: 40rem;
   color: #838383;
 
   @media (max-width: 768px) {
+    max-width: 28rem;
     font-size: 1rem;
   }
 `
@@ -46,10 +50,10 @@ export const LandingDescription = styled.p`
 export const LandingButton = styled.button`
   position: relative;
   overflow: hidden;
-  height: 3rem;
-  padding: 0 1.5rem;
-  margin-top: 2rem;
-  border-radius: 0.5rem;
+  height: 2.5rem;
+  padding: 0 1rem;
+  margin: 2rem 0;
+  border-radius: 0.45rem;
   background: linear-gradient(
     82.3deg,
     rgb(71, 49, 104) 10.8%,
@@ -83,7 +87,10 @@ export const LandingButton = styled.button`
   }
 
   @media (max-width: 768px) {
-    height: 2.5rem;
+    margin: 1rem 0;
+    height: 2.35rem;
+    border-radius: 0.3rem;
+    transition: all 0.3s ease;
   }
 `
 
@@ -96,6 +103,6 @@ export const LandingButtonText = styled.span`
   font-family: 'Open Sans', sans-serif;
 
   @media (max-width: 768px) {
-    font-size: 1rem;
+    font-size: 0.96rem;
   }
 `

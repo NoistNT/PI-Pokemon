@@ -24,7 +24,7 @@ export default function Landing() {
 
   return (
     <LandingWrapper>
-      <LandingImage alt="img not found" src={logo} />
+      <LandingImage alt="Pokemon logo" src={logo} />
       <LandingTitle>Welcome to our Pokémon database!</LandingTitle>
       <LandingDescription>
         This app is designed to help you get detailed information about all your
