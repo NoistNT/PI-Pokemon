@@ -6,13 +6,13 @@ import { typeColor } from '@/types/types'
 
 export const CardContainer = styled.div`
   position: relative;
+  display: flex;
   overflow: hidden;
-  max-width: 20rem;
   background-color: var(--card-bg);
   color: var(--text-color);
+  max-width: 65rem;
   padding: 1rem;
   margin: 1.5rem auto;
-  margin-top: 2.6rem;
   border-style: solid;
   border-color: #ffffff36;
   border-radius: 0.85rem;
@@ -37,8 +37,27 @@ export const CardContainer = styled.div`
     transition: all 0.48s;
   }
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 1100px) {
+    margin: 1.5rem 1rem;
+  }
+
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+    max-width: 20rem;
     margin: 1rem auto;
+  }
+`
+
+export const HeaderContainer = styled.div`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  z-index: 1;
+
+  @media screen and (max-width: 768px) {
+    align-items: flex-start;
   }
 `
 
@@ -50,7 +69,8 @@ export const Title = styled.h2`
   color: var(--text-color);
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 768px) {
+    margin: auto;
     font-size: 2rem;
   }
 `
@@ -60,14 +80,14 @@ export const Image = styled.img`
   z-index: 1;
   width: 20rem;
   height: 20rem;
-  margin-bottom: 2rem;
   filter: drop-shadow(0 2px 7px #101010);
   -webkit-box-reflect: below 1px
     linear-gradient(transparent, rgba(0, 0, 0, 0.1));
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 768px) {
     width: 15rem;
     height: 15rem;
+    margin-bottom: 1rem;
   }
 `
 
@@ -79,6 +99,8 @@ export const StatsContainer = styled.div`
   justify-content: center;
   z-index: 1;
   width: 100%;
+  max-width: 20rem;
+  margin: 0 auto;
 `
 
 export const Stats = styled.h3`
@@ -95,7 +117,7 @@ export const Stats = styled.h3`
   border-bottom: 1px solid #ffffff36;
   text-shadow: 2px 2px 4px #292929;
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 768px) {
     font-size: 1rem;
   }
 `
@@ -121,7 +143,7 @@ export const Types = styled.span<PokemonTypesProps>`
     typeColor[props.type as keyof typeof typeColor] || '#999999'};
   color: var(--text-color);
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 768px) {
     font-size: 0.8rem;
   }
 `
@@ -132,7 +154,7 @@ export const Attribute = styled.span`
   padding: 0.5rem;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 768px) {
     font-size: 0.9rem;
   }
 `

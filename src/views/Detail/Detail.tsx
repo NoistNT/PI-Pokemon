@@ -9,6 +9,7 @@ import {
   AttributeValue,
   CardContainer,
   DetailTypesContainer,
+  HeaderContainer,
   Highlight,
   Image,
   Item,
@@ -44,8 +45,10 @@ export default function Detail() {
 
   return (
     <CardContainer>
-      <Title>{capitalize(name)}</Title>
-      <Image alt={name} src={image} />
+      <HeaderContainer>
+        <Title>{capitalize(name)}</Title>
+        <Image alt={name} src={image} />
+      </HeaderContainer>
       <StatsContainer>
         <Stats>Stats</Stats>
         <Highlight>
