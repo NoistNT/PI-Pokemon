@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import {
@@ -8,11 +9,18 @@ import {
   LandingTitle,
   LandingWrapper
 } from '@/components/StyledComponents/StyledLanding'
+import { getPokemons } from '@/redux/actions/pokemonAsyncActions'
+import { useAppDispatch } from '@/redux/hooks'
 
 import logo from '@/assets/logo.webp'
 
 export default function Landing() {
   const navigate = useNavigate()
+  const dispatch = useAppDispatch()
+
+  useEffect(() => {
+    dispatch(getPokemons())
+  })
 
   return (
     <LandingWrapper>
