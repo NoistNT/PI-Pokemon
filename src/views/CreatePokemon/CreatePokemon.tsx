@@ -16,6 +16,7 @@ import {
   LabelInputContainer,
   PokemonTypesList,
   SelectBox,
+  Spinner,
   SubmitButton,
   Title,
   TypeList,
@@ -243,7 +244,7 @@ export default function CreatePokemon() {
         <ButtonsContainer>
           <SubmitButton disabled={isLoading} type="submit">
             <ButtonText>
-              {isLoading ? 'Creating...' : 'Create Pokémon'}
+              {isLoading ? <Spinner /> : 'Create Pokémon'}
             </ButtonText>
           </SubmitButton>
           <SubmitButton
