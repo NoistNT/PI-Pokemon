@@ -3,7 +3,6 @@ import type { PokemonTypes } from '@/types/types'
 import { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 
-import Loader from '@/components/Loader/Loader'
 import {
   Attribute,
   AttributeValue,
@@ -22,6 +21,7 @@ import { capitalize } from '@/helpers/helpers'
 import { cleanDetail } from '@/redux/actions/pokemonActions'
 import { getPokemonById } from '@/redux/actions/pokemonAsyncActions'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks'
+import { SkeletonDetailCard } from '@/views/Detail/SkeletonDetail'
 
 export default function Detail() {
   const dispatch = useAppDispatch()
@@ -41,7 +41,7 @@ export default function Detail() {
     }
   }, [dispatch, id])
 
-  if (isLoading) return <Loader />
+  if (isLoading) return <SkeletonDetailCard />
 
   return (
     <CardContainer>

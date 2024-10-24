@@ -64,13 +64,15 @@ export const HeaderContainer = styled.div`
 export const Title = styled.h2`
   position: relative;
   z-index: 1;
-  margin: 1rem 0 0 0;
+  height: 1rem;
+  margin: 1rem 0 2rem;
   font-size: 2.5rem;
   color: var(--text-color);
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
 
   @media screen and (max-width: 768px) {
-    margin: auto;
+    margin: 0 auto;
+    margin-bottom: 1.5rem;
     font-size: 2rem;
   }
 `
