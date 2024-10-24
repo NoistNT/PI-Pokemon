@@ -31,7 +31,11 @@ import {
 } from '@/helpers/helpers'
 import { validatePokemon } from '@/helpers/validatePokemon'
 import { resetFilters } from '@/redux/actions/pokemonActions'
-import { getTypes, postPokemon } from '@/redux/actions/pokemonAsyncActions'
+import {
+  getPokemons,
+  getTypes,
+  postPokemon
+} from '@/redux/actions/pokemonAsyncActions'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks'
 
 import icon_remove from '@/assets/icon_remove.svg'
@@ -46,6 +50,7 @@ export default function CreatePokemon() {
     if (!types.length) {
       dispatch(getTypes())
     }
+    dispatch(getPokemons())
   }, [dispatch, types.length])
 
   const handleChange = (

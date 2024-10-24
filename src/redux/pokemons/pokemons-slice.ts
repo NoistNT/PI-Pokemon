@@ -112,10 +112,14 @@ export const pokemonsReducer = createSlice({
         state.error = null
       })
       .addCase(getPokemons.fulfilled, (state, { payload }) => {
-        const sorted = sortPokemons(payload, 'asc')
+        const sorted = filterPokemons(payload, {
+          type: state.typeFilter,
+          source: state.sourceFilter,
+          sortOption: state.sortOption
+        })
 
         state.isLoading = false
-        state.allPokemons = sorted
+        state.allPokemons = sortPokemons(payload, state.sortOption)
         state.pokemons = sorted
         state.error = null
       })

@@ -12,8 +12,10 @@ export default function Home() {
   const { pokemons, currentPage } = useAppSelector(({ pokemons }) => pokemons)
 
   useEffect(() => {
-    dispatch(getPokemons())
-  }, [dispatch])
+    if (!pokemons.length) {
+      dispatch(getPokemons())
+    }
+  }, [dispatch, pokemons])
 
   const totalPages = Math.ceil(pokemons.length / POKEMONS_PER_PAGE)
   const indexOfLastPokemon = currentPage * POKEMONS_PER_PAGE
