@@ -1,26 +1,6 @@
-import styled, { keyframes } from 'styled-components'
+import styled from 'styled-components'
 
-const shimmer = keyframes`
-  0% {
-    background-position: -400px 0;
-  }
-  100% {
-    background-position: 400px 0;
-  }
-`
-
-const SkeletonShimmer = styled.div`
-  background-color: #44475a;
-  background-image: linear-gradient(
-    to right,
-    #44475a 0%,
-    #555861 20%,
-    #44475a 40%,
-    #44475a 100%
-  );
-  background-size: 800px 100%;
-  animation: ${shimmer} 1.6s infinite linear;
-`
+import { SkeletonShimmer } from '@/helpers/helpers'
 
 export const SkeletonCardContainer = styled.div`
   position: relative;

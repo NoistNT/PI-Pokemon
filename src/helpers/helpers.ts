@@ -1,6 +1,39 @@
 import type { FilterPokemons, Pokemon, SortOptions, Types } from '@/types/types'
 
 import { toast } from 'sonner'
+import styled, { css, keyframes } from 'styled-components'
+
+const randomDelay = (min: number, max: number) => css`
+  animation-delay: ${Math.random() * (max - min) + min}s;
+`
+
+const shimmer = keyframes`
+  0% {
+    background-position: -25rem 0;
+  }
+  100% {
+    background-position: 25rem 0;
+  }
+`
+
+export const SkeletonShimmer = styled.div<{
+  duration?: number
+  delayRange?: [number, number]
+}>`
+  transition: all 0.3s ease;
+  background-color: #44475a;
+  background-image: linear-gradient(
+    to right,
+    #44475a 0%,
+    #555861 25%,
+    #44475a 50%,
+    #555861 75%,
+    #44475a 100%
+  );
+  background-size: 800px 100%;
+  animation: ${shimmer} ${({ duration = 2 }) => duration}s infinite linear;
+  ${({ delayRange = [0, 0] }) => randomDelay(delayRange[0], delayRange[1])}
+`
 
 export const showToast = (type: 'success' | 'error', message: string) => {
   toast[type](message, { position: 'bottom-right' })
