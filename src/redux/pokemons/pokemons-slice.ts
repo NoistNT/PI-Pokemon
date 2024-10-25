@@ -7,7 +7,13 @@ import type {
 
 import { createSlice } from '@reduxjs/toolkit'
 
-import { cleanDetail, filterPokemons, sortPokemons } from '@/helpers/helpers'
+import {
+  cleanDetail,
+  emptyPokemon,
+  emptyType,
+  filterPokemons,
+  sortPokemons
+} from '@/helpers/helpers'
 import {
   getPokemonById,
   getPokemonByName,
@@ -20,25 +26,7 @@ import {
 const initialState: PokemonInitialState = {
   allPokemons: [],
   pokemons: [],
-  pokemon: {
-    id: 0,
-    name: '',
-    image: '',
-    hp: 0,
-    attack: 0,
-    defense: 0,
-    speed: 0,
-    height: 0,
-    weight: 0,
-    type: [
-      {
-        _id: '',
-        name: '',
-        url: ''
-      }
-    ],
-    userCreated: false
-  },
+  pokemon: { ...emptyPokemon, type: [emptyType] },
   types: [],
   isLoading: true,
   error: null,

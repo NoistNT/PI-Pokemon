@@ -131,6 +131,12 @@ export const emptyPokemon = {
   userCreated: false
 }
 
+export const emptyType = {
+  _id: '',
+  name: '',
+  url: ''
+}
+
 export const resetPokemonForm = (
   setPokemon: React.Dispatch<React.SetStateAction<Pokemon>>
 ) => {
