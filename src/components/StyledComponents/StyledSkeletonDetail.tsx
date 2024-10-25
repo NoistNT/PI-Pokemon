@@ -16,6 +16,11 @@ export const SkeletonDetailContainer = styled(SkeletonShimmer)`
   border-radius: 0.85rem;
   box-shadow: 0 2px 4px var(--card-shadow);
 
+  @media screen and (max-width: 1100px) {
+    margin: 1.5rem 1rem;
+    transition: all 0.3s ease;
+  }
+
   @media screen and (max-width: 768px) {
     flex-direction: column;
     max-width: 20rem;
@@ -80,6 +85,7 @@ export const SkeletonDetailStatsContainer = styled.div`
   width: 100%;
   max-width: 20rem;
   margin: 0 auto;
+  margin-top: 2rem;
 
   @media screen and (max-width: 768px) {
     margin-top: 1.5em;
