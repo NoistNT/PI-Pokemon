@@ -1,16 +1,21 @@
 import type { ErrorTypes } from '@/types/types'
 
-import { capitalize, sanitize } from '@/helpers/helpers'
+import { capitalize, emptyErrors, sanitize } from '@/helpers/helpers'
 
-const HP = 'hp'
-const NAME = 'name'
-const ATTACK = 'attack'
-const DEFENSE = 'defense'
-const SPEED = 'speed'
-const HEIGHT = 'height'
-const WEIGHT = 'weight'
-const IMAGE = 'image'
-const TYPE = 'type'
+const ERROR_TYPES = {
+  HP: 'hp',
+  NAME: 'name',
+  ATTACK: 'attack',
+  DEFENSE: 'defense',
+  SPEED: 'speed',
+  HEIGHT: 'height',
+  WEIGHT: 'weight',
+  IMAGE: 'image',
+  TYPE: 'type'
+} as const
+
+const { HP, NAME, ATTACK, DEFENSE, SPEED, HEIGHT, WEIGHT, IMAGE, TYPE } =
+  ERROR_TYPES
 
 export const validatePokemon = (
   typeName: string,
@@ -20,17 +25,7 @@ export const validatePokemon = (
   const typeValueSanitized = sanitize(String(typeValue))
   const typeValueStr = String(typeValueSanitized)
   const typeValueNum = Number(typeValue)
-  const errors = {
-    name: '',
-    hp: '',
-    attack: '',
-    defense: '',
-    speed: '',
-    height: '',
-    weight: '',
-    image: '',
-    type: ''
-  }
+  const errors = emptyErrors
 
   switch (typeName) {
     case NAME:
