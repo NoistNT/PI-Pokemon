@@ -52,10 +52,10 @@ This Single Page Application (SPA) serves as a client-side interface for the Pok
 
 [![HTML5](https://img.shields.io/badge/HTML5-orange.svg?style=for-the-badge&logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/HTML)
 [![CSS3](https://img.shields.io/badge/CSS3-blueviolet.svg?style=for-the-badge&logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)
-[![JavaScript](https://img.shields.io/badge/JavaScript-yellow.svg?style=for-the-badge&logo=javascript&logoColor=white)](https://reactjs.org/)
-[![React](https://img.shields.io/badge/React-blue.svg?style=for-the-badge&logo=react&logoColor=white)](https://reactjs.org/)
+[![JavaScript](https://img.shields.io/badge/TypeScript-blue.svg?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![React](https://img.shields.io/badge/React-3a3ab1.svg?style=for-the-badge&logo=react&logoColor=white)](https://reactjs.org/)
 [![Redux](https://img.shields.io/badge/Redux-purple.svg?style=for-the-badge&logo=redux&logoColor=white)](https://redux.js.org/)
-[![Styled-Components](https://img.shields.io/badge/Styledcomponents-blue.svg?style=for-the-badge&logo=styledcomponents&logoColor=white)](https://styled-components.com/)
+[![Styled-Components](https://img.shields.io/badge/Styledcomponents-b13a7a.svg?style=for-the-badge&logo=styledcomponents&logoColor=white)](https://styled-components.com/)
 
 
 ## Getting Started
