@@ -2,6 +2,7 @@ import type { Pokemon } from '@/types/types'
 
 import { useEffect, useState } from 'react'
 
+import icon_remove from '@/assets/icon_remove.svg'
 import {
   ButtonsContainer,
   ButtonText,
@@ -30,19 +31,15 @@ import {
   showToast
 } from '@/helpers/helpers'
 import { validatePokemon } from '@/helpers/validatePokemon'
-import { resetFilters } from '@/redux/actions/pokemonActions'
-import {
-  getPokemons,
-  getTypes,
-  postPokemon
-} from '@/redux/actions/pokemonAsyncActions'
+import { resetFilters } from '@/redux/actions/pokemon-actions'
+import { getPokemons, postPokemon } from '@/redux/actions/pokemon-async-actions'
+import { getTypes } from '@/redux/actions/type-actions'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks'
-
-import icon_remove from '@/assets/icon_remove.svg'
 
 export default function CreatePokemon() {
   const dispatch = useAppDispatch()
-  const { types, isLoading } = useAppSelector(({ pokemons }) => pokemons)
+  const { isLoading } = useAppSelector(({ pokemons }) => pokemons)
+  const { types } = useAppSelector(({ types }) => types)
   const [pokemon, setPokemon] = useState<Pokemon>(emptyPokemon)
   const [errors, setErrors] = useState(emptyErrors)
 

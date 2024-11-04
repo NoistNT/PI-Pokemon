@@ -17,8 +17,8 @@ import {
   setSort,
   setSource,
   setType
-} from '@/redux/actions/pokemonActions'
-import { getTypes } from '@/redux/actions/pokemonAsyncActions'
+} from '@/redux/actions/pokemon-actions'
+import { getTypes } from '@/redux/actions/type-actions'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks'
 
 export default function Menu() {
@@ -26,7 +26,7 @@ export default function Menu() {
   const selectSourceRef = useRef<HTMLSelectElement>(null)
   const selectSortRef = useRef<HTMLSelectElement>(null)
   const selectTypesRef = useRef<HTMLSelectElement>(null)
-  const { types } = useAppSelector(({ pokemons }) => pokemons)
+  const { types } = useAppSelector(({ types }) => types)
 
   useEffect(() => {
     if (!types.length) {
