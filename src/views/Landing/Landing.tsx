@@ -9,7 +9,7 @@ import {
   LandingTitle,
   LandingWrapper
 } from '@/components/StyledComponents/StyledLanding'
-import { getPokemons } from '@/redux/actions/pokemonAsyncActions'
+import { getPokemons } from '@/redux/actions/pokemon-async-actions'
 import { useAppDispatch } from '@/redux/hooks'
 
 import logo from '@/assets/logo.webp'
