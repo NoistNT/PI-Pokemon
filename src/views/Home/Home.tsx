@@ -3,7 +3,7 @@ import { useEffect } from 'react'
 import Cards from '@/components/Cards/Cards'
 import Menu from '@/components/Menu/Menu'
 import Paginate from '@/components/Paginate/Paginate'
-import { getPokemons } from '@/redux/actions/pokemonAsyncActions'
+import { getPokemons } from '@/redux/actions/pokemon-async-actions'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks'
 import { POKEMONS_PER_PAGE } from '@/utils/constants'
 

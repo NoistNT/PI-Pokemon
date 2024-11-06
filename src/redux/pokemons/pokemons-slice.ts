@@ -18,10 +18,9 @@ import {
   getPokemonById,
   getPokemonByName,
   getPokemons,
-  getTypes,
   postPokemon,
   removePokemon
-} from '@/redux/actions/pokemonAsyncActions'
+} from '@/redux/actions/pokemon-async-actions'
 
 const initialState: PokemonInitialState = {
   allPokemons: [],
@@ -144,21 +143,6 @@ export const pokemonsReducer = createSlice({
         state.error = null
       })
       .addCase(getPokemonByName.rejected, (state, { error }) => {
-        state.isLoading = false
-        state.error = error
-      })
-
-      // GET TYPES
-      .addCase(getTypes.pending, (state) => {
-        state.isLoading = true
-        state.error = null
-      })
-      .addCase(getTypes.fulfilled, (state, { payload }) => {
-        state.isLoading = false
-        state.types = payload
-        state.error = null
-      })
-      .addCase(getTypes.rejected, (state, { error }) => {
         state.isLoading = false
         state.error = error
       })

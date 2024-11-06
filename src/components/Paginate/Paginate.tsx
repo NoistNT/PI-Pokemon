@@ -2,7 +2,7 @@ import {
   Container,
   PageLink
 } from '@/components/StyledComponents/StyledPaginate'
-import { setCurrentPage } from '@/redux/actions/pokemonActions'
+import { setCurrentPage } from '@/redux/actions/pokemon-actions'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks'
 
 interface Props {

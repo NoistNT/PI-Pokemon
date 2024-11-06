@@ -20,13 +20,16 @@ export interface Pokemon {
   userCreated: boolean
 }
 
-export interface PokemonInitialState {
-  allPokemons: Pokemon[]
-  pokemons: Pokemon[]
-  pokemon: Pokemon
+export interface TypesInitialState {
   types: Types[]
   isLoading: boolean
   error: SerializedError | null
+}
+
+export interface PokemonInitialState extends TypesInitialState {
+  allPokemons: Pokemon[]
+  pokemons: Pokemon[]
+  pokemon: Pokemon
   currentPage: number
   typeFilter: PokemonTypes
   sourceFilter: Source

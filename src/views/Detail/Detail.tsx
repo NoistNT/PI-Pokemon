@@ -18,8 +18,8 @@ import {
   Types
 } from '@/components/StyledComponents/StyledDetail'
 import { capitalize } from '@/helpers/helpers'
-import { cleanDetail } from '@/redux/actions/pokemonActions'
-import { getPokemonById } from '@/redux/actions/pokemonAsyncActions'
+import { cleanDetail } from '@/redux/actions/pokemon-actions'
+import { getPokemonById } from '@/redux/actions/pokemon-async-actions'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks'
 import { SkeletonDetailCard } from '@/views/Detail/SkeletonDetail'
 

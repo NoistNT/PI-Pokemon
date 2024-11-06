@@ -137,10 +137,26 @@ export const emptyType = {
   url: ''
 }
 
+export const cleanDetail = () => emptyPokemon
+
 export const resetPokemonForm = (
   setPokemon: React.Dispatch<React.SetStateAction<Pokemon>>
 ) => {
   setPokemon(emptyPokemon)
 }
 
-export const cleanDetail = () => emptyPokemon
+export const resetErrors = (
+  setErrors: React.Dispatch<React.SetStateAction<typeof emptyErrors>>
+) => {
+  setErrors({
+    name: '',
+    hp: '',
+    attack: '',
+    defense: '',
+    speed: '',
+    height: '',
+    weight: '',
+    type: '',
+    image: ''
+  })
+}

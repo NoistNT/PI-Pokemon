@@ -8,11 +8,11 @@ import {
   Search
 } from '@/components/StyledComponents/StyledSearchbar'
 import { showToast } from '@/helpers/helpers'
-import { setCurrentPage } from '@/redux/actions/pokemonActions'
+import { setCurrentPage } from '@/redux/actions/pokemon-actions'
 import {
   getPokemonByName,
   getPokemons
-} from '@/redux/actions/pokemonAsyncActions'
+} from '@/redux/actions/pokemon-async-actions'
 import { useAppDispatch } from '@/redux/hooks'
 
 export default function Searchbar() {

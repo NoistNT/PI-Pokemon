@@ -11,7 +11,10 @@ import {
   TypesContainer
 } from '@/components/StyledComponents/StyledCard'
 import { capitalize } from '@/helpers/helpers'
-import { getPokemons, removePokemon } from '@/redux/actions/pokemonAsyncActions'
+import {
+  getPokemons,
+  removePokemon
+} from '@/redux/actions/pokemon-async-actions'
 import { useAppDispatch } from '@/redux/hooks'
 
 interface Props {

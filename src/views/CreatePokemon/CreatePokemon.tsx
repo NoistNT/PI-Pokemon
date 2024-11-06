@@ -3,46 +3,30 @@ import type { Pokemon } from '@/types/types'
 import { useEffect, useState } from 'react'
 
 import {
-  ButtonsContainer,
-  ButtonText,
   Container,
-  ErrorSpan,
   Form,
   FormContainer,
-  FormItem,
-  IconRemoveType,
-  Input,
-  Label,
-  LabelInputContainer,
-  PokemonTypesList,
-  SelectBox,
-  Spinner,
-  SubmitButton,
-  Title,
-  TypeList,
-  TypeListContainer
+  Title
 } from '@/components/StyledComponents/StyledForm'
 import {
-  capitalize,
   emptyErrors,
   emptyPokemon,
   resetPokemonForm,
   showToast
 } from '@/helpers/helpers'
 import { validatePokemon } from '@/helpers/validatePokemon'
-import { resetFilters } from '@/redux/actions/pokemonActions'
-import {
-  getPokemons,
-  getTypes,
-  postPokemon
-} from '@/redux/actions/pokemonAsyncActions'
+import { resetFilters } from '@/redux/actions/pokemon-actions'
+import { getPokemons, postPokemon } from '@/redux/actions/pokemon-async-actions'
+import { getTypes } from '@/redux/actions/type-actions'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks'
-
-import icon_remove from '@/assets/icon_remove.svg'
+import { FormFooter } from '@/views/CreatePokemon/form-footer'
+import { FormSelect } from '@/views/CreatePokemon/form-select'
+import { LabelWithInput } from '@/views/CreatePokemon/label-with-input'
 
 export default function CreatePokemon() {
   const dispatch = useAppDispatch()
-  const { types, isLoading } = useAppSelector(({ pokemons }) => pokemons)
+  const { isLoading } = useAppSelector(({ pokemons }) => pokemons)
+  const { types } = useAppSelector(({ types }) => types)
   const [pokemon, setPokemon] = useState<Pokemon>(emptyPokemon)
   const [errors, setErrors] = useState(emptyErrors)
 
@@ -82,13 +66,6 @@ export default function CreatePokemon() {
     setErrors(validatePokemon(name, value))
   }
 
-  const handleRemove = (typeName: string) => {
-    setPokemon((pokemon) => ({
-      ...pokemon,
-      type: pokemon.type.filter(({ name }) => name !== typeName)
-    }))
-  }
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
 
@@ -113,152 +90,81 @@ export default function CreatePokemon() {
     }
   }
 
-  const pokemonTypes = types.map(({ _id, name }) => (
-    <option key={_id} value={name}>
-      {capitalize(name)}
-    </option>
-  ))
-
-  const pokemonTypesList = pokemon.type.map(({ name }) => {
-    return (
-      <TypeListContainer key={name} onClick={() => handleRemove(name)}>
-        <TypeList key={name}>{capitalize(name)}</TypeList>
-        <IconRemoveType alt="remove" src={icon_remove} />
-      </TypeListContainer>
-    )
-  })
-
   return (
     <Container>
       <FormContainer onSubmit={handleSubmit}>
         <Title>Create Pokémon</Title>
         <Form>
-          <FormItem>
-            <LabelInputContainer>
-              <Label htmlFor="name">Name: </Label>
-              <Input
-                name="name"
-                type="text"
-                value={pokemon.name.toLowerCase()}
-                onChange={handleChange}
-              />
-            </LabelInputContainer>
-            {errors.name ? <ErrorSpan>{errors.name}</ErrorSpan> : null}
-          </FormItem>
-          <FormItem>
-            <LabelInputContainer>
-              <Label htmlFor="hp">HP: </Label>
-              <Input
-                name="hp"
-                type="number"
-                value={pokemon.hp === 0 ? '' : pokemon.hp}
-                onChange={handleChange}
-              />
-            </LabelInputContainer>
-            {errors.hp ? <ErrorSpan>{errors.hp}</ErrorSpan> : null}
-          </FormItem>
-          <FormItem>
-            <LabelInputContainer>
-              <Label htmlFor="attack">Attack: </Label>
-              <Input
-                name="attack"
-                type="number"
-                value={pokemon.attack === 0 ? '' : pokemon.attack}
-                onChange={handleChange}
-              />
-            </LabelInputContainer>
-            {errors.attack ? <ErrorSpan>{errors.attack}</ErrorSpan> : null}
-          </FormItem>
-          <FormItem>
-            <LabelInputContainer>
-              <Label htmlFor="defense">Defense: </Label>
-              <Input
-                name="defense"
-                type="number"
-                value={pokemon.defense === 0 ? '' : pokemon.defense}
-                onChange={handleChange}
-              />
-            </LabelInputContainer>
-            {errors.defense ? <ErrorSpan>{errors.defense}</ErrorSpan> : null}
-          </FormItem>
-          <FormItem>
-            <LabelInputContainer>
-              <Label htmlFor="speed">Speed: </Label>
-              <Input
-                name="speed"
-                type="number"
-                value={pokemon.speed === 0 ? '' : pokemon.speed}
-                onChange={handleChange}
-              />
-            </LabelInputContainer>
-            {errors.speed ? <ErrorSpan>{errors.speed}</ErrorSpan> : null}
-          </FormItem>
-          <FormItem>
-            <LabelInputContainer>
-              <Label htmlFor="height">Height: </Label>
-              <Input
-                name="height"
-                type="number"
-                value={pokemon.height === 0 ? '' : pokemon.height}
-                onChange={handleChange}
-              />
-            </LabelInputContainer>
-            {errors.height ? <ErrorSpan>{errors.height}</ErrorSpan> : null}
-          </FormItem>
-          <FormItem>
-            <LabelInputContainer>
-              <Label htmlFor="weight">Weight: </Label>
-              <Input
-                name="weight"
-                type="number"
-                value={pokemon.weight === 0 ? '' : pokemon.weight}
-                onChange={handleChange}
-              />
-            </LabelInputContainer>
-            {errors.weight ? <ErrorSpan>{errors.weight}</ErrorSpan> : null}
-          </FormItem>
-          <FormItem>
-            <LabelInputContainer>
-              <Label>Image: </Label>
-              <Input
-                name="image"
-                placeholder="https://example.com"
-                type="text"
-                value={pokemon.image}
-                onChange={handleChange}
-              />
-            </LabelInputContainer>
-            {errors.image ? <ErrorSpan>{errors.image}</ErrorSpan> : null}
-          </FormItem>
-          <FormItem>
-            <LabelInputContainer>
-              <Label htmlFor="types">Type: </Label>
-              <SelectBox
-                defaultValue="normal"
-                id="type"
-                name="type"
-                onChange={handleChange}
-              >
-                {pokemonTypes}
-              </SelectBox>
-            </LabelInputContainer>
-            {errors.type ? <ErrorSpan>{errors.type}</ErrorSpan> : null}
-            <PokemonTypesList>{pokemonTypesList}</PokemonTypesList>
-          </FormItem>
+          <LabelWithInput
+            errors={errors.name}
+            label="name"
+            type="text"
+            value={pokemon.name.toLowerCase()}
+            onChange={handleChange}
+          />
+          <LabelWithInput
+            errors={errors.hp}
+            label="hp"
+            type="number"
+            value={pokemon.hp}
+            onChange={handleChange}
+          />
+          <LabelWithInput
+            errors={errors.attack}
+            label="attack"
+            type="number"
+            value={pokemon.attack}
+            onChange={handleChange}
+          />
+          <LabelWithInput
+            errors={errors.defense}
+            label="defense"
+            type="number"
+            value={pokemon.defense}
+            onChange={handleChange}
+          />
+          <LabelWithInput
+            errors={errors.speed}
+            label="speed"
+            type="number"
+            value={pokemon.speed}
+            onChange={handleChange}
+          />
+          <LabelWithInput
+            errors={errors.height}
+            label="height"
+            type="number"
+            value={pokemon.height}
+            onChange={handleChange}
+          />
+          <LabelWithInput
+            errors={errors.weight}
+            label="weight"
+            type="number"
+            value={pokemon.weight}
+            onChange={handleChange}
+          />
+          <LabelWithInput
+            errors={errors.image}
+            label="image"
+            placeholder="https://example.com"
+            type="text"
+            value={pokemon.image}
+            onChange={handleChange}
+          />
+          <FormSelect
+            errors={errors.type}
+            pokemonType={pokemon.type}
+            setPokemon={setPokemon}
+            types={types}
+            onChange={handleChange}
+          />
         </Form>
-        <ButtonsContainer>
-          <SubmitButton disabled={isLoading} type="submit">
-            <ButtonText>
-              {isLoading ? <Spinner /> : 'Create Pokémon'}
-            </ButtonText>
-          </SubmitButton>
-          <SubmitButton
-            type="button"
-            onClick={() => resetPokemonForm(setPokemon)}
-          >
-            <ButtonText>Clear form</ButtonText>
-          </SubmitButton>
-        </ButtonsContainer>
+        <FormFooter
+          isLoading={isLoading}
+          setErrors={setErrors}
+          setPokemon={setPokemon}
+        />
       </FormContainer>
     </Container>
   )

@@ -1,4 +1,4 @@
-import type { Pokemon, Types } from '@/types/types'
+import type { Pokemon } from '@/types/types'
 
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { toast } from 'sonner'
@@ -73,15 +73,6 @@ export const getPokemonByName = createAsyncThunk(
     }
   }
 )
-
-export const getTypes = createAsyncThunk('pokemons/getTypes', async () => {
-  try {
-    return (await fetchWithErrorHandling(`${API_URL}/type`)) as Promise<Types[]>
-  } catch (error) {
-    customError(error, 'An error occurred while fetching the types')
-    throw error
-  }
-})
 
 export const removePokemon = createAsyncThunk(
   'pokemons/removePokemon',

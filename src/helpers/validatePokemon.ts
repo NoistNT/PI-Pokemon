@@ -35,6 +35,8 @@ export const validatePokemon = (
         errors.name = 'Name can only contain letters'
       } else if (typeValueStr.length > 20) {
         errors.name = 'Name must be less than 20 characters'
+      } else {
+        errors.name = ''
       }
       break
 
@@ -51,8 +53,11 @@ export const validatePokemon = (
       } else if (typeValueNum < 0) {
         errors[nameSanitized] =
           `${capitalize(typeName)} must be a positive number`
+      } else {
+        errors[nameSanitized] = ''
       }
       break
+
     case IMAGE:
       if (!typeValue) {
         errors.image = 'If no image is provided, the default image will be used'
@@ -62,11 +67,16 @@ export const validatePokemon = (
         )
       ) {
         errors.image = 'Invalid image URL'
+      } else {
+        errors.image = ''
       }
       break
+
     case TYPE:
       if (!typeValueStr.length) {
         errors.type = 'Type is required'
+      } else {
+        errors.type = ''
       }
       break
     default:
