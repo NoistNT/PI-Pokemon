@@ -1,4 +1,4 @@
-import { Route, Routes, useLocation } from 'react-router-dom'
+import { Route, Routes, useLocation } from 'react-router'
 import { Toaster } from 'sonner'
 
 import Error404 from '@/components/Error404/Error404'

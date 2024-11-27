@@ -1,6 +1,6 @@
 import type { Pokemon, PokemonTypes } from '@/types/types'
 
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router'
 
 import { Remove } from '@/components/Card/Remove'
 import {
