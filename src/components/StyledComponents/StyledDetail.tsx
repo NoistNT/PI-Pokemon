@@ -124,10 +124,11 @@ export const Stats = styled.h3`
   }
 `
 
-export const DetailTypesContainer = styled.div`
+export const DetailTypesContainer = styled.p`
   display: flex;
   justify-content: end;
   align-items: center;
+  margin: 0 auto;
   margin-right: 0.2rem;
   gap: 0.5rem;
   width: 100%;
@@ -165,7 +166,7 @@ export const AttributeValue = styled(Attribute)`
   font-weight: 400;
 `
 
-export const Item = styled.p`
+export const Item = styled.div`
   position: relative;
   display: inline-flex;
   justify-content: space-between;
