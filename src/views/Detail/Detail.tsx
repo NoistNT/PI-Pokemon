@@ -22,7 +22,7 @@ import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import type { PokemonTypes } from '@/types/types';
 import { SkeletonDetailCard } from '@/views/Detail/SkeletonDetail';
 
-function Detail() {
+export function Detail() {
   const dispatch = useAppDispatch();
   const { id } = useParams();
   const {
@@ -94,5 +94,3 @@ function Detail() {
     </CardContainer>
   );
 }
-
-export { Detail };

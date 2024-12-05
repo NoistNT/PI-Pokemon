@@ -7,7 +7,7 @@ import { getPokemons } from '@/redux/actions/pokemon-async-actions';
 import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import { POKEMONS_PER_PAGE } from '@/utils/config';
 
-function Home() {
+export function Home() {
   const dispatch = useAppDispatch();
   const { pokemons, currentPage } = useAppSelector(({ pokemons }) => pokemons);
 
@@ -29,5 +29,3 @@ function Home() {
     </>
   );
 }
-
-export { Home };
