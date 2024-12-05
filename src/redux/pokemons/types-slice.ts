@@ -1,14 +1,13 @@
-import type { TypesInitialState } from '@/types/types'
+import { createSlice } from '@reduxjs/toolkit';
 
-import { createSlice } from '@reduxjs/toolkit'
-
-import { getTypes } from '@/redux/actions/type-actions'
+import { getTypes } from '@/redux/actions/type-actions';
+import type { TypesInitialState } from '@/types/types';
 
 const initialState: TypesInitialState = {
   types: [],
   isLoading: false,
-  error: null
-}
+  error: null,
+};
 
 export const typesReducer = createSlice({
   name: 'types',
@@ -17,19 +16,19 @@ export const typesReducer = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(getTypes.pending, (state) => {
-        state.isLoading = true
-        state.error = null
+        state.isLoading = true;
+        state.error = null;
       })
       .addCase(getTypes.fulfilled, (state, { payload }) => {
-        state.isLoading = false
-        state.types = payload
-        state.error = null
+        state.isLoading = false;
+        state.types = payload;
+        state.error = null;
       })
       .addCase(getTypes.rejected, (state, { error }) => {
-        state.isLoading = false
-        state.error = error
-      })
-  }
-})
+        state.isLoading = false;
+        state.error = error;
+      });
+  },
+});
 
-export default typesReducer.reducer
+export default typesReducer.reducer;

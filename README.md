@@ -19,8 +19,6 @@
   </p>
 </div>
 
-
-
 ## About The Project
 
 <div align="center">
@@ -33,20 +31,20 @@ This Single Page Application (SPA) serves as a client-side interface for the Pok
 
 **Key Features:**
 
-* **Pokémon Search:** Find Pokémon by name using a search bar.
-* **Pokémon Creation:** Add new Pokémon with a controlled and validated form, including error handling.
-* **Filtering:** Combine filters by:
-    * **Types:** Filter Pokémon by their types (e.g., Fire, Water, Grass).
-    * **Origin:** Choose Pokémon from the database (user-created), or original (fetched from the API).
-* **Sorting:** Sort the Pokémon list by:
-    * **Attack**
-    * **Defense**
-    * **Speed**
-    * **Height**
-    * **Weight**
-    * **Health Points (HP)**
-* **Detailed View:** Gain extensive information about a specific Pokémon, including its stats, abilities, and image.
-* **Lazy Loading:** Improves performance by loading data only when needed.
+- **Pokémon Search:** Find Pokémon by name using a search bar.
+- **Pokémon Creation:** Add new Pokémon with a controlled and validated form, including error handling.
+- **Filtering:** Combine filters by:
+  - **Types:** Filter Pokémon by their types (e.g., Fire, Water, Grass).
+  - **Origin:** Choose Pokémon from the database (user-created), or original (fetched from the API).
+- **Sorting:** Sort the Pokémon list by:
+  - **Attack**
+  - **Defense**
+  - **Speed**
+  - **Height**
+  - **Weight**
+  - **Health Points (HP)**
+- **Detailed View:** Gain extensive information about a specific Pokémon, including its stats, abilities, and image.
+- **Lazy Loading:** Improves performance by loading data only when needed.
 
 ## Built With
 
@@ -56,7 +54,6 @@ This Single Page Application (SPA) serves as a client-side interface for the Pok
 [![React](https://img.shields.io/badge/React-3a3ab1.svg?style=for-the-badge&logo=react&logoColor=white)](https://reactjs.org/)
 [![Redux](https://img.shields.io/badge/Redux-purple.svg?style=for-the-badge&logo=redux&logoColor=white)](https://redux.js.org/)
 [![Styled-Components](https://img.shields.io/badge/Styledcomponents-b13a7a.svg?style=for-the-badge&logo=styledcomponents&logoColor=white)](https://styled-components.com/)
-
 
 ## Getting Started
 
@@ -73,7 +70,9 @@ To set up your local development environment, follow these steps:
    ```bash
    git clone https://github.com/NoistNT/Pokemon-Client.git
    ```
+
    <br/>
+
 2. Install dependencies
    <br/>
    npm
@@ -100,8 +99,8 @@ To set up your local development environment, follow these steps:
    npm start
    ```
 
-
 <!-- CONTRIBUTING -->
+
 ## Contributing
 
 Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
@@ -115,17 +114,15 @@ Don't forget to give the project a star! Thanks again!
 4. Push to the Branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-
-
 <!-- CONTACT -->
+
 ## Contact
 
 [![LinkedIn][linkedin-shield]][linkedin-url] [![Gmail][gmail-shield]][gmail-url]
 
-
-
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/ariel-piazzano
 [product-screenshot]: https://github.com/NoistNT/Pokemon-Client/assets/104594670/4f6ffde7-7939-4abe-9690-df6ce88b84e5

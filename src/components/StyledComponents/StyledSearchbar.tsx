@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 export const Container = styled.div`
   display: flex;
@@ -13,7 +13,7 @@ export const Container = styled.div`
   @media (min-width: 768px) {
     gap: 2rem;
   }
-`
+`;
 
 export const Search = styled.input`
   outline: 0;
@@ -25,8 +25,7 @@ export const Search = styled.input`
   text-align: center;
   padding: 0.5rem;
   transition: all 0.4s ease-in-out;
-  font-family: 'Open Sans', Inter, system-ui, Avenir, Helvetica, Arial,
-    sans-serif;
+  font-family: 'Open Sans', Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 
   &::placeholder {
     text-align: center;
@@ -45,13 +44,13 @@ export const Search = styled.input`
     font-size: 0.95rem;
     transition: all 0.4s ease-in-out;
   }
-`
+`;
 
 export const ButtonText = styled.span`
   position: relative;
   z-index: 1;
   color: var(--text-color);
-`
+`;
 
 export const Button = styled.button`
   position: relative;
@@ -60,11 +59,7 @@ export const Button = styled.button`
   font-size: 0.95rem;
   font-weight: 550;
   color: var(--text-color);
-  background: linear-gradient(
-    82.3deg,
-    rgb(71, 49, 104) 10.8%,
-    rgb(70, 64, 160) 94.3%
-  );
+  background: linear-gradient(82.3deg, rgb(71, 49, 104) 10.8%, rgb(70, 64, 160) 94.3%);
   border-color: #ffffff36;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
   border-radius: 0.35rem;
@@ -92,11 +87,7 @@ export const Button = styled.button`
     width: 100%;
     height: 100%;
     border-radius: inherit;
-    background: linear-gradient(
-      82.3deg,
-      rgb(76, 71, 148) 10.8%,
-      rgb(84, 54, 128) 94.3%
-    );
+    background: linear-gradient(82.3deg, rgb(76, 71, 148) 10.8%, rgb(84, 54, 128) 94.3%);
     transition: all 0.48s;
   }
-`
+`;

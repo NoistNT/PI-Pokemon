@@ -1,9 +1,6 @@
-import {
-  LoadingContainer,
-  Ring
-} from '@/components/StyledComponents/StyledLoader'
+import { LoadingContainer, Ring } from '@/components/StyledComponents/StyledLoader';
 
-export default function Loader() {
+function Loader() {
   return (
     <LoadingContainer>
       <Ring>
@@ -14,5 +11,7 @@ export default function Loader() {
       </Ring>
       <span>Loading</span>
     </LoadingContainer>
-  )
+  );
 }
+
+export { Loader };

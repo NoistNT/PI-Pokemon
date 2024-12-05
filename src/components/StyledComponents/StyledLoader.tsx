@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 export const LoadingContainer = styled.div`
   display: flex;
@@ -14,7 +14,7 @@ export const LoadingContainer = styled.div`
     font-weight: 600;
     border-radius: 0.2rem;
   }
-`
+`;
 
 export const Ring = styled.div`
   display: flex;
@@ -53,4 +53,4 @@ export const Ring = styled.div`
       transform: rotate(360deg);
     }
   }
-`
+`;

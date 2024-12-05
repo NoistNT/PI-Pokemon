@@ -8,8 +8,8 @@ import {
   SkeletonDetailStatsTitle,
   SkeletonDetailTitle,
   SkeletonDetailType,
-  SkeletonDetailTypesContainer
-} from '@/components/StyledComponents/StyledSkeletonDetail'
+  SkeletonDetailTypesContainer,
+} from '@/components/StyledComponents/StyledSkeletonDetail';
 
 export function SkeletonDetailCard() {
   return (
@@ -34,5 +34,5 @@ export function SkeletonDetailCard() {
         <SkeletonDetailStat />
       </SkeletonDetailStatsContainer>
     </SkeletonDetailContainer>
-  )
+  );
 }

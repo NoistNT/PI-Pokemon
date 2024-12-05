@@ -1,8 +1,8 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 export const Container = styled.div`
   display: flex;
-`
+`;
 
 export const CardsContainer = styled.div`
   display: grid;
@@ -20,4 +20,4 @@ export const CardsContainer = styled.div`
   @media (min-width: 1440px) {
     grid-template-columns: repeat(4, 1fr);
   }
-`
+`;

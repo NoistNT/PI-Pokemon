@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef } from 'react'
+import { useCallback, useEffect, useRef } from 'react';
 
 import {
   Button,
@@ -8,75 +8,78 @@ import {
   SelectBox,
   SelectContainer,
   SelectGroup,
-  Title
-} from '@/components/StyledComponents/StyledMenu'
-import { capitalize } from '@/helpers/helpers'
+  Title,
+} from '@/components/StyledComponents/StyledMenu';
+import { capitalize } from '@/helpers/helpers';
 import {
   resetFilters,
   setCurrentPage,
   setSort,
   setSource,
-  setType
-} from '@/redux/actions/pokemon-actions'
-import { getTypes } from '@/redux/actions/type-actions'
-import { useAppDispatch, useAppSelector } from '@/redux/hooks'
+  setType,
+} from '@/redux/actions/pokemon-actions';
+import { getTypes } from '@/redux/actions/type-actions';
+import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 
-export default function Menu() {
-  const dispatch = useAppDispatch()
-  const selectSourceRef = useRef<HTMLSelectElement>(null)
-  const selectSortRef = useRef<HTMLSelectElement>(null)
-  const selectTypesRef = useRef<HTMLSelectElement>(null)
-  const { types } = useAppSelector(({ types }) => types)
+export function Menu() {
+  const dispatch = useAppDispatch();
+  const selectSourceRef = useRef<HTMLSelectElement>(null);
+  const selectSortRef = useRef<HTMLSelectElement>(null);
+  const selectTypesRef = useRef<HTMLSelectElement>(null);
+  const { types } = useAppSelector(({ types }) => types);
 
   useEffect(() => {
     if (!types.length) {
-      dispatch(getTypes())
+      dispatch(getTypes());
     }
-  }, [dispatch, types])
+  }, [dispatch, types]);
 
   const handleSource = useCallback(
     (value: string) => {
-      dispatch(setCurrentPage(1))
-      dispatch(setSource(value))
+      dispatch(setCurrentPage(1));
+      dispatch(setSource(value));
     },
     [dispatch]
-  )
+  );
 
   const handleSort = useCallback(
     (value: string) => {
-      dispatch(setCurrentPage(1))
-      dispatch(setSort(value))
+      dispatch(setCurrentPage(1));
+      dispatch(setSort(value));
     },
     [dispatch]
-  )
+  );
 
   const handleTypes = useCallback(
     (value: string) => {
-      dispatch(setCurrentPage(1))
-      dispatch(setType(value))
+      dispatch(setCurrentPage(1));
+      dispatch(setType(value));
     },
     [dispatch]
-  )
+  );
 
   const handleReset = () => {
     if (selectSourceRef.current) {
-      selectSourceRef.current.selectedIndex = 0
+      selectSourceRef.current.selectedIndex = 0;
     }
     if (selectSortRef.current) {
-      selectSortRef.current.selectedIndex = 0
+      selectSortRef.current.selectedIndex = 0;
     }
     if (selectTypesRef.current) {
-      selectTypesRef.current.selectedIndex = 0
+      selectTypesRef.current.selectedIndex = 0;
     }
-    dispatch(resetFilters())
-    dispatch(setCurrentPage(1))
-  }
+    dispatch(resetFilters());
+    dispatch(setCurrentPage(1));
+  };
 
   const pokemonTypes = types.map(({ _id, name }) => (
-    <option key={_id} value={name}>
+    <option
+      key={_id}
+      value={name}
+    >
       {capitalize(name)}
     </option>
-  ))
+  ));
 
   return (
     <Container>
@@ -134,9 +137,12 @@ export default function Menu() {
           </SelectBox>
         </SelectContainer>
       </SelectGroup>
-      <Button type="button" onClick={handleReset}>
+      <Button
+        type="button"
+        onClick={handleReset}
+      >
         <ButtonText>Reset filters</ButtonText>
       </Button>
     </Container>
-  )
+  );
 }

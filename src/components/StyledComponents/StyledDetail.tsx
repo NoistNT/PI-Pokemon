@@ -1,8 +1,7 @@
-import type { PokemonTypesProps } from '@/types/types'
+import styled from 'styled-components';
 
-import styled from 'styled-components'
-
-import { typeColor } from '@/types/types'
+import type { PokemonTypesProps } from '@/types/types';
+import { typeColor } from '@/types/types';
 
 export const CardContainer = styled.div`
   position: relative;
@@ -16,11 +15,7 @@ export const CardContainer = styled.div`
   border-style: solid;
   border-color: #ffffff36;
   border-radius: 0.85rem;
-  background: linear-gradient(
-    82.3deg,
-    rgb(50, 39, 66) 0%,
-    rgb(76, 71, 139) 100%
-  );
+  background: linear-gradient(82.3deg, rgb(50, 39, 66) 0%, rgb(76, 71, 139) 100%);
   box-shadow: 0 2px 4px var(--card-shadow);
   transition: all 0.3s ease;
 
@@ -46,7 +41,7 @@ export const CardContainer = styled.div`
     max-width: 20rem;
     margin: 1rem auto;
   }
-`
+`;
 
 export const HeaderContainer = styled.div`
   position: relative;
@@ -59,7 +54,7 @@ export const HeaderContainer = styled.div`
   @media screen and (max-width: 768px) {
     align-items: flex-start;
   }
-`
+`;
 
 export const Title = styled.h2`
   position: relative;
@@ -75,7 +70,7 @@ export const Title = styled.h2`
     margin-bottom: 1.5rem;
     font-size: 2rem;
   }
-`
+`;
 
 export const Image = styled.img`
   position: relative;
@@ -83,15 +78,14 @@ export const Image = styled.img`
   width: 20rem;
   height: 20rem;
   filter: drop-shadow(0 2px 7px #101010);
-  -webkit-box-reflect: below 1px
-    linear-gradient(transparent, rgba(0, 0, 0, 0.1));
+  -webkit-box-reflect: below 1px linear-gradient(transparent, rgba(0, 0, 0, 0.1));
 
   @media screen and (max-width: 768px) {
     width: 15rem;
     height: 15rem;
     margin-bottom: 1rem;
   }
-`
+`;
 
 export const StatsContainer = styled.div`
   position: relative;
@@ -103,7 +97,7 @@ export const StatsContainer = styled.div`
   width: 100%;
   max-width: 20rem;
   margin: 0 auto;
-`
+`;
 
 export const Stats = styled.h3`
   position: relative;
@@ -122,7 +116,7 @@ export const Stats = styled.h3`
   @media screen and (max-width: 768px) {
     font-size: 1rem;
   }
-`
+`;
 
 export const DetailTypesContainer = styled.p`
   display: flex;
@@ -132,7 +126,7 @@ export const DetailTypesContainer = styled.p`
   margin-right: 0.2rem;
   gap: 0.5rem;
   width: 100%;
-`
+`;
 
 export const Types = styled.span<PokemonTypesProps>`
   position: relative;
@@ -142,14 +136,13 @@ export const Types = styled.span<PokemonTypesProps>`
   border-radius: 0.3rem;
   font-size: 0.9rem;
   text-align: center;
-  background-color: ${(props) =>
-    typeColor[props.type as keyof typeof typeColor] || '#999999'};
+  background-color: ${(props) => typeColor[props.type as keyof typeof typeColor] || '#999999'};
   color: var(--text-color);
 
   @media screen and (max-width: 768px) {
     font-size: 0.8rem;
   }
-`
+`;
 
 export const Attribute = styled.span`
   position: relative;
@@ -160,11 +153,11 @@ export const Attribute = styled.span`
   @media screen and (max-width: 768px) {
     font-size: 0.9rem;
   }
-`
+`;
 
 export const AttributeValue = styled(Attribute)`
   font-weight: 400;
-`
+`;
 
 export const Item = styled.div`
   position: relative;
@@ -183,7 +176,7 @@ export const Item = styled.div`
     background-color: rgb(255, 255, 255, 0.3);
     transition: all 0.15s ease;
   }
-`
+`;
 
 export const Highlight = styled(Item)`
   background-color: rgb(255, 255, 255, 0.2);
@@ -191,4 +184,4 @@ export const Highlight = styled(Item)`
   &:hover {
     background-color: rgb(255, 255, 255, 0.3);
   }
-`
+`;

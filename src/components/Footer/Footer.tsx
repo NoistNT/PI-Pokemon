@@ -1,11 +1,13 @@
-import { StyledFooter } from '@/components/StyledComponents/StyledFooter'
+import { StyledFooter } from '@/components/StyledComponents/StyledFooter';
 
-export default function Footer() {
+function Footer() {
   return (
     <StyledFooter>
       <p>
-        Made with ❤️ by <a href="https://github.com/NoistNT">Ariel Piazzano</a>
+        Made with ❤️ by <a href="https://github.com/NoistNT">Ariel Piazzano</a>{' '}
       </p>
     </StyledFooter>
-  )
+  );
 }
+
+export { Footer };

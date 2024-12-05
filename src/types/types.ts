@@ -1,48 +1,48 @@
-import type { SerializedError } from '@reduxjs/toolkit'
+import type { SerializedError } from '@reduxjs/toolkit';
 
 export interface Types {
-  _id: string
-  name: string
-  url: string
+  _id: string;
+  name: string;
+  url: string;
 }
 
 export interface Pokemon {
-  id: number | string
-  name: string
-  image: string
-  hp: number
-  attack: number
-  defense: number
-  speed: number
-  height: number
-  weight: number
-  type: Types[]
-  userCreated: boolean
+  id: number | string;
+  name: string;
+  image: string;
+  hp: number;
+  attack: number;
+  defense: number;
+  speed: number;
+  height: number;
+  weight: number;
+  type: Types[];
+  userCreated: boolean;
 }
 
 export interface TypesInitialState {
-  types: Types[]
-  isLoading: boolean
-  error: SerializedError | null
+  types: Types[];
+  isLoading: boolean;
+  error: SerializedError | null;
 }
 
 export interface PokemonInitialState extends TypesInitialState {
-  allPokemons: Pokemon[]
-  pokemons: Pokemon[]
-  pokemon: Pokemon
-  currentPage: number
-  typeFilter: PokemonTypes
-  sourceFilter: Source
-  sortOption: SortOptions
+  allPokemons: Pokemon[];
+  pokemons: Pokemon[];
+  pokemon: Pokemon;
+  currentPage: number;
+  typeFilter: PokemonTypes;
+  sourceFilter: Source;
+  sortOption: SortOptions;
 }
 
 export interface PokemonTypesProps {
-  type: PokemonTypes
+  type: PokemonTypes;
 }
 
 export interface FilterPokemons extends PokemonTypesProps {
-  source: string
-  sortOption: SortOptions
+  source: string;
+  sortOption: SortOptions;
 }
 
 export const typeColor = {
@@ -65,10 +65,10 @@ export const typeColor = {
   steel: '#5f5f75',
   fairy: '#a85668',
   unknown: '#ac2b5c',
-  shadow: '#181616'
-}
+  shadow: '#181616',
+};
 
-export type Source = 'all' | 'db' | 'api'
+export type Source = 'all' | 'db' | 'api';
 
 export type SortOptions =
   | 'asc'
@@ -80,7 +80,7 @@ export type SortOptions =
   | 'higherHp'
   | 'lowerHp'
   | 'higherSpd'
-  | 'lowerSpd'
+  | 'lowerSpd';
 
 export type PokemonTypes =
   | 'all'
@@ -103,7 +103,7 @@ export type PokemonTypes =
   | 'steel'
   | 'water'
   | 'shadow'
-  | 'unknown'
+  | 'unknown';
 
 export type ErrorTypes =
   | 'name'
@@ -114,4 +114,4 @@ export type ErrorTypes =
   | 'height'
   | 'weight'
   | 'image'
-  | 'type'
+  | 'type';

@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 export const Container = styled.nav`
   display: flex;
@@ -8,15 +8,14 @@ export const Container = styled.nav`
   @media (min-width: 1026px) {
     margin: 3rem 0;
   }
-`
+`;
 
 export const PageLink = styled.button`
   padding: 0.35rem 1rem;
   margin: 0 0.15rem;
   list-style-type: none;
   text-decoration: none;
-  font-family: 'Open Sans', Inter, system-ui, Avenir, Helvetica, Arial,
-    sans-serif;
+  font-family: 'Open Sans', Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   color: var(--text-color);
   background-color: #4941b361;
   border: 1px solid #ffffff36;
@@ -33,4 +32,4 @@ export const PageLink = styled.button`
     border-color: #ffffff6f;
     box-shadow: 0 2px 4px var(--card-hover-shadow);
   }
-`
+`;

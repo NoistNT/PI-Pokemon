@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 export const LandingWrapper = styled.div`
   display: flex;
@@ -10,7 +10,7 @@ export const LandingWrapper = styled.div`
   width: 100vw;
   background: linear-gradient(180deg, #212121 0%, #331b5a 50%, #212121 100%);
   font-family: 'Open Sans', sans-serif;
-`
+`;
 
 export const LandingImage = styled.img`
   max-width: 30rem;
@@ -23,7 +23,7 @@ export const LandingImage = styled.img`
     height: 8rem;
     transition: all 0.3s ease;
   }
-`
+`;
 
 export const LandingTitle = styled.h1`
   font-size: 2rem;
@@ -34,7 +34,7 @@ export const LandingTitle = styled.h1`
     margin: 0 auto;
     font-size: 1.5rem;
   }
-`
+`;
 
 export const LandingDescription = styled.p`
   font-size: 1.2rem;
@@ -45,7 +45,7 @@ export const LandingDescription = styled.p`
     max-width: 28rem;
     font-size: 1rem;
   }
-`
+`;
 
 export const LandingButton = styled.button`
   position: relative;
@@ -54,11 +54,7 @@ export const LandingButton = styled.button`
   padding: 0 1rem;
   margin: 2rem 0;
   border-radius: 0.45rem;
-  background: linear-gradient(
-    82.3deg,
-    rgb(71, 49, 104) 10.8%,
-    rgb(70, 64, 160) 94.3%
-  );
+  background: linear-gradient(82.3deg, rgb(71, 49, 104) 10.8%, rgb(70, 64, 160) 94.3%);
   border: none;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
   cursor: pointer;
@@ -78,11 +74,7 @@ export const LandingButton = styled.button`
     width: 100%;
     height: 100%;
     border-radius: inherit;
-    background: linear-gradient(
-      82.3deg,
-      rgb(76, 71, 148) 10.8%,
-      rgb(84, 54, 128) 94.3%
-    );
+    background: linear-gradient(82.3deg, rgb(76, 71, 148) 10.8%, rgb(84, 54, 128) 94.3%);
     transition: all 0.48s;
   }
 
@@ -92,7 +84,7 @@ export const LandingButton = styled.button`
     border-radius: 0.3rem;
     transition: all 0.3s ease;
   }
-`
+`;
 
 export const LandingButtonText = styled.span`
   position: relative;
@@ -105,4 +97,4 @@ export const LandingButtonText = styled.span`
   @media (max-width: 768px) {
     font-size: 0.96rem;
   }
-`
+`;

@@ -1,6 +1,6 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
-import { SkeletonShimmer } from '@/helpers/helpers'
+import { SkeletonShimmer } from '@/helpers/helpers';
 
 export const SkeletonCardContainer = styled.div`
   position: relative;
@@ -14,21 +14,17 @@ export const SkeletonCardContainer = styled.div`
   border-style: solid;
   border-color: #ffffff36;
   border-radius: 0.85rem;
-  background: linear-gradient(
-    82.3deg,
-    rgb(50, 39, 66) 0%,
-    rgb(76, 71, 148) 100%
-  );
+  background: linear-gradient(82.3deg, rgb(50, 39, 66) 0%, rgb(76, 71, 148) 100%);
   box-shadow: 0 2px 4px var(--card-shadow);
   transition: all 0.3s ease;
-`
+`;
 
 export const SkeletonImage = styled(SkeletonShimmer)`
   width: 17.8rem;
   height: 17.8rem;
   background-color: #44475a;
   border-radius: 0.5rem;
-`
+`;
 
 export const SkeletonName = styled(SkeletonShimmer)`
   width: 50%;
@@ -37,7 +33,7 @@ export const SkeletonName = styled(SkeletonShimmer)`
   margin-top: auto;
   padding: 0.87rem 0.5rem;
   border-radius: 0.4rem;
-`
+`;
 
 export const SkeletonTypesContainer = styled.div`
   display: flex;
@@ -46,10 +42,10 @@ export const SkeletonTypesContainer = styled.div`
   margin-top: 1.4rem;
   gap: 0 1rem;
   padding-bottom: 0.8rem;
-`
+`;
 
 export const SkeletonType = styled(SkeletonShimmer)`
   padding: 1rem 2.8rem;
   background-color: #44475a;
   border-radius: 0.3rem;
-`
+`;

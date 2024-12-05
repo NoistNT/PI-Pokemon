@@ -1,6 +1,5 @@
-import type { ErrorTypes } from '@/types/types'
-
-import { capitalize, emptyErrors, sanitize } from '@/helpers/helpers'
+import { capitalize, emptyErrors, sanitize } from '@/helpers/helpers';
+import type { ErrorTypes } from '@/types/types';
 
 const ERROR_TYPES = {
   HP: 'hp',
@@ -11,34 +10,30 @@ const ERROR_TYPES = {
   HEIGHT: 'height',
   WEIGHT: 'weight',
   IMAGE: 'image',
-  TYPE: 'type'
-} as const
+  TYPE: 'type',
+} as const;
 
-const { HP, NAME, ATTACK, DEFENSE, SPEED, HEIGHT, WEIGHT, IMAGE, TYPE } =
-  ERROR_TYPES
+const { HP, NAME, ATTACK, DEFENSE, SPEED, HEIGHT, WEIGHT, IMAGE, TYPE } = ERROR_TYPES;
 
-export const validatePokemon = (
-  typeName: string,
-  typeValue: string | number
-) => {
-  const nameSanitized = sanitize(typeName) as ErrorTypes
-  const typeValueSanitized = sanitize(String(typeValue))
-  const typeValueStr = String(typeValueSanitized)
-  const typeValueNum = Number(typeValue)
-  const errors = emptyErrors
+export const validatePokemon = (typeName: string, typeValue: string | number) => {
+  const nameSanitized = sanitize(typeName) as ErrorTypes;
+  const typeValueSanitized = sanitize(String(typeValue));
+  const typeValueStr = String(typeValueSanitized);
+  const typeValueNum = Number(typeValue);
+  const errors = emptyErrors;
 
   switch (typeName) {
     case NAME:
       if (!typeValue) {
-        errors.name = 'Name is required'
+        errors.name = 'Name is required';
       } else if (!/^[a-zA-Z]+(?: [a-zA-Z]+)?$/.test(typeValueStr)) {
-        errors.name = 'Name can only contain letters'
+        errors.name = 'Name can only contain letters';
       } else if (typeValueStr.length > 20) {
-        errors.name = 'Name must be less than 20 characters'
+        errors.name = 'Name must be less than 20 characters';
       } else {
-        errors.name = ''
+        errors.name = '';
       }
-      break
+      break;
 
     case HP:
     case ATTACK:
@@ -47,41 +42,40 @@ export const validatePokemon = (
     case HEIGHT:
     case WEIGHT:
       if (!typeValueNum) {
-        errors[nameSanitized] = `${capitalize(typeName)} is required`
+        errors[nameSanitized] = `${capitalize(typeName)} is required`;
       } else if (typeof typeValueNum !== 'number') {
-        errors[nameSanitized] = `${capitalize(typeName)} must be a number`
+        errors[nameSanitized] = `${capitalize(typeName)} must be a number`;
       } else if (typeValueNum < 0) {
-        errors[nameSanitized] =
-          `${capitalize(typeName)} must be a positive number`
+        errors[nameSanitized] = `${capitalize(typeName)} must be a positive number`;
       } else {
-        errors[nameSanitized] = ''
+        errors[nameSanitized] = '';
       }
-      break
+      break;
 
     case IMAGE:
       if (!typeValue) {
-        errors.image = 'If no image is provided, the default image will be used'
+        errors.image = 'If no image is provided, the default image will be used';
       } else if (
         !/^https?:\/\/[\w\\-]+(\.[\w\\-]+)+(?:[/#?][\w\-./?=&%]*)?(?:\.(?:jpg|jpeg|png|gif|bmp|svg))$/.test(
           typeValueStr
         )
       ) {
-        errors.image = 'Invalid image URL'
+        errors.image = 'Invalid image URL';
       } else {
-        errors.image = ''
+        errors.image = '';
       }
-      break
+      break;
 
     case TYPE:
       if (!typeValueStr.length) {
-        errors.type = 'Type is required'
+        errors.type = 'Type is required';
       } else {
-        errors.type = ''
+        errors.type = '';
       }
-      break
+      break;
     default:
-      break
+      break;
   }
 
-  return errors
-}
+  return errors;
+};

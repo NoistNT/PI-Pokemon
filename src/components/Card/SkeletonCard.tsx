@@ -3,8 +3,8 @@ import {
   SkeletonImage,
   SkeletonName,
   SkeletonType,
-  SkeletonTypesContainer
-} from '@/components/StyledComponents/StyledSkeletonCard'
+  SkeletonTypesContainer,
+} from '@/components/StyledComponents/StyledSkeletonCard';
 
 export function SkeletonCard() {
   return (
@@ -16,5 +16,5 @@ export function SkeletonCard() {
         <SkeletonType />
       </SkeletonTypesContainer>
     </SkeletonCardContainer>
-  )
+  );
 }

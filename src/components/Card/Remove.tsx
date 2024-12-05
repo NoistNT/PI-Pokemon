@@ -1,37 +1,35 @@
-import { useState } from 'react'
+import { useState } from 'react';
 
-import { RemovePokemonModal } from '@/components/Card/RemovePokemonModal'
-import {
-  RemoveButton,
-  RemoveButtonImg
-} from '@/components/StyledComponents/StyledCard'
-
-import icon_remove from '@/assets/icon_remove.svg'
+import icon_remove from '@/assets/icon_remove.svg';
+import { RemovePokemonModal } from '@/components/Card/RemovePokemonModal';
+import { RemoveButton, RemoveButtonImg } from '@/components/StyledComponents/StyledCard';
 
 interface Props {
-  handleRemove: () => void
+  handleRemove: () => void;
 }
 
 export function Remove({ handleRemove }: Props) {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
 
-  const openModal = () => {
-    setIsOpen(true)
-  }
+  const openModal = () => setIsOpen(true);
 
-  const closeModal = () => {
-    setIsOpen(false)
-  }
+  const closeModal = () => setIsOpen(false);
 
   const confirmRemoval = () => {
-    handleRemove()
-    closeModal()
-  }
+    handleRemove();
+    closeModal();
+  };
 
   return (
     <>
-      <RemoveButton type="button" onClick={openModal}>
-        <RemoveButtonImg alt="remove-pokemon" src={icon_remove} />
+      <RemoveButton
+        type="button"
+        onClick={openModal}
+      >
+        <RemoveButtonImg
+          alt="remove-pokemon"
+          src={icon_remove}
+        />
       </RemoveButton>
       <RemovePokemonModal
         handleRemove={confirmRemoval}
@@ -39,5 +37,5 @@ export function Remove({ handleRemove }: Props) {
         onClose={closeModal}
       />
     </>
-  )
+  );
 }

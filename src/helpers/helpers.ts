@@ -1,11 +1,11 @@
-import type { FilterPokemons, Pokemon, SortOptions, Types } from '@/types/types'
+import { toast } from 'sonner';
+import styled, { css, keyframes } from 'styled-components';
 
-import { toast } from 'sonner'
-import styled, { css, keyframes } from 'styled-components'
+import type { FilterPokemons, Pokemon, SortOptions, Types } from '@/types/types';
 
 const randomDelay = (min: number, max: number) => css`
   animation-delay: ${Math.random() * (max - min) + min}s;
-`
+`;
 
 const shimmer = keyframes`
   0% {
@@ -14,11 +14,11 @@ const shimmer = keyframes`
   100% {
     background-position: 25rem 0;
   }
-`
+`;
 
 export const SkeletonShimmer = styled.div<{
-  duration?: number
-  delayRange?: [number, number]
+  duration?: number;
+  delayRange?: [number, number];
 }>`
   transition: all 0.3s ease;
   background-color: #44475a;
@@ -33,30 +33,26 @@ export const SkeletonShimmer = styled.div<{
   background-size: 800px 100%;
   animation: ${shimmer} ${({ duration = 2 }) => duration}s infinite linear;
   ${({ delayRange = [0, 0] }) => randomDelay(delayRange[0], delayRange[1])}
-`
+`;
 
 export const showToast = (type: 'success' | 'error', message: string) => {
-  toast[type](message, { position: 'bottom-right' })
-}
+  toast[type](message, { position: 'bottom-right' });
+};
 
 export const customError = (error: unknown, message: string) => {
-  const errMessage =
-    (error as Error).message || message || 'Something went wrong'
-
-  showToast('error', errMessage)
-}
+  const errMessage = (error as Error).message || message || 'Something went wrong';
+  showToast('error', errMessage);
+};
 
 export const capitalize = (name: string) => {
-  return name ? name.charAt(0).toUpperCase() + name.slice(1) : ''
-}
+  return name ? name.charAt(0).toUpperCase() + name.slice(1) : '';
+};
 
-export const sanitize = (name: string) => {
-  return name.replace(/\s/g, '').toLowerCase()
-}
+export const sanitize = (name: string) => name.replace(/\s/g, '').toLowerCase();
 
 export const types = (types: Types[]) => {
-  return types.map(({ name }) => `${capitalize(name)} `)
-}
+  return types.map(({ name }) => `${capitalize(name)} `);
+};
 
 export const sortPokemons = (pokemons: Pokemon[], sortOption: SortOptions) => {
   const sortFuncMap: Record<SortOptions, (a: Pokemon, b: Pokemon) => number> = {
@@ -69,13 +65,13 @@ export const sortPokemons = (pokemons: Pokemon[], sortOption: SortOptions) => {
     higherHp: (a, b) => b.hp - a.hp,
     lowerHp: (a, b) => a.hp - b.hp,
     higherSpd: (a, b) => b.speed - a.speed,
-    lowerSpd: (a, b) => a.speed - b.speed
-  }
+    lowerSpd: (a, b) => a.speed - b.speed,
+  };
 
-  const sortFunc = sortFuncMap[sortOption] || (() => 0)
+  const sortFunc = sortFuncMap[sortOption] || (() => 0);
 
-  return [...pokemons].sort(sortFunc)
-}
+  return [...pokemons].sort(sortFunc);
+};
 
 export const filterPokemons = (
   pokemons: Pokemon[],
@@ -86,24 +82,22 @@ export const filterPokemons = (
       ? pokemons.filter(({ userCreated }) => userCreated)
       : source === 'api'
         ? pokemons.filter(({ userCreated }) => !userCreated)
-        : pokemons
+        : pokemons;
 
   filtered =
     type === 'all'
       ? filtered
-      : filtered.filter(({ type: PokemonTypes }) =>
-          PokemonTypes.some(({ name }) => name === type)
-        )
+      : filtered.filter(({ type: PokemonTypes }) => PokemonTypes.some(({ name }) => name === type));
 
   if (!filtered.length) {
-    const err = new Error(`No ${capitalize(type)} pokemons found`)
+    const err = new Error(`No ${capitalize(type)} pokemons found`);
 
-    customError(err, err.message)
-    throw err
+    customError(err, err.message);
+    throw err;
   }
 
-  return sortPokemons(filtered, sortOption)
-}
+  return sortPokemons(filtered, sortOption);
+};
 
 export const emptyErrors = {
   name: '',
@@ -114,8 +108,8 @@ export const emptyErrors = {
   height: '',
   weight: '',
   type: '',
-  image: ''
-}
+  image: '',
+};
 
 export const emptyPokemon = {
   id: '',
@@ -128,22 +122,16 @@ export const emptyPokemon = {
   height: 0,
   weight: 0,
   type: [],
-  userCreated: false
-}
+  userCreated: false,
+};
 
-export const emptyType = {
-  _id: '',
-  name: '',
-  url: ''
-}
+export const emptyType = { _id: '', name: '', url: '' };
 
-export const cleanDetail = () => emptyPokemon
+export const cleanDetail = () => emptyPokemon;
 
-export const resetPokemonForm = (
-  setPokemon: React.Dispatch<React.SetStateAction<Pokemon>>
-) => {
-  setPokemon(emptyPokemon)
-}
+export const resetPokemonForm = (setPokemon: React.Dispatch<React.SetStateAction<Pokemon>>) => {
+  setPokemon(emptyPokemon);
+};
 
 export const resetErrors = (
   setErrors: React.Dispatch<React.SetStateAction<typeof emptyErrors>>
@@ -157,6 +145,6 @@ export const resetErrors = (
     height: '',
     weight: '',
     type: '',
-    image: ''
-  })
-}
+    image: '',
+  });
+};

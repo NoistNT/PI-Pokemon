@@ -30,8 +30,8 @@
       "@/helpers/*": ["./src/helpers/*"],
       "@/views/*": ["./src/views/*"]
     },
-    "target": "ES2017"
+    "target": "ES2023"
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "eslint.config.js"],
   "exclude": ["node_modules"]
 }

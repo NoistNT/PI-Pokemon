@@ -1,7 +1,5 @@
-import type { PokemonTypes } from '@/types/types'
-
-import { useEffect } from 'react'
-import { useParams } from 'react-router'
+import { useEffect } from 'react';
+import { useParams } from 'react-router';
 
 import {
   Attribute,
@@ -15,39 +13,43 @@ import {
   Stats,
   StatsContainer,
   Title,
-  Types
-} from '@/components/StyledComponents/StyledDetail'
-import { capitalize } from '@/helpers/helpers'
-import { cleanDetail } from '@/redux/actions/pokemon-actions'
-import { getPokemonById } from '@/redux/actions/pokemon-async-actions'
-import { useAppDispatch, useAppSelector } from '@/redux/hooks'
-import { SkeletonDetailCard } from '@/views/Detail/SkeletonDetail'
+  Types,
+} from '@/components/StyledComponents/StyledDetail';
+import { capitalize } from '@/helpers/helpers';
+import { cleanDetail } from '@/redux/actions/pokemon-actions';
+import { getPokemonById } from '@/redux/actions/pokemon-async-actions';
+import { useAppDispatch, useAppSelector } from '@/redux/hooks';
+import type { PokemonTypes } from '@/types/types';
+import { SkeletonDetailCard } from '@/views/Detail/SkeletonDetail';
 
-export default function Detail() {
-  const dispatch = useAppDispatch()
-  const { id } = useParams()
+function Detail() {
+  const dispatch = useAppDispatch();
+  const { id } = useParams();
   const {
     pokemon: { attack, defense, height, hp, image, name, speed, type, weight },
-    isLoading
-  } = useAppSelector(({ pokemons }) => pokemons)
+    isLoading,
+  } = useAppSelector(({ pokemons }) => pokemons);
 
   useEffect(() => {
     if (id) {
-      dispatch(getPokemonById(id))
+      dispatch(getPokemonById(id));
     }
 
     return () => {
-      dispatch(cleanDetail())
-    }
-  }, [dispatch, id])
+      dispatch(cleanDetail());
+    };
+  }, [dispatch, id]);
 
-  if (isLoading) return <SkeletonDetailCard />
+  if (isLoading) return <SkeletonDetailCard />;
 
   return (
     <CardContainer>
       <HeaderContainer>
         <Title>{capitalize(name)}</Title>
-        <Image alt={name} src={image} />
+        <Image
+          alt={name}
+          src={image}
+        />
       </HeaderContainer>
       <StatsContainer>
         <Stats>Stats</Stats>
@@ -55,7 +57,10 @@ export default function Detail() {
           <Attribute>Types: </Attribute>
           <DetailTypesContainer>
             {type.map(({ name }) => (
-              <Types key={name} type={name as PokemonTypes}>
+              <Types
+                key={name}
+                type={name as PokemonTypes}
+              >
                 {capitalize(name)}
               </Types>
             ))}
@@ -87,5 +92,7 @@ export default function Detail() {
         </Highlight>
       </StatsContainer>
     </CardContainer>
-  )
+  );
 }
+
+export { Detail };

@@ -1,6 +1,6 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
-import { SkeletonShimmer } from '@/helpers/helpers'
+import { SkeletonShimmer } from '@/helpers/helpers';
 
 export const SkeletonDetailContainer = styled(SkeletonShimmer)`
   position: relative;
@@ -27,7 +27,7 @@ export const SkeletonDetailContainer = styled(SkeletonShimmer)`
     margin: 1rem auto;
     height: 46rem;
   }
-`
+`;
 
 export const SkeletonDetailHeaderContainer = styled.div`
   position: relative;
@@ -40,7 +40,7 @@ export const SkeletonDetailHeaderContainer = styled.div`
   @media screen and (max-width: 768px) {
     align-items: flex-start;
   }
-`
+`;
 
 export const SkeletonDetailImage = styled(SkeletonShimmer)`
   width: 20rem;
@@ -51,7 +51,7 @@ export const SkeletonDetailImage = styled(SkeletonShimmer)`
     width: 15rem;
     height: 15rem;
   }
-`
+`;
 
 export const SkeletonDetailTitle = styled(SkeletonShimmer)`
   width: 12rem;
@@ -62,7 +62,7 @@ export const SkeletonDetailTitle = styled(SkeletonShimmer)`
   @media screen and (max-width: 768px) {
     place-self: center;
   }
-`
+`;
 
 export const SkeletonDetailSeparator = styled(SkeletonShimmer)`
   width: 95%;
@@ -73,7 +73,7 @@ export const SkeletonDetailSeparator = styled(SkeletonShimmer)`
   @media screen and (min-width: 768px) {
     display: none;
   }
-`
+`;
 
 export const SkeletonDetailStatsContainer = styled.div`
   position: relative;
@@ -90,7 +90,7 @@ export const SkeletonDetailStatsContainer = styled.div`
   @media screen and (max-width: 768px) {
     margin-top: 1.5em;
   }
-`
+`;
 
 export const SkeletonDetailStatsTitle = styled(SkeletonShimmer)`
   width: 3rem;
@@ -103,7 +103,7 @@ export const SkeletonDetailStatsTitle = styled(SkeletonShimmer)`
     display: none;
     height: 2.25rem;
   }
-`
+`;
 
 export const SkeletonDetailStat = styled(SkeletonDetailStatsTitle)`
   margin: 0.5rem 0;
@@ -115,17 +115,17 @@ export const SkeletonDetailStat = styled(SkeletonDetailStatsTitle)`
     width: 100%;
     height: 2.25rem;
   }
-`
+`;
 
 export const SkeletonDetailTypesContainer = styled(SkeletonDetailStat)`
   display: flex;
   justify-content: flex-end;
   align-items: center;
   gap: 1rem;
-`
+`;
 
 export const SkeletonDetailType = styled(SkeletonShimmer)`
   width: 5.7rem;
   height: 1.8rem;
   border-radius: 0.3rem;
-`
+`;

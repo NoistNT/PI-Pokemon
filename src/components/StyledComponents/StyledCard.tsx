@@ -1,8 +1,7 @@
-import type { PokemonTypesProps } from '@/types/types'
+import styled from 'styled-components';
 
-import styled from 'styled-components'
-
-import { typeColor } from '@/types/types'
+import type { PokemonTypesProps } from '@/types/types';
+import { typeColor } from '@/types/types';
 
 export const CardContainer = styled.div`
   position: relative;
@@ -15,11 +14,7 @@ export const CardContainer = styled.div`
   border-style: solid;
   border-color: #ffffff36;
   border-radius: 0.85rem;
-  background: linear-gradient(
-    82.3deg,
-    rgb(50, 39, 66) 0%,
-    rgb(76, 71, 148) 100%
-  );
+  background: linear-gradient(82.3deg, rgb(50, 39, 66) 0%, rgb(76, 71, 148) 100%);
   box-shadow: 0 2px 4px var(--card-shadow);
   transition: all 0.3s ease;
 
@@ -45,14 +40,10 @@ export const CardContainer = styled.div`
     width: 100%;
     height: 100%;
     border-radius: inherit;
-    background: linear-gradient(
-      82.3deg,
-      rgb(68, 64, 122) 1%,
-      rgb(45, 34, 61) 100%
-    );
+    background: linear-gradient(82.3deg, rgb(68, 64, 122) 1%, rgb(45, 34, 61) 100%);
     transition: all 0.48s;
   }
-`
+`;
 
 export const Image = styled.img`
   position: relative;
@@ -62,7 +53,7 @@ export const Image = styled.img`
   height: 17.8rem;
   margin-bottom: 1rem;
   filter: drop-shadow(0 2px 6px #101020);
-`
+`;
 
 export const Name = styled.h2`
   position: relative;
@@ -78,7 +69,7 @@ export const Name = styled.h2`
     text-shadow: 0.5px 0px 7px #ffffff;
     transition: all 0.15s ease-in-out;
   }
-`
+`;
 
 export const TypesContainer = styled.div`
   position: relative;
@@ -87,7 +78,7 @@ export const TypesContainer = styled.div`
   justify-content: center;
   align-items: center;
   padding: 0.3rem 0;
-`
+`;
 
 export const Types = styled.span<PokemonTypesProps>`
   margin: 0.5rem;
@@ -95,10 +86,9 @@ export const Types = styled.span<PokemonTypesProps>`
   border-radius: 0.3rem;
   font-size: 0.9rem;
   text-shadow: 2px 2px 4px #272727;
-  background-color: ${(props) =>
-    typeColor[props.type as keyof typeof typeColor] || '#999999'};
+  background-color: ${(props) => typeColor[props.type as keyof typeof typeColor] || '#999999'};
   color: var(--text-color);
-`
+`;
 
 export const RemoveButton = styled.button`
   position: absolute;
@@ -119,14 +109,14 @@ export const RemoveButton = styled.button`
     transition: all 0.15s ease-in-out;
     filter: drop-shadow(0 2px 4px #ffffff);
   }
-`
+`;
 
 export const RemoveButtonImg = styled.img`
   z-index: 2;
   width: 1.4rem;
   height: 1.4rem;
   transition: all 0.15s ease-in-out;
-`
+`;
 
 export const ModalContainer = styled.div`
   position: absolute;
@@ -138,7 +128,7 @@ export const ModalContainer = styled.div`
   align-items: center;
   z-index: 5;
   transition: all 0.3s ease;
-`
+`;
 
 export const Modal = styled.div`
   background-color: #2a2749;
@@ -152,7 +142,7 @@ export const Modal = styled.div`
   border-radius: 0.35rem;
   color: var(--text-color);
   transition: all 0.3s ease;
-`
+`;
 
 export const ModalTitle = styled.p`
   font-size: 1.25rem;
@@ -161,7 +151,7 @@ export const ModalTitle = styled.p`
   text-align: center;
   margin: 0;
   margin-bottom: 1.3rem;
-`
+`;
 
 export const ButtonContainer = styled.div`
   display: flex;
@@ -170,7 +160,7 @@ export const ButtonContainer = styled.div`
   gap: 1.2rem;
   width: 100%;
   z-index: 10;
-`
+`;
 
 export const ButtonNo = styled.button`
   padding: 0.5rem 1rem;
@@ -189,7 +179,7 @@ export const ButtonNo = styled.button`
     background-color: rgb(51, 153, 255, 0.9);
     transition: all 0.15s ease-in-out;
   }
-`
+`;
 
 export const ButtonYes = styled.button`
   padding: 0.5rem 1rem;
@@ -208,4 +198,4 @@ export const ButtonYes = styled.button`
     background-color: rgb(255, 51, 51, 0.9);
     transition: all 0.15s ease-in-out;
   }
-`
+`;

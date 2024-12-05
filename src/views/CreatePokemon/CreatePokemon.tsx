@@ -1,94 +1,90 @@
-import type { Pokemon } from '@/types/types'
+import { useEffect, useState } from 'react';
 
-import { useEffect, useState } from 'react'
+import { Container, Form, FormContainer, Title } from '@/components/StyledComponents/StyledForm';
+import { emptyErrors, emptyPokemon, showToast } from '@/helpers/helpers';
+import { validatePokemon } from '@/helpers/validatePokemon';
+import { getPokemons } from '@/redux/actions/pokemon-async-actions';
+import { getTypes } from '@/redux/actions/type-actions';
+import { useAppDispatch, useAppSelector } from '@/redux/hooks';
+import type { Pokemon } from '@/types/types';
+import { FormFooter } from '@/views/CreatePokemon/form-footer';
+import { FormSelect } from '@/views/CreatePokemon/form-select';
+import { LabelWithInput } from '@/views/CreatePokemon/label-with-input';
 
-import {
-  Container,
-  Form,
-  FormContainer,
-  Title
-} from '@/components/StyledComponents/StyledForm'
-import {
-  emptyErrors,
-  emptyPokemon,
-  resetPokemonForm,
-  showToast
-} from '@/helpers/helpers'
-import { validatePokemon } from '@/helpers/validatePokemon'
-import { resetFilters } from '@/redux/actions/pokemon-actions'
-import { getPokemons, postPokemon } from '@/redux/actions/pokemon-async-actions'
-import { getTypes } from '@/redux/actions/type-actions'
-import { useAppDispatch, useAppSelector } from '@/redux/hooks'
-import { FormFooter } from '@/views/CreatePokemon/form-footer'
-import { FormSelect } from '@/views/CreatePokemon/form-select'
-import { LabelWithInput } from '@/views/CreatePokemon/label-with-input'
-
-export default function CreatePokemon() {
-  const dispatch = useAppDispatch()
-  const { isLoading } = useAppSelector(({ pokemons }) => pokemons)
-  const { types } = useAppSelector(({ types }) => types)
-  const [pokemon, setPokemon] = useState<Pokemon>(emptyPokemon)
-  const [errors, setErrors] = useState(emptyErrors)
+export function CreatePokemon() {
+  const dispatch = useAppDispatch();
+  const { isLoading } = useAppSelector(({ pokemons }) => pokemons);
+  const { types } = useAppSelector(({ types }) => types);
+  const [pokemon, setPokemon] = useState<Pokemon>(emptyPokemon);
+  const [errors, setErrors] = useState(emptyErrors);
 
   useEffect(() => {
-    if (!types.length) {
-      dispatch(getTypes())
-    }
-    dispatch(getPokemons())
-  }, [dispatch, types.length])
+    if (!types.length) dispatch(getTypes());
+    dispatch(getPokemons());
+  }, [dispatch, types.length]);
 
   const handleChange = (
-    e:
-      | React.ChangeEvent<HTMLInputElement>
-      | React.ChangeEvent<HTMLSelectElement>
+    e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement>
   ) => {
-    const { name, value } = e.target
+    const { name, value } = e.target;
 
     if (name === 'type') {
       if (pokemon.type.length < 2) {
-        const type = types.find(({ name }) => name === value)
+        const type = types.find(({ name }) => name === value);
 
         if (type) {
           setPokemon({
             ...pokemon,
-            type: [...pokemon.type, type]
-          })
+            type: [...pokemon.type, type],
+          });
         }
       } else {
-        showToast('error', 'You can only select two types at most')
+        showToast('error', 'You can only select two types at most');
       }
     } else if (name === 'name' || name === 'image') {
-      setPokemon({ ...pokemon, [name]: value })
+      setPokemon({ ...pokemon, [name]: value });
     } else {
-      setPokemon({ ...pokemon, [name]: Number(value) })
+      setPokemon({ ...pokemon, [name]: Number(value) });
     }
 
-    setErrors(validatePokemon(name, value))
-  }
+    setErrors(validatePokemon(name, value));
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
+    e.preventDefault();
 
-    if (pokemon.id == '' || 0) {
-      pokemon.id = crypto.randomUUID()
+    const updatedPokemon = { ...pokemon };
+
+    if (updatedPokemon.id == '' || 0) {
+      updatedPokemon.id = crypto.randomUUID();
     }
-    if (pokemon.image == '') {
-      pokemon.image =
-        'https://res.cloudinary.com/dsg5ofk4e/image/upload/v1709047835/pokewiki/60f684ec58ea6ded58112eac2324bfa8.webp'
+    if (updatedPokemon.image == '') {
+      updatedPokemon.image =
+        'https://res.cloudinary.com/dsg5ofk4e/image/upload/v1709047835/pokewiki/60f684ec58ea6ded58112eac2324bfa8.webp';
     }
     if (
-      Object.values(pokemon).some(
-        (value: string | number) => value === '' || value === 0
-      ) ||
-      pokemon.type.length === 0
+      (Object.keys(updatedPokemon) as Array<keyof Pokemon>).some((key) => {
+        const value = updatedPokemon[key];
+
+        if (key === 'type') {
+          return Array.isArray(value) && value.length === 0;
+        }
+
+        if (typeof value === 'string') {
+          return value.trim() === '';
+        }
+
+        if (typeof value === 'number') {
+          return value === 0;
+        }
+
+        return false;
+      }) ||
+      updatedPokemon.type.length === 0
     ) {
-      showToast('error', 'All fields are required')
-    } else {
-      dispatch(postPokemon(pokemon))
-      dispatch(resetFilters())
-      resetPokemonForm(setPokemon)
+      showToast('error', 'All fields are required');
     }
-  }
+  };
 
   return (
     <Container>
@@ -167,5 +163,5 @@ export default function CreatePokemon() {
         />
       </FormContainer>
     </Container>
-  )
+  );
 }

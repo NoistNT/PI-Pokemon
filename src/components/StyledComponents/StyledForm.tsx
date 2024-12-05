@@ -1,4 +1,4 @@
-import styled, { keyframes } from 'styled-components'
+import styled, { keyframes } from 'styled-components';
 
 const shadowRolling = keyframes`
   0% {
@@ -28,7 +28,7 @@ const shadowRolling = keyframes`
   100% {
     box-shadow: 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0);
   }
-  `
+  `;
 
 export const Spinner = styled.span`
   width: 0.35rem;
@@ -41,14 +41,14 @@ export const Spinner = styled.span`
   left: -100px;
   box-sizing: border-box;
   animation: ${shadowRolling} 2s linear infinite;
-`
+`;
 
 export const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-`
+`;
 
 export const FormContainer = styled.form`
   display: flex;
@@ -64,13 +64,13 @@ export const FormContainer = styled.form`
   border-radius: 1rem;
   color: var(--text-color);
   transition: all 0.3s ease;
-`
+`;
 
 export const Title = styled.h2`
   font-size: 2.5rem;
   color: var(--text-color);
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
-`
+`;
 
 export const Form = styled.div`
   display: flex;
@@ -79,7 +79,7 @@ export const Form = styled.div`
   align-items: center;
   gap: 1.5rem;
   width: 100%;
-`
+`;
 
 export const FormItem = styled.div`
   display: flex;
@@ -89,7 +89,7 @@ export const FormItem = styled.div`
   font-size: 1.07rem;
   color: var(--text-color);
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 1);
-`
+`;
 
 export const LabelInputContainer = styled.div`
   display: flex;
@@ -98,16 +98,15 @@ export const LabelInputContainer = styled.div`
   color: var(--text-color);
   background-color: rgb(255, 255, 255, 0.2);
   margin: 0 2rem;
-`
+`;
 
 export const Label = styled.label`
   font-size: 1rem;
   width: 7.5rem;
   font-weight: 550;
-  font-family: 'Open Sans', Inter, system-ui, Avenir, Helvetica, Arial,
-    sans-serif;
+  font-family: 'Open Sans', Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 1);
-`
+`;
 
 export const Input = styled.input`
   outline: 0;
@@ -121,9 +120,8 @@ export const Input = styled.input`
   font-size: 0.95rem;
   padding: 0.5rem;
   text-align: center;
-  font-family: 'Open Sans', Inter, system-ui, Avenir, Helvetica, Arial,
-    sans-serif;
-`
+  font-family: 'Open Sans', Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+`;
 
 export const SelectBox = styled.select`
   padding: 0.35rem;
@@ -133,8 +131,7 @@ export const SelectBox = styled.select`
   border-radius: 0.4rem;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
-  font-family: 'Open Sans', Inter, system-ui, Avenir, Helvetica, Arial,
-    sans-serif;
+  font-family: 'Open Sans', Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   background-color: var(--select-bg-color);
   color: var(--text-color);
   transition: all 0.2s ease;
@@ -145,7 +142,7 @@ export const SelectBox = styled.select`
     transition: all 0.2s ease;
     box-shadow: 0 2px 4px var(--card-hover-bg);
   }
-`
+`;
 
 export const PokemonTypesList = styled.div`
   display: flex;
@@ -155,7 +152,7 @@ export const PokemonTypesList = styled.div`
   gap: 1rem;
   width: 71.5%;
   margin-top: 1rem;
-`
+`;
 
 export const TypeListContainer = styled.div`
   display: flex;
@@ -171,26 +168,24 @@ export const TypeListContainer = styled.div`
     background-color: var(--select-bg-color);
     cursor: pointer;
   }
-`
+`;
 
 export const TypeList = styled.span`
   font-size: 0.95rem;
-  font-family: 'Open Sans', Inter, system-ui, Avenir, Helvetica, Arial,
-    sans-serif;
+  font-family: 'Open Sans', Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   color: var(--text-color);
-`
+`;
 
 export const IconRemoveType = styled.img`
   width: 1rem;
-`
+`;
 
 export const ErrorSpan = styled.span`
   font-size: 0.97rem;
-  font-family: 'Open Sans', Inter, system-ui, Avenir, Helvetica, Arial,
-    sans-serif;
+  font-family: 'Open Sans', Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   color: #ff1616;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 1);
-`
+`;
 
 export const ButtonsContainer = styled.div`
   display: flex;
@@ -202,13 +197,13 @@ export const ButtonsContainer = styled.div`
 
   @media (min-width: 426px) {
   }
-`
+`;
 
 export const ButtonText = styled.span`
   position: relative;
   z-index: 1;
   color: var(--text-color);
-`
+`;
 
 export const SubmitButton = styled.button`
   position: relative;
@@ -216,11 +211,7 @@ export const SubmitButton = styled.button`
   outline: 0;
   font-size: 0.95rem;
   font-weight: 550;
-  background: linear-gradient(
-    82.3deg,
-    rgb(71, 49, 104) 10.8%,
-    rgb(70, 64, 160) 94.3%
-  );
+  background: linear-gradient(82.3deg, rgb(71, 49, 104) 10.8%, rgb(70, 64, 160) 94.3%);
   color: var(--text-color);
   border-color: #ffffff36;
   border-radius: 0.4rem;
@@ -230,8 +221,7 @@ export const SubmitButton = styled.button`
   width: 10rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
   cursor: pointer;
-  font-family: 'Open Sans', Inter, system-ui, Avenir, Helvetica, Arial,
-    sans-serif;
+  font-family: 'Open Sans', Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 
   &:hover::before {
     transform: scaleX(1);
@@ -252,11 +242,7 @@ export const SubmitButton = styled.button`
     width: 100%;
     height: 100%;
     border-radius: inherit;
-    background: linear-gradient(
-      82.3deg,
-      rgb(76, 71, 148) 10.8%,
-      rgb(84, 54, 128) 94.3%
-    );
+    background: linear-gradient(82.3deg, rgb(76, 71, 148) 10.8%, rgb(84, 54, 128) 94.3%);
     transition: all 0.48s;
   }
 
@@ -264,4 +250,4 @@ export const SubmitButton = styled.button`
     cursor: not-allowed;
     opacity: 0.5;
   }
-`
+`;
