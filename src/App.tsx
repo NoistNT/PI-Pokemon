@@ -4,7 +4,10 @@ import { Toaster } from 'sonner';
 import { Error404 } from '@/components/Error404/Error404';
 import { Footer } from '@/components/Footer/Footer';
 import { NavBar } from '@/components/Navbar/Navbar';
-import { CreatePokemon, Detail, Home, Landing } from '@/views/index';
+import { CreatePokemon } from '@/views/CreatePokemon/CreatePokemon';
+import { Detail } from '@/views/Detail/Detail';
+import { Home } from '@/views/Home/Home';
+import { Landing } from '@/views/Landing/Landing';
 
 import './App.css';
 
